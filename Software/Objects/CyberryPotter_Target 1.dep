@@ -994,10 +994,10 @@ I (CNN\nnom_lib\inc\layers\nnom_simple_cell.h)(0x66A3E190)
 I (CNN\nnom_lib\inc\layers\nnom_lstm_cell.h)(0x66A3E190)
 I (CNN\nnom_lib\inc\layers\nnom_gru_cell.h)(0x66A3E190)
 I (CNN\nnom_lib\inc\nnom_utils.h)(0x66A3E190)
-F (.\MainBoard\config.h)(0x66B0F613)()
-F (.\MainBoard\CyberryPotter.c)(0x66B0F98C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/cyberrypotter.o -MMD)
-I (MainBoard\CyberryPotter.h)(0x66B0F96E)
-I (MainBoard\config.h)(0x66B0F613)
+F (.\MainBoard\config.h)(0x66B2F526)()
+F (.\MainBoard\CyberryPotter.c)(0x66B2FBEA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/cyberrypotter.o -MMD)
+I (MainBoard\CyberryPotter.h)(0x66B2FB1A)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1026,14 +1026,15 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
-I (MainBoard\hardware.h)(0x66B0F64C)
+I (MainBoard\hardware.h)(0x66B1BB9F)
 I (MainBoard\Delay.h)(0x66A3E190)
 I (MainBoard\IMU.h)(0x66A3E190)
 I (MainBoard\W25Q64.h)(0x66A3E190)
-I (Module\Module0_IR.h)(0x66B0ECB8)
-I (Module\Module1_RF433.h)(0x66B0EC83)
-I (Module\Module2_RF315.h)(0x66B0E7A0)
-F (.\MainBoard\CyberryPotter.h)(0x66B0F96E)()
+I (Module\module0_IR.h)(0x66B0ECB8)
+I (Module\module1_RF433.h)(0x66B0EC83)
+I (Module\module2_RF315.h)(0x66B0E7A0)
+I (Module\module_IR_RF.h)(0x66B2FB1A)
+F (.\MainBoard\CyberryPotter.h)(0x66B2FB1A)()
 F (.\MainBoard\CyberryPotter_status.h)(0x66A3E190)()
 F (.\MainBoard\Delay.c)(0x66A3E190)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/delay.o -MMD)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
@@ -1065,9 +1066,9 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
 F (.\MainBoard\Delay.h)(0x66A3E190)()
-F (.\MainBoard\hardware.c)(0x66B0F627)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/hardware.o -MMD)
-I (MainBoard\hardware.h)(0x66B0F64C)
-I (MainBoard\config.h)(0x66B0F613)
+F (.\MainBoard\hardware.c)(0x66B2EBFC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/hardware.o -MMD)
+I (MainBoard\hardware.h)(0x66B1BB9F)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1098,7 +1099,7 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
 I (MainBoard\MPU6050_Reg.h)(0x66A3E190)
 I (MainBoard\MPU6050.h)(0x66A3E190)
-F (.\MainBoard\hardware.h)(0x66B0F64C)()
+F (.\MainBoard\hardware.h)(0x66B1BB9F)()
 F (.\MainBoard\IIC.c)(0x66A3E190)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/iic.o -MMD)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
@@ -1132,7 +1133,7 @@ I (MainBoard\Delay.h)(0x66A3E190)
 I (MainBoard\IIC.h)(0x66A3E190)
 F (.\MainBoard\IIC.h)(0x66A3E190)()
 F (.\MainBoard\IMU.c)(0x66A3E190)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/imu.o -MMD)
-I (MainBoard\config.h)(0x66B0F613)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1161,20 +1162,21 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
-I (MainBoard\CyberryPotter.h)(0x66B0F96E)
-I (MainBoard\hardware.h)(0x66B0F64C)
+I (MainBoard\CyberryPotter.h)(0x66B2FB1A)
+I (MainBoard\hardware.h)(0x66B1BB9F)
 I (MainBoard\Delay.h)(0x66A3E190)
 I (MainBoard\IMU.h)(0x66A3E190)
 I (MainBoard\W25Q64.h)(0x66A3E190)
-I (Module\Module0_IR.h)(0x66B0ECB8)
-I (Module\Module1_RF433.h)(0x66B0EC83)
-I (Module\Module2_RF315.h)(0x66B0E7A0)
+I (Module\module0_IR.h)(0x66B0ECB8)
+I (Module\module1_RF433.h)(0x66B0EC83)
+I (Module\module2_RF315.h)(0x66B0E7A0)
+I (Module\module_IR_RF.h)(0x66B2FB1A)
 I (MainBoard\IIC.h)(0x66A3E190)
 I (MainBoard\MPU6050_Reg.h)(0x66A3E190)
 F (.\MainBoard\IMU.h)(0x66A3E190)()
-F (.\MainBoard\main.c)(0x66B0F98C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/main.o -MMD)
-I (MainBoard\CyberryPotter.h)(0x66B0F96E)
-I (MainBoard\config.h)(0x66B0F613)
+F (.\MainBoard\main.c)(0x66B2FBD6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/main.o -MMD)
+I (MainBoard\CyberryPotter.h)(0x66B2FB1A)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1203,13 +1205,14 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
-I (MainBoard\hardware.h)(0x66B0F64C)
+I (MainBoard\hardware.h)(0x66B1BB9F)
 I (MainBoard\Delay.h)(0x66A3E190)
 I (MainBoard\IMU.h)(0x66A3E190)
 I (MainBoard\W25Q64.h)(0x66A3E190)
-I (Module\Module0_IR.h)(0x66B0ECB8)
-I (Module\Module1_RF433.h)(0x66B0EC83)
-I (Module\Module2_RF315.h)(0x66B0E7A0)
+I (Module\module0_IR.h)(0x66B0ECB8)
+I (Module\module1_RF433.h)(0x66B0EC83)
+I (Module\module2_RF315.h)(0x66B0E7A0)
+I (Module\module_IR_RF.h)(0x66B2FB1A)
 I (CNN\weights.h)(0x66A3E190)
 I (CNN\nnom_lib\inc\nnom.h)(0x66A3E190)
 I (CNN\nnom_lib\port\nnom_port.h)(0x66A3E190)
@@ -1242,7 +1245,7 @@ I (CNN\nnom_lib\inc\layers\nnom_lstm_cell.h)(0x66A3E190)
 I (CNN\nnom_lib\inc\layers\nnom_gru_cell.h)(0x66A3E190)
 I (CNN\nnom_lib\inc\nnom_utils.h)(0x66A3E190)
 F (.\MainBoard\MPU6050.c)(0x66A3E190)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/mpu6050.o -MMD)
-I (MainBoard\config.h)(0x66B0F613)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1279,7 +1282,7 @@ F (.\MainBoard\MPU6050.h)(0x66A3E190)()
 F (.\MainBoard\MPU6050_Reg.h)(0x66A3E190)()
 F (.\MainBoard\W25Q64.c)(0x66B0F813)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/w25q64.o -MMD)
 I (MainBoard\W25Q64.h)(0x66A3E190)
-I (MainBoard\config.h)(0x66B0F613)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1308,13 +1311,14 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
-I (MainBoard\CyberryPotter.h)(0x66B0F96E)
-I (MainBoard\hardware.h)(0x66B0F64C)
+I (MainBoard\CyberryPotter.h)(0x66B2FB1A)
+I (MainBoard\hardware.h)(0x66B1BB9F)
 I (MainBoard\Delay.h)(0x66A3E190)
 I (MainBoard\IMU.h)(0x66A3E190)
-I (Module\Module0_IR.h)(0x66B0ECB8)
-I (Module\Module1_RF433.h)(0x66B0EC83)
-I (Module\Module2_RF315.h)(0x66B0E7A0)
+I (Module\module0_IR.h)(0x66B0ECB8)
+I (Module\module1_RF433.h)(0x66B0EC83)
+I (Module\module2_RF315.h)(0x66B0E7A0)
+I (Module\module_IR_RF.h)(0x66B2FB1A)
 F (.\MainBoard\W25Q64.h)(0x66A3E190)()
 F (.\MainBoard\eMPL\dmpKey.h)(0x66A3E190)()
 F (.\MainBoard\eMPL\dmpmap.h)(0x66A3E190)()
@@ -1386,10 +1390,10 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
 F (.\MainBoard\eMPL\inv_mpu_dmp_motion_driver.h)(0x66A3E190)()
-F (.\Module\module0_IR.c)(0x66B0F7EC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/module0_ir.o -MMD)
+F (.\Module\module0_IR.c)(0x66B1AE3D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/module0_ir.o -MMD)
 I (Module\module0_IR.h)(0x66B0ECB8)
-I (MainBoard\CyberryPotter.h)(0x66B0F96E)
-I (MainBoard\config.h)(0x66B0F613)
+I (MainBoard\CyberryPotter.h)(0x66B2FB1A)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1418,17 +1422,18 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
-I (MainBoard\hardware.h)(0x66B0F64C)
+I (MainBoard\hardware.h)(0x66B1BB9F)
 I (MainBoard\Delay.h)(0x66A3E190)
 I (MainBoard\IMU.h)(0x66A3E190)
 I (MainBoard\W25Q64.h)(0x66A3E190)
-I (Module\Module1_RF433.h)(0x66B0EC83)
-I (Module\Module2_RF315.h)(0x66B0E7A0)
-F (.\Module\module0_IR.h)(0x66B0ECB8)()
-F (.\Module\module1_RF433.c)(0x66B0F7F6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/module1_rf433.o -MMD)
 I (Module\module1_RF433.h)(0x66B0EC83)
-I (MainBoard\CyberryPotter.h)(0x66B0F96E)
-I (MainBoard\config.h)(0x66B0F613)
+I (Module\module2_RF315.h)(0x66B0E7A0)
+I (Module\module_IR_RF.h)(0x66B2FB1A)
+F (.\Module\module0_IR.h)(0x66B0ECB8)()
+F (.\Module\module1_RF433.c)(0x66B1AE3D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/module1_rf433.o -MMD)
+I (Module\module1_RF433.h)(0x66B0EC83)
+I (MainBoard\CyberryPotter.h)(0x66B2FB1A)
+I (MainBoard\config.h)(0x66B2F526)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
@@ -1457,15 +1462,56 @@ I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPer
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
 I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
-I (MainBoard\hardware.h)(0x66B0F64C)
+I (MainBoard\hardware.h)(0x66B1BB9F)
 I (MainBoard\Delay.h)(0x66A3E190)
 I (MainBoard\IMU.h)(0x66A3E190)
 I (MainBoard\W25Q64.h)(0x66A3E190)
-I (Module\Module0_IR.h)(0x66B0ECB8)
-I (Module\Module2_RF315.h)(0x66B0E7A0)
+I (Module\module0_IR.h)(0x66B0ECB8)
+I (Module\module2_RF315.h)(0x66B0E7A0)
+I (Module\module_IR_RF.h)(0x66B2FB1A)
 F (.\Module\module1_RF433.h)(0x66B0EC83)()
 F (.\Module\module2_RF315.c)(0x66B0DE12)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/module2_rf315.o -MMD)
 F (.\Module\module2_RF315.h)(0x66B0E7A0)()
+F (.\Module\module_IR_RF.c)(0x66B2FBD6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/module_ir_rf.o -MMD)
+I (Module\module_IR_RF.h)(0x66B2FB1A)
+I (MainBoard\CyberryPotter.h)(0x66B2FB1A)
+I (MainBoard\config.h)(0x66B2F526)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h)(0x669BAED7)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h)(0x668C2A7E)
+I (RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x66A3E190)
+I (RTE\_Target_1\RTE_Components.h)(0x66A3E190)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_adc.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_can.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_cec.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_crc.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_dac.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_dma.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_exti.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_flash.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x668C2A7E)
+I (C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x668C2A7E)
+I (MainBoard\hardware.h)(0x66B1BB9F)
+I (MainBoard\Delay.h)(0x66A3E190)
+I (MainBoard\IMU.h)(0x66A3E190)
+I (MainBoard\W25Q64.h)(0x66A3E190)
+I (Module\module0_IR.h)(0x66B0ECB8)
+I (Module\module1_RF433.h)(0x66B0EC83)
+I (Module\module2_RF315.h)(0x66B0E7A0)
+F (.\Module\module_IR_RF.h)(0x66B2FB1A)()
 F (C:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS-Compiler/2.1.0/source/armcc/retarget_io.c)(0x669BB0E1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/retarget_io.o -MMD)
 I (RTE\_Target_1\RTE_Components.h)(0x66A3E190)
 F (C:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c)(0x66A63B1C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char-D__MICROLIB -gdwarf-4 -Os -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./CNN/nnom_lib/inc -I ./CNN/nnom_lib/inc/layers -I ./CNN/nnom_lib/port -I ./CNN -I ./MainBoard -I ./MainBoard/eMPL -I ./Module -Wno-nan-infinity-disabled-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Users/13087/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include-IC:/Users/13087/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="540" -DSTM32F10X_MD -D_RTE_ -DUSE_STDPERIPH_DRIVER-o ./objects/misc.o -MMD)

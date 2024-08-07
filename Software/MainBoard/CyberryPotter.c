@@ -2,10 +2,154 @@
 
 Cyberry_Potter_Status_Typedef Cyberry_Potter_Status;
 IR_RF_Signal_Typedef IR_RF_Signal;
+int32_t ADC_Sample_Avg = 0;
 Module_Typedef Module;
-volatile uint16_t SIGNAL_Count;
 extern uint8_t W25Q64_Buffer[4096];
 
+/// @brief Get sample average from ADC,if variance is too high
+/// @param  None
+/// @return -1: error variance is too high.Means that No module is installed on device.
+/// @return 0: get average complete.
+int8_t ADC_GetAvg(void)
+{
+	uint8_t i = 0 ;
+	uint8_t samples_count;
+	int32_t sample[ADC_MAX_SAMPLES] = {0};
+	
+	float var = 0;
+	while(var == 0 || var >= 1000){
+		ADC_Sample_Avg = 0;
+		var = 0;
+		if(samples_count >= ADC_MAX_TESTS)
+		{
+			return -1;
+			break;
+		}
+		
+		for(i = 0; i < ADC_MAX_SAMPLES; i++)
+		{
+			sample[i] = (int32_t)ADC_GetValue() ;
+			#ifdef SERIAL_DEBUG
+			printf("sample[%d]:%d\n",i,sample[i]);
+			#endif
+		}
+		for(i = 0; i < ADC_MAX_SAMPLES; i++)
+		{
+			ADC_Sample_Avg += sample[i];
+		}
+		ADC_Sample_Avg = round((ADC_Sample_Avg / ADC_MAX_SAMPLES));
+		
+		for(i = 0; i < 10; i++)
+		{
+			var += (float)(ADC_Sample_Avg -sample[i]) * (float)(ADC_Sample_Avg - sample[i]);
+		}
+		var = (var / ADC_MAX_SAMPLES);
+		#ifdef SERIAL_DEBUG
+			printf("Var:%f\n",var);
+			printf("Avg:%d\n",ADC_Sample_Avg);
+		#endif
+		samples_count++;	
+	}
+	#ifdef SERIAL_DEBUG
+	printf("\nGet:%d %f\n",ADC_Sample_Avg,var);
+	#endif
+	return 0;
+}
+/// @brief Detect which module is installed on device
+/// @param  None
+/// @return eModule_Type: module info
+eModule_Type Module_Detect(void)
+{
+	if (ADC_Sample_Avg >= MODULE10_UPPER_LIM) {
+		//ADC_Sample_Avg higher than upper limit.
+		return Module_Type_None;
+	} 
+	else if (ADC_Sample_Avg >= MODULE9_LOWER_LIM && ADC_Sample_Avg < MODULE9_UPPER_LIM) {
+		return Module_Type_9;
+	} 
+	else if (ADC_Sample_Avg >= MODULE8_LOWER_LIM && ADC_Sample_Avg < MODULE8_UPPER_LIM) {
+		return Module_Type_8;
+	} 
+	else if (ADC_Sample_Avg >= MODULE7_LOWER_LIM && ADC_Sample_Avg < MODULE7_UPPER_LIM) {
+		return Module_Type_7;
+	} 
+	else if (ADC_Sample_Avg >= MODULE6_LOWER_LIM && ADC_Sample_Avg < MODULE6_UPPER_LIM) {
+		return Module_Type_6;
+	} 
+	else if (ADC_Sample_Avg >= MODULE5_LOWER_LIM && ADC_Sample_Avg < MODULE5_UPPER_LIM) {
+		return Module_Type_5;
+	} 
+	else if (ADC_Sample_Avg >= MODULE4_LOWER_LIM && ADC_Sample_Avg < MODULE4_UPPER_LIM) {
+		return Module_Type_4;
+	} 
+	else if (ADC_Sample_Avg >= MODULE3_LOWER_LIM && ADC_Sample_Avg < MODULE3_UPPER_LIM) {
+		return Module_Type_3;
+	} 
+	else if (ADC_Sample_Avg >= MODULE2_LOWER_LIM && ADC_Sample_Avg < MODULE2_UPPER_LIM) {
+		return Module_Type_2_RF_315MHZ;
+	}
+	else if (ADC_Sample_Avg >= MODULE1_LOWER_LIM && ADC_Sample_Avg < MODULE1_UPPER_LIM) {
+		return Module_Type_1_RF_433MHZ;
+	}
+	else if (ADC_Sample_Avg >= MODULE0_LOWER_LIM && ADC_Sample_Avg < MODULE0_UPPER_LIM) {
+		return Module_Type_0_IR;
+	} 
+	else {
+		//ADC_Sample_Avg is below the lowest limit
+		return Module_Type_None;
+	}
+}
+
+/// @brief initialize reqired peripheral and function according to module type
+/// @param  None
+void Module_Init(void)
+{
+	switch (Module.Type) {
+		case Module_Type_None:
+		// Do nothing if no module is detected.
+		break;
+		case Module_Type_0_IR:
+		Module_IR_RF_Init();
+		Module.Mode0_Handler = Module_IR_RF_Transmit;
+		Module.Mode1_Handler = Module_IR_RF_Receive;
+		break;
+		case Module_Type_1_RF_433MHZ:
+		Module_IR_RF_Init();
+		break;
+		case Module_Type_2_RF_315MHZ:
+		Module_IR_RF_Init();
+		break;
+		case Module_Type_3:
+		// Module3_Init();
+		break;
+		case Module_Type_4:
+		// Module4_Init();
+		break;
+		case Module_Type_5:
+		// Module5_Init();
+		break;
+		case Module_Type_6:
+		// Module6_Init();
+		break;
+		case Module_Type_7:
+		// Module7_Init();
+		break;
+		case Module_Type_8:
+		// Module8_Init();
+		break;
+		case Module_Type_9:
+		// Module9_Init();
+		break;
+		case Module_Type_10: 
+		// Module10_Init();
+		break;
+		default:
+		break;
+	}
+}
+
+/// @brief System initialization
+/// @param  None
 void System_Init(void)
 {
         Hardware_Init();
@@ -15,14 +159,21 @@ void System_Init(void)
         Cyberry_Potter_Status.Signal_Status = SIGNAL_EMPTY;
 	Cyberry_Potter_Status.System_Mode = SYSTEM_MODE_0;
 	
-	
-	Module.Type = Module_Type_IR;
-	Module.Mode0_Handler = Module0_IR_Transmit;
-	//Moudle.Mode1_Handler = NULL;
-	
-	LED_ON;
+	if(ADC_GetAvg() == 0){
+		Module.Type = Module_Detect();
+		LED_ON;
+	}
+	else{
+		printf("No Module Detected");
+		LED_OFF;
+	}
+	Module.Type = Module_Type_0_IR;
+	Module_IR_RF_Init();
+	Module.Mode0_Handler = Module_IR_RF_Print;
 }
 
+/// @brief Status LED controller
+/// @param  None
 void LED_Blink(void)
 {
 	int i = 0;
@@ -61,147 +212,8 @@ void LED_Blink(void)
 	}
 }
 
-void Signal_Transmit(void)
-{
-	//Data can be transmit if 
-	//1.signal is loaded form ROM.
-	//2.signal is recorded from receivers.
-	//3.signal has sent before.
-	if(Cyberry_Potter_Status.Signal_Status == SIGNAL_LOADED || 
-		Cyberry_Potter_Status.Signal_Status == SIGNAL_RECORDED
-		|| Cyberry_Potter_Status.Signal_Status == SIGNAL_SENT)
-	{
-		//Prevent singal transmition from interrupted by EXTI
-		EXTI_Stop();
-		Cyberry_Potter_Status.Signal_Status = SIGNAL_SENDING;
-		switch(Module.Type){
-			case Module_Type_IR:
-				Module0_IR_Transmit();
-				break;
-			case Module_Type_RF_433MHZ:
-				Module1_RF433_Transmit();
-				break;
-			case Module_Type_None:
-				break;
-		}
-		EXTI_Restore();
-		Cyberry_Potter_Status.Signal_Status = SIGNAL_SENT;
-	}
-}
-
-static void Signal_receiver_start(void)
-{
-	TIM_Cmd(TIM2,ENABLE);
-        Cyberry_Potter_Status.Signal_Status = SIGNAL_RECORDING;
-        SIGNAL_Count = 0;
-}
-
-static void Signal_Record_Duration(void)
-{
-        IR_RF_Signal.duration[SIGNAL_Count] = TIM_GetCounter(TIM2);
-        SIGNAL_Count++;
-        TIM_SetCounter(TIM2,0);
-              
-}
-
-static void Signal_receiver_stop(void)
-{
-        TIM_Cmd(TIM2, DISABLE);
-        TIM_ITConfig(TIM2,TIM_IT_Update,DISABLE);
-        IR_RF_Signal.length = SIGNAL_Count;
-        SIGNAL_Count = 0;
-        Cyberry_Potter_Status.Signal_Status = SIGNAL_RECORDED;
-}
-
-void Signal_Copy_From_Buffer(void)
-{
-	uint8_t temp_high, temp_low, i;
-	volatile uint16_t *duration_ptr = &IR_RF_Signal.duration[0];
-	uint8_t *buffer_ptr = W25Q64_Buffer;
-
-	// Extract the length from the first two bytes of the buffer
-	temp_low = *buffer_ptr++;
-	temp_high = *buffer_ptr++;
-	IR_RF_Signal.length = (temp_high << 8) | temp_low;
-
-	// Copy the rest of the signal data
-	for (i = 0; i < IR_RF_Signal.length; i++) {
-		temp_low = *buffer_ptr++;
-		temp_high = *buffer_ptr++;
-		*duration_ptr++ = (temp_high << 8) | temp_low;
-	}
-}
-
-void Signal_Copy_To_Buffer(void)
-{
-	uint8_t temp_high, temp_low, i;
-	volatile uint16_t *duration_ptr = &IR_RF_Signal.duration[0];
-	uint8_t *buffer_ptr = W25Q64_Buffer;
-	
-	// Write the length to the first two bytes of the buffer
-	temp_low = IR_RF_Signal.length & 0xFF;
-	temp_high = IR_RF_Signal.length >> 8;
-	*buffer_ptr++ = temp_low;
-	*buffer_ptr++ = temp_high;
-
-	// Copy the rest of the signal data
-	for (i = 0; i < IR_RF_Signal.length; i++, duration_ptr++) {
-		temp_low = *duration_ptr & 0xFF;
-		temp_high = *duration_ptr >> 8;
-		*buffer_ptr++ = temp_low;
-		*buffer_ptr++ = temp_high;
-	}
-}
-
-//Signal recorder overtime detect*************************************************************//
-void TIM2_IRQHandler()
-{
-	if(TIM_GetITStatus(TIM2,TIM_IT_Update) == SET)
-	{
-                if(Cyberry_Potter_Status.Signal_Status == SIGNAL_RECORDING){
-                        Signal_receiver_stop();
-                }
-		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);        
-	}
-}
-
-#ifdef SERIAL_DEBUG
-void Signal_Print(void)
-{
-        uint16_t i = 0;
-        if(Cyberry_Potter_Status.Signal_Status == SIGNAL_RECORDED || Cyberry_Potter_Status.Signal_Status == SIGNAL_SENT || 
-		Cyberry_Potter_Status.Signal_Status == SIGNAL_LOADED){
-			if(Module.Type == Module_Type_IR){
-				printf("Signal_Type_IR:\n");
-			}
-			else if(Module.Type == Module_Type_RF_433MHZ){
-				printf("Signal_Type_RF_433MHZ:\n");
-			}
-			for(i = 0; i < IR_RF_Signal.length; i++){
-				printf("NO:%d  Duration: %d us Total:%d\n" , 
-				       i+1, IR_RF_Signal.duration[i] * US_PER_TIMER2_COUNT,
-					IR_RF_Signal.length);
-			}
-				
-			       Signal_Transmit(); 
-               }
-}
-	       
-void Signal_Data_Reset(void)
-{
-        volatile uint16_t i = 0;
-        SIGNAL_Count = 0;
-	//Clear every data in signal sequence
-        for(i = 0; i < SIGNAL_SEQUENCE_SET_LENGTH; i++){
-                IR_RF_Signal.duration[i] = 0;
-        }
-        //Cyberry_Potter_Status.Signal_Status = SIGNAL_EMPTY;
-	IR_RF_Signal.length = 0;
-}
-
-#endif //SERIAL_DEBUG
-
-void EXTI9_5_IRQHandler()
+/// @brief IMU and IR RF module interrput handler
+void EXTI9_5_IRQHandler(void)
 {
 	static uint8_t i = 0;
 	//IMU read
@@ -219,18 +231,18 @@ void EXTI9_5_IRQHandler()
 	//IR and RF Receiver
         if(EXTI_GetITStatus(EXTI_Line7)==SET){
                 if(Cyberry_Potter_Status.Signal_Status == SIGNAL_EMPTY){
-                        Signal_receiver_start();
+                        Module_IR_RF_receiver_start();
                 }
                 else if(Cyberry_Potter_Status.Signal_Status == SIGNAL_RECORDING){
-                        Signal_Record_Duration();
+                        Module_IR_RF_Record_Duration();
                         
                 }
-		
         EXTI_ClearITPendingBit(EXTI_Line7);
         }
 }
 
-//Button EXTI handler*******************************************************//
+/// @brief Button EXTI handler
+/// @param  None
 void EXTI0_IRQHandler(void)
 {
         if(EXTI_GetITStatus(EXTI_Line0)==SET){
@@ -243,6 +255,8 @@ void EXTI0_IRQHandler(void)
         }
 }
 
+/// @brief Update system status
+/// @param  None
 static void Cyberry_Potter_System_Status_Update(void)
 {
       switch(Cyberry_Potter_Status.System_Mode){
@@ -260,7 +274,8 @@ static void Cyberry_Potter_System_Status_Update(void)
       LED_Blink();
 }
 
-//Button status update for a given time
+/// @brief Button status update for a given time
+/// @param  None
 void TIM4_IRQHandler(void)
 {
 	static volatile uint16_t time_release_count_ms = 0;

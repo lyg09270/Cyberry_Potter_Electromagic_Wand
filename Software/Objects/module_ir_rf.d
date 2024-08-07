@@ -1,4 +1,4 @@
-./objects/module1_rf433.o: Module\module1_RF433.c Module\module1_RF433.h \
+./objects/module_ir_rf.o: Module\module_IR_RF.c Module\module_IR_RF.h \
   MainBoard\CyberryPotter.h MainBoard\config.h \
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h \
   C:\Users\13087\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\core_cm3.h \
@@ -28,5 +28,5 @@
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h \
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h \
   MainBoard\hardware.h MainBoard\Delay.h MainBoard\IMU.h \
-  MainBoard\W25Q64.h Module\module0_IR.h Module\module2_RF315.h \
-  Module\module_IR_RF.h
+  MainBoard\W25Q64.h Module\module0_IR.h Module\module1_RF433.h \
+  Module\module2_RF315.h

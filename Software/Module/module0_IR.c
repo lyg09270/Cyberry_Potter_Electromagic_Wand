@@ -43,19 +43,13 @@ void Module0_IR_Init(void)
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOA,&GPIO_InitStruct);
         
-        GPIO_EXTILineConfig(GPIO_PortSourceGPIOB,GPIO_PinSource7); 
+        GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource7); 
 	
         EXTI_InitStruct.EXTI_Line = EXTI_Line7 ;
         EXTI_InitStruct.EXTI_LineCmd = ENABLE;
         EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
         EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
         EXTI_Init(&EXTI_InitStruct);
-
-        NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5_IRQn;
-        NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-        NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 7;
-        NVIC_InitStruct.NVIC_IRQChannelSubPriority = 7;
-        NVIC_Init(&NVIC_InitStruct);
 	
 //TIM2 15ms*************************************************************//
 	TIM_TimerBaseInitStruct.TIM_Prescaler = TIM2_PRESCALE - 1;

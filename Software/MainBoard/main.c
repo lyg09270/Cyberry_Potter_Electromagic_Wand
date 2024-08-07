@@ -8,15 +8,17 @@ extern Module_Typedef Module;
 extern float IMU_Data_mAngle[IMU_SEQUENCE_LENGTH_MAX][3];
 extern float IMU_Data_mAcc[IMU_SEQUENCE_LENGTH_MAX][3];
 extern uint8_t W25Q64_Buffer[4096];
-nnom_model_t* model;
 volatile Model_Output_t model_output = 0;
-volatile Signal_Address_t signal_address;
+volatile ROM_Address_t ROM_Address;
+nnom_model_t* model;
 #define QUANTIFICATION_SCALE (pow(2,INPUT_1_OUTPUT_DEC))
 
 #ifdef NNOM_USING_STATIC_MEMORY
-	uint8_t static_buf[1024 * 8];
+	uint8_t static_buf[1024 * 6];
 #endif //NNOM_USING_STATIC_MEMORY
 
+/// @brief quantirize IMU data and feed to CNN model
+/// @param  None
 void model_feed_data(void)
 {
 	const double scale = QUANTIFICATION_SCALE;
@@ -28,6 +30,9 @@ void model_feed_data(void)
 	}
 }
 
+/// @brief get output of CNN model
+/// @param  None
+/// @return Model_Output_t: type of recognized motion
 Model_Output_t model_get_output(void)
 {
 	volatile uint8_t i = 0;
@@ -101,9 +106,11 @@ Model_Output_t model_get_output(void)
 	return ret;
 }
 
+/// @brief System mode 0 handler
+/// @param  None
 void Cyberry_Potter_Mode0(void)
 {
-	//Start Sample and wait till IMU_Sampled.
+	//Start Sample and wait untill IMU_Sampled.
 	IMU_Sample_Start();	
 	while(Cyberry_Potter_Status.IMU_Status != IMU_Sampled);
 	LED_ON;
@@ -118,17 +125,6 @@ void Cyberry_Potter_Mode0(void)
 	//Inference by using sampled data
 	model_output = model_get_output();
 	if(model_output != Unrecognized){
-		//renew status
-		Cyberry_Potter_Status.Signal_Status = SIGNAL_LOADED;
-		Cyberry_Potter_Status.LED_Status = LED_10HZ;
-		signal_address = W25Q64_SIGNAL_TYPE_INCREMENT * Module.Type + 
-				W25Q64_SECTOR_ADDRESS_INCREMENT * model_output;
-		printf("Address:%X",signal_address);
-		W25Q64_Read_Sector(signal_address);
-		Signal_Copy_From_Buffer();
-		LED_Blink();
-		Signal_Transmit();
-		Cyberry_Potter_Status.Signal_Status = SIGNAL_SENT;
 		Module.Mode0_Handler();
 	}
 	//Fail to identify motions.
@@ -138,14 +134,16 @@ void Cyberry_Potter_Mode0(void)
 		EXTI_Restore();
 	}
 	#endif //SYSTEM_MODE_DATA_COLLECT
+
 	Cyberry_Potter_Status.IMU_Status = IMU_Idle;
 	EXTI_Restore();	
 	//Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 }
 
+/// @brief System mode 1 handler
+/// @param  None
 void Cyberry_Potter_Mode1(void)
 {
-	printf("Hold");
 	//Start Sample and wait till IMU_Sampled.
 	IMU_Sample_Start();	
 	while(Cyberry_Potter_Status.IMU_Status != IMU_Sampled);
@@ -157,17 +155,6 @@ void Cyberry_Potter_Mode1(void)
 	
 	//Inference by using sampled data
 	if(model_output != Unrecognized){
-		while(Cyberry_Potter_Status.Signal_Status != SIGNAL_RECORDED);
-		EXTI_Stop();
-		Cyberry_Potter_Status.LED_Status = LED_5HZ;
-		LED_Blink();
-		signal_address = W25Q64_SIGNAL_TYPE_INCREMENT * Module.Type + 
-				W25Q64_SECTOR_ADDRESS_INCREMENT * model_output;
-		printf("Address:%X",signal_address);
-		Signal_Copy_To_Buffer();
-		W25Q64_Write_Sector(signal_address);
-		Signal_Transmit();
-		EXTI_Restore();
 		Module.Mode1_Handler();
 	}	//model_output != -1
 	//Fail to identify motions.
@@ -179,27 +166,28 @@ void Cyberry_Potter_Mode1(void)
 	//Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 }
 
+/// @brief main function
 int main(void)
 {       
-        System_Init();
+	//initalize system
+    System_Init();
 	
+	//crate CNN model
 	#ifdef NNOM_USING_STATIC_MEMORY
 		nnom_set_static_buf(static_buf, sizeof(static_buf)); 
 	#endif //NNOM_USING_STATIC_MEMORY
-	
 	model = nnom_model_create();
 	
 	while(1){
 		//Button Status reset and wait button status change.
 		Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 		while(Cyberry_Potter_Status.Button_Status == BUTTON_IDLE){
-			
 		}
+		
 		//SYSTEM_MODE_0
 		if(Cyberry_Potter_Status.System_Mode == SYSTEM_MODE_0){
 			//User input
 			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD){
-				printf("hold");
 				Cyberry_Potter_Mode0();
 			}
 		}//SYSTEM_MODE_0
@@ -210,10 +198,10 @@ int main(void)
 			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD){
 				Cyberry_Potter_Mode1();
 			}
-		}//SYSTEM_MODE_1
+		}
 			
 		
 		
-	}//while(1)
+	}
 }//main
 

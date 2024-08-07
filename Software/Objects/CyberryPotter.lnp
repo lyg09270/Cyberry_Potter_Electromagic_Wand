@@ -43,6 +43,7 @@
 ".\objects\module0_ir.o"
 ".\objects\module1_rf433.o"
 ".\objects\module2_rf315.o"
+".\objects\module_ir_rf.o"
 ".\objects\retarget_io.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"

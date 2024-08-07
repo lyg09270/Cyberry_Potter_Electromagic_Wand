@@ -17,8 +17,7 @@
 void Hardware_Init(void);
 void EXTI_Stop(void);
 void EXTI_Restore(void);
-void Signal_Copy_From_Buffer(void);
-void Signal_Copy_To_Buffer(void);
+uint16_t ADC_GetValue(void);
 
 #endif	//_HARDWARE_H_
 

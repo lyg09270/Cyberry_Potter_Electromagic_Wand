@@ -28,10 +28,10 @@
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h \
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h \
   MainBoard\hardware.h MainBoard\Delay.h MainBoard\IMU.h \
-  MainBoard\W25Q64.h Module\Module0_IR.h Module\Module1_RF433.h \
-  Module\Module2_RF315.h CNN\weights.h CNN\nnom_lib\inc\nnom.h \
-  CNN\nnom_lib\port\nnom_port.h CNN\nnom_lib\inc\nnom_tensor.h \
-  CNN\nnom_lib\inc\nnom_layers.h \
+  MainBoard\W25Q64.h Module\module0_IR.h Module\module1_RF433.h \
+  Module\module2_RF315.h Module\module_IR_RF.h CNN\weights.h \
+  CNN\nnom_lib\inc\nnom.h CNN\nnom_lib\port\nnom_port.h \
+  CNN\nnom_lib\inc\nnom_tensor.h CNN\nnom_lib\inc\nnom_layers.h \
   CNN\nnom_lib\inc\layers\nnom_activation.h \
   CNN\nnom_lib\inc\nnom_local.h CNN\nnom_lib\inc\layers\nnom_concat.h \
   CNN\nnom_lib\inc\layers\nnom_conv2d.h \

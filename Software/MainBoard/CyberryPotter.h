@@ -11,10 +11,10 @@
 #include <math.h>
 #include "W25Q64.h"
 
-#include "Module0_IR.h"
-#include "Module1_RF433.h"
-#include "Module2_RF315.h"
-
+#include "module0_IR.h"
+#include "module1_RF433.h"
+#include "module2_RF315.h"
+#include "module_IR_RF.h"
 
 typedef enum eSystem_Mode{
         SYSTEM_MODE_0 = 0,
@@ -38,17 +38,24 @@ typedef enum eIMU_STATUS{
 
 typedef enum eSignal_Status{
         SIGNAL_EMPTY = 0,
-        SIGNAL_LOADED = 1,
-        SIGNAL_RECORDING = 2,
-        SIGNAL_RECORDED = 3,
-        SIGNAL_SENDING = 4,
-        SIGNAL_SENT = 5
+        SIGNAL_RECORDING = 1,
+        SIGNAL_READY = 2,
 }eSignal_Status;
 
 typedef enum eModule_Type{
         Module_Type_None = -1,
-        Module_Type_IR = 0,
-        Module_Type_RF_433MHZ = 1
+        Module_Type_0_IR = 0,
+        Module_Type_1_RF_433MHZ = 1,
+	Module_Type_2_RF_315MHZ = 2,
+	Module_Type_3 = 3,
+	Module_Type_4 = 4,
+	Module_Type_5 = 5,
+	Module_Type_6 = 6,
+	Module_Type_7 = 7,
+	Module_Type_8 = 8,
+	Module_Type_9 = 9,
+	Module_Type_10 = 10,
+	
 }eModule_Type;
 
 typedef enum eLED_LED{
@@ -99,11 +106,10 @@ typedef struct Module_Typedef
 }Module_Typedef;
 
 typedef int8_t Model_Output_t;
-typedef uint32_t Signal_Address_t;
+typedef uint32_t ROM_Address_t;
 
 void System_Init(void);
 void LED_Blink(void);
-void Signal_Transmit(void);
 
 
 #ifdef Signal_DEBUG

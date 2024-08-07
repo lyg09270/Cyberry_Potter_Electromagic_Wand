@@ -860,6 +860,16 @@
               <FileType>5</FileType>
               <FilePath>.\Module\module2_RF315.h</FilePath>
             </File>
+            <File>
+              <FileName>module_IR_RF.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Module\module_IR_RF.c</FilePath>
+            </File>
+            <File>
+              <FileName>module_IR_RF.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Module\module_IR_RF.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

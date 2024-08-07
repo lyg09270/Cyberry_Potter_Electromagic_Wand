@@ -21,25 +21,36 @@ void Hardware_Init()
         TIM_OCInitTypeDef TIM_OCInitStruct;
         EXTI_InitTypeDef EXTI_InitStruct;
         NVIC_InitTypeDef NVIC_InitStruct;
-	ADC_InitTypeDef ADC_InitStruct;
+		ADC_InitTypeDef ADC_InitStruct;
 	
 //ADC Init****************************************************//   
+	//ADC worling at GPIO B1
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_1;
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AIN;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStruct);
 	
+	RCC_ADCCLKConfig(RCC_PCLK2_Div6);
+	
 	ADC_InitStruct.ADC_Mode = ADC_Mode_Independent;
-	ADC_InitStruct.ADC_ScanConvMode = DISABLE;
-	ADC_InitStruct.ADC_ContinuousConvMode = ENABLE;
-	ADC_InitStruct.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
 	ADC_InitStruct.ADC_DataAlign = ADC_DataAlign_Right;
+	ADC_InitStruct.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+	ADC_InitStruct.ADC_ContinuousConvMode = DISABLE;
+	ADC_InitStruct.ADC_ScanConvMode = DISABLE;
 	ADC_InitStruct.ADC_NbrOfChannel = 1;
-	ADC_Init(ADC1, &ADC_InitStruct);
+	ADC_Init(ADC1, &ADC_InitStruct);	
+	
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_9, 1, ADC_SampleTime_239Cycles5);
 	
 	ADC_Cmd(ADC1, ENABLE);
 	
-//Button Init****************************************************//    
+	ADC_ResetCalibration(ADC1);
+	while (ADC_GetResetCalibrationStatus(ADC1) == SET);
+	ADC_StartCalibration(ADC1);
+	while (ADC_GetCalibrationStatus(ADC1) == SET){}
+	
+//Button Init****************************************************//   
+		//Button working at BUTTON_GPIO(reffer to config.h)
         GPIO_InitStruct.GPIO_Pin = BUTTON_GPIO_PIN;
         GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
@@ -56,8 +67,10 @@ void Hardware_Init()
         NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 3;
         NVIC_InitStruct.NVIC_IRQChannelSubPriority = 3;
         NVIC_Init(&NVIC_InitStruct);
-//TIM_FOR_BUTTON Init******************************************************//          
-        TIM_TimerBaseInitStruct.TIM_Prescaler = 3600 - 1;
+
+//TIM_FOR_BUTTON Init******************************************************//
+
+    TIM_TimerBaseInitStruct.TIM_Prescaler = 3600 - 1;
 	TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimerBaseInitStruct.TIM_Period = 20 - 1;                   //1ms per interrupt
 	TIM_TimerBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -74,7 +87,8 @@ void Hardware_Init()
 	NVIC_Init(&NVIC_InitStruct);   
         
 //USART init*****************************************//
-        GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
+	//USART1 working at GPIOA9 and GPIOA10
+    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_9;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA,&GPIO_InitStruct);
@@ -106,6 +120,7 @@ void Hardware_Init()
 	USART_Cmd(USART1,ENABLE);
 	
 //LED init*****************************************//      
+		//LED working at LED_GPIO(reffer to config.h)
         GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
         GPIO_InitStruct.GPIO_Pin = LED_GPIO_PIN;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
@@ -187,4 +202,11 @@ void EXTI_Restore(void)
 {
 	EXTI->IMR |= EXTI_Line0;
 	EXTI->IMR |= EXTI_Line7;
+}
+
+uint16_t ADC_GetValue(void)
+{
+	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+	while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET);
+	return ADC_GetConversionValue(ADC1);
 }

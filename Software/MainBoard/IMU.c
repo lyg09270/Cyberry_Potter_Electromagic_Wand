@@ -23,7 +23,7 @@ extern Cyberry_Potter_Status_Typedef Cyberry_Potter_Status;
 //measured data beginning with m, d means derivative ,mdAngle is measured angular velovity in this case.
 float IMU_Data_mAcc[IMU_SEQUENCE_LENGTH_MAX][3];
 //float IMU_Data_mdAngle[IMU_SEQUENCE_LENGTH_MAX][3];
-int16_t IMU_bias[6] = {0,0,1200,-30,32,40};
+int16_t IMU_bias[6] = {0,0,0,0,0,0};
 
 
 //This function is used to print the Acc data to your computer
@@ -66,6 +66,10 @@ void IMU_Get_Data(uint8_t i)
 	IMU_Data_mAcc[i][AccX] = IMU_Received[AccX] / IMU_ACC_TRANS_CONSTANT;
 	IMU_Data_mAcc[i][AccY] = IMU_Received[AccY] / IMU_ACC_TRANS_CONSTANT;
 	IMU_Data_mAcc[i][AccZ] = IMU_Received[AccZ] / IMU_ACC_TRANS_CONSTANT;
+
+	//Gyroscope data is not used in this project,If you want to use it,please uncomment the following code.
+	//and uncomment float IMU_Data_mdAngle[IMU_SEQUENCE_LENGTH_MAX][3]; at the top of this file.
+	//modfity some code and retrain the model is alse required.
 
 	//IMU_Data_mdAngle[i][Roll] = IMU_Received[Roll] / IMU_GYRO_TRANS_RADIAN_CONSTANT;
 	//IMU_Data_mdAngle[i][Pitch] = IMU_Received[Pitch] / IMU_GYRO_TRANS_RADIAN_CONSTANT;

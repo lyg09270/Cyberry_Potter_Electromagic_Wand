@@ -3,16 +3,16 @@
         {
             "name": "Target 1",
             "includePath": [
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\inc",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\inc\\layers",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\port",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\MainBoard",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\MainBoard\\eMPL",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\Module",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\src\\backends",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\src\\core",
-                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\src\\layers"
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\inc",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\inc\\layers",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\port",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\MainBoard",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\MainBoard\\eMPL",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\Module",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\src\\backends",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\src\\core",
+                "d:\\EECS\\Project\\Cyberry_Porter_Elctromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Cyberry_Potter_Electromagic_Wand\\Software\\CNN\\nnom_lib\\src\\layers"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",
