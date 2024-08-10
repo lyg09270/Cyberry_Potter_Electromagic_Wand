@@ -10,7 +10,7 @@ FILE_DESCRIPTION(
 
 FILE_NAME(
 /* name */ 'button.step',
-/* time_stamp */ '2024-08-07T17:19:20+08:00',
+/* time_stamp */ '2024-08-10T23:14:00+08:00',
 /* author */ (''),
 /* organization */ (''),
 /* preprocessor_version */ 'ST-DEVELOPER v20',
@@ -26,7 +26,7 @@ DATA;
 #11=SHAPE_REPRESENTATION_RELATIONSHIP('SRR','None',#751,#12);
 #12=ADVANCED_BREP_SHAPE_REPRESENTATION('',(#14),#744);
 #13=STYLED_ITEM('',(#760),#14);
-#14=MANIFOLD_SOLID_BREP('Body5',#396);
+#14=MANIFOLD_SOLID_BREP('Button',#396);
 #15=FACE_BOUND('',#67,.T.);
 #16=FACE_BOUND('',#81,.T.);
 #17=CYLINDRICAL_SURFACE('',#405,1.75);
@@ -844,15 +844,15 @@ SOLID_ANGLE_UNIT()
 #750=PRODUCT_DEFINITION_SHAPE('',$,#753);
 #751=SHAPE_REPRESENTATION('',(#397),#744);
 #752=PRODUCT_DEFINITION_CONTEXT('part definition',#757,'design');
-#753=PRODUCT_DEFINITION('Wand','Wand v7',#754,#752);
+#753=PRODUCT_DEFINITION('Wand','Wand v10',#754,#752);
 #754=PRODUCT_DEFINITION_FORMATION('',$,#759);
-#755=PRODUCT_RELATED_PRODUCT_CATEGORY('Wand v7','Wand v7',(#759));
+#755=PRODUCT_RELATED_PRODUCT_CATEGORY('Wand v10','Wand v10',(#759));
 #756=APPLICATION_PROTOCOL_DEFINITION('international standard',
 'automotive_design',2009,#757);
 #757=APPLICATION_CONTEXT(
 'Core Data for Automotive Mechanical Design Process');
 #758=PRODUCT_CONTEXT('part definition',#757,'mechanical');
-#759=PRODUCT('Wand','Wand v7',$,(#758));
+#759=PRODUCT('Wand','Wand v10',$,(#758));
 #760=PRESENTATION_STYLE_ASSIGNMENT((#761));
 #761=SURFACE_STYLE_USAGE(.BOTH.,#762);
 #762=SURFACE_SIDE_STYLE('',(#763));

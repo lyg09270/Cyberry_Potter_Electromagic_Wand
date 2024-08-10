@@ -39,7 +39,7 @@ int8_t ADC_GetAvg(void)
 		}
 		ADC_Sample_Avg = round((ADC_Sample_Avg / ADC_MAX_SAMPLES));
 		
-		for(i = 0; i < 10; i++)
+		for(i = 0; i < ADC_MAX_SAMPLES; i++)
 		{
 			var += (float)(ADC_Sample_Avg -sample[i]) * (float)(ADC_Sample_Avg - sample[i]);
 		}
@@ -285,6 +285,12 @@ void TIM4_IRQHandler(void)
 		//Read Button status on GPIO for now
 		uint8_t current_status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0);
 		
+				//If status for now and previous is NOT same.
+		if(current_status != previous_stuatus){
+			time_hold_count_ms = 0;
+			time_release_count_ms = 0;
+		}
+		
 		//If status for now and previous is same,and button is held
 		if(previous_stuatus == current_status && current_status == 0){
 			
@@ -294,8 +300,8 @@ void TIM4_IRQHandler(void)
 					Cyberry_Potter_Status.Button_Status = BUTTON_HOLD_VERY_LONG;
 					Cyberry_Potter_System_Status_Update();
 					Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
+					time_hold_count_ms = 0;
 					time_release_count_ms = 0;
-					
 					TIMER_FOR_BUTTON_DISABLE;
 				}
 		}
@@ -322,8 +328,6 @@ void TIM4_IRQHandler(void)
 			}
 			else{}	//Else do nothing.
 		}
-		//If status for now and previous is NOT same.
-		else{}
 			
 		//Status update 
 		previous_stuatus = current_status;

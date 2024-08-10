@@ -27,4 +27,5 @@
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h \
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h \
   C:\Users\13087\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h \
-  MainBoard\MPU6050_Reg.h MainBoard\MPU6050.h
+  MainBoard\Delay.h MainBoard\MPU6050_Reg.h MainBoard\MPU6050.h \
+  MainBoard\IIC.h

@@ -166,12 +166,13 @@ void Cyberry_Potter_Mode1(void)
 	//Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 }
 
+extern int32_t ADC_Sample_Avg;
+int8_t ADC_GetAvg(void);
 /// @brief main function
 int main(void)
 {       
 	//initalize system
     System_Init();
-	
 	//crate CNN model
 	#ifdef NNOM_USING_STATIC_MEMORY
 		nnom_set_static_buf(static_buf, sizeof(static_buf)); 
@@ -182,6 +183,8 @@ int main(void)
 		//Button Status reset and wait button status change.
 		Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 		while(Cyberry_Potter_Status.Button_Status == BUTTON_IDLE){
+			ADC_GetAvg();
+			Delay_ms(200);
 		}
 		
 		//SYSTEM_MODE_0

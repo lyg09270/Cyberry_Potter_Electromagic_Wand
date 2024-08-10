@@ -1,8 +1,9 @@
 #include "hardware.h"
-
+#include "Delay.h"
 #ifdef IMU_IS_MPU6050 
 	#include "MPU6050_Reg.h"
 	#include "MPU6050.h"
+	#include "IIC.h"
 #endif //IMU_IS_MPU6050
 
 //void IMU_WriteReg(uint8_t RegAddress, uint8_t Data);
@@ -118,9 +119,9 @@ void Hardware_Init()
 	NVIC_Init(&NVIC_InitStruct);
 	
 	USART_Cmd(USART1,ENABLE);
-	
+	printf("hello\n");
 //LED init*****************************************//      
-		//LED working at LED_GPIO(reffer to config.h)
+	//LED working at LED_GPIO(reffer to config.h)
         GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
         GPIO_InitStruct.GPIO_Pin = LED_GPIO_PIN;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
@@ -179,9 +180,18 @@ void Hardware_Init()
         NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 6;
         NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
         NVIC_Init(&NVIC_InitStruct);
-	
+	printf("MPU Init \n");
 	IMU_STOP();
+	
+	//Delay_s(5);
+	uint8_t data = 0;
+	LED_ON;
+	IIC_read(0x69,MPU6050_RA_WHO_AM_I,1,&data);
+	printf("WHOAMI:%d",data);
+	IIC_read(0x68,MPU6050_RA_WHO_AM_I,1,&data);
+	printf("WHOAMI:%d",data);
 	MPU6050_Init();
+	printf("MPU Init compelete\n");
 	#endif //IMU_IS_MPU6050	
 }
 
