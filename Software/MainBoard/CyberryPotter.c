@@ -109,39 +109,59 @@ void Module_Init(void)
 		// Do nothing if no module is detected.
 		break;
 		case Module_Type_0_IR:
-		Module_IR_RF_Init();
-		Module.Mode0_Handler = Module_IR_RF_Transmit;
-		Module.Mode1_Handler = Module_IR_RF_Receive;
+			Module_IR_RF_Init();
+			Module.Mode0_Handler = Module_IR_RF_Transmit;
+			Module.Mode1_Handler = Module_IR_RF_Receive;
 		break;
 		case Module_Type_1_RF_433MHZ:
-		Module_IR_RF_Init();
+			Module_IR_RF_Init();
+			Module.Mode0_Handler = Module_IR_RF_Transmit;
+			Module.Mode1_Handler = Module_IR_RF_Receive;
 		break;
 		case Module_Type_2_RF_315MHZ:
-		Module_IR_RF_Init();
+			Module_IR_RF_Init();
+			Module.Mode0_Handler = Module_IR_RF_Transmit;
+			Module.Mode1_Handler = Module_IR_RF_Receive;
 		break;
 		case Module_Type_3:
-		// Module3_Init();
+			Module3_Init();
+			Module.Mode0_Handler = Module3_Mode0_Handler;
+			Module.Mode1_Handler = Module3_Mode1_Handler;
 		break;
 		case Module_Type_4:
-		// Module4_Init();
+			Module4_Init();
+			Module.Mode0_Handler = Module4_Mode0_Handler;
+			Module.Mode1_Handler = Module4_Mode1_Handler;
 		break;
 		case Module_Type_5:
-		// Module5_Init();
+			Module5_Init();
+			Module.Mode0_Handler = Module5_Mode0_Handler;
+			Module.Mode1_Handler = Module5_Mode1_Handler;
 		break;
 		case Module_Type_6:
-		// Module6_Init();
+			Module6_Init();
+			Module.Mode0_Handler = Module6_Mode0_Handler;
+			Module.Mode1_Handler = Module6_Mode1_Handler;
 		break;
 		case Module_Type_7:
-		// Module7_Init();
+			Module7_Init();
+			Module.Mode0_Handler = Module7_Mode0_Handler;
+			Module.Mode1_Handler = Module7_Mode1_Handler;
 		break;
 		case Module_Type_8:
-		// Module8_Init();
+			Module8_Init();
+			Module.Mode0_Handler = Module8_Mode0_Handler;
+			Module.Mode1_Handler = Module8_Mode1_Handler;
 		break;
 		case Module_Type_9:
-		// Module9_Init();
+			Module9_Init();
+			Module.Mode0_Handler = Module9_Mode0_Handler;
+			Module.Mode1_Handler = Module9_Mode1_Handler;
 		break;
 		case Module_Type_10: 
-		// Module10_Init();
+			Module10_Init();
+			Module.Mode0_Handler = Module10_Mode0_Handler;
+			Module.Mode1_Handler = Module10_Mode1_Handler;
 		break;
 		default:
 		break;
@@ -161,10 +181,16 @@ void System_Init(void)
 	
 	if(ADC_GetAvg() == 0){
 		Module.Type = Module_Detect();
+		Module_Init();
+		#ifdef SERIAL_DEBUG
+			printf("Module:%d Detected",Module.Type);
+		#endif //SERIAL_DEBUG
 		LED_ON;
 	}
 	else{
-		printf("No Module Detected");
+		#ifdef SERIAL_DEBUG
+			printf("No Module Detected");
+		#endif //SERIAL_DEBUG
 		LED_OFF;
 	}
 	Module.Type = Module_Type_0_IR;
@@ -263,12 +289,17 @@ static void Cyberry_Potter_System_Status_Update(void)
 	      case SYSTEM_MODE_0:
 			Cyberry_Potter_Status.System_Mode = SYSTEM_MODE_1;
 			Cyberry_Potter_Status.LED_Status = LED_5HZ;
+			#ifdef SERIAL_DEBUG
 			printf("SYSTEM_MODE_1\n");
+			#endif //SERIAL_DEBUG
 			break;
 	      case SYSTEM_MODE_1:
 			Cyberry_Potter_Status.System_Mode = SYSTEM_MODE_0;
 			Cyberry_Potter_Status.LED_Status = LED_10HZ;
+			#ifdef SERIAL_DEBUG
 			printf("SYSTEM_MODE_0\n");
+			#endif //SERIAL_DEBUG
+		
 			break;
       }  
       LED_Blink();
@@ -314,14 +345,23 @@ void TIM4_IRQHandler(void)
 				//If button status is stable for BUTTON_SHORT_LONG_THRESHOLD_MS
 				if(time_hold_count_ms >= BUTTON_SHORT_LONG_THRESHOLD_MS){
 					Cyberry_Potter_Status.Button_Status = BUTTON_HOLD_LONG;
+					#ifdef SERIAL_DEBUG
 					printf("long ");
+					#endif //SERIAL_DEBUG
+					
 				}
 				//If button status is stable for BUTTON_IDLE_SHORT_THRESHOLD_MS 
 				else if(time_hold_count_ms >= BUTTON_IDLE_SHORT_THRESHOLD_MS){
 					Cyberry_Potter_Status.Button_Status = BUTTON_HOLD;
+					#ifdef SERIAL_DEBUG
 					printf("hold ");
+					#endif //SERIAL_DEBUG
+					
 				}
+				#ifdef SERIAL_DEBUG
 				printf("hold:%d",time_hold_count_ms);
+				#endif //SERIAL_DEBUG
+				
 				time_hold_count_ms = 0;
 				time_release_count_ms = 0;
 				TIMER_FOR_BUTTON_DISABLE;

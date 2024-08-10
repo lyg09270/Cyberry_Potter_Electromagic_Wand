@@ -15,6 +15,14 @@
 #include "module1_RF433.h"
 #include "module2_RF315.h"
 #include "module_IR_RF.h"
+#include "module3.h"
+#include "module4.h"
+#include "module5.h"
+#include "module6.h"
+#include "module7.h"
+#include "module8.h"
+#include "module9.h"
+#include "module10.h"
 
 typedef enum eSystem_Mode{
         SYSTEM_MODE_0 = 0,
