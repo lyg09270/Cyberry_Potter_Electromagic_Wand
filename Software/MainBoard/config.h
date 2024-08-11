@@ -93,9 +93,9 @@
 //Define IMU
 #define IMU_IS_MPU6050
 #define IMU_DATA_PRINT_HEADER "IMU\n"
-#define IMU_DEFAULT_HZ  (40)
+#define IMU_DEFAULT_HZ  (100)
 #define IMU_SAMPLING_TIME_MS (1500)
-#define IMU_SEQUENCE_LENGTH_MAX (60)
+#define IMU_SEQUENCE_LENGTH_MAX (150)
 #define IMU_ACC_TRANS_CONSTANT (8192.0)  //+-4g
 //+-500 degrees raw value to degree constant is divided by 16.384
 //+-500 to radian is divided by (73.537*180/PI) = 4213.359738

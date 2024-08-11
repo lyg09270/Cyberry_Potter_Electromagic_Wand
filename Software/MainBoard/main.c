@@ -125,7 +125,9 @@ void Cyberry_Potter_Mode0(void)
 	//Inference by using sampled data
 	model_output = model_get_output();
 	if(model_output != Unrecognized){
-		Module.Mode0_Handler();
+		printf("Recognized");
+		//Module.Mode0_Handler();
+		Module_IR_RF_Transmit();
 	}
 	//Fail to identify motions.
 	else{
@@ -137,7 +139,7 @@ void Cyberry_Potter_Mode0(void)
 
 	Cyberry_Potter_Status.IMU_Status = IMU_Idle;
 	EXTI_Restore();	
-	//Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
+	Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 }
 
 /// @brief System mode 1 handler
@@ -163,7 +165,7 @@ void Cyberry_Potter_Mode1(void)
 		LED_Blink();
 		EXTI_Restore();
 	}
-	//Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
+	Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 }
 
 extern int32_t ADC_Sample_Avg;
@@ -183,14 +185,14 @@ int main(void)
 		//Button Status reset and wait button status change.
 		Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 		while(Cyberry_Potter_Status.Button_Status == BUTTON_IDLE){
-			ADC_GetAvg();
-			Delay_ms(200);
+			//ADC_GetAvg();
+			//Delay_ms(200);
 		}
 		
 		//SYSTEM_MODE_0
 		if(Cyberry_Potter_Status.System_Mode == SYSTEM_MODE_0){
 			//User input
-			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD){
+			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD && Cyberry_Potter_Status.IMU_Status == IMU_Idle){
 				Cyberry_Potter_Mode0();
 			}
 		}//SYSTEM_MODE_0
@@ -198,7 +200,7 @@ int main(void)
 		//SYSTEM_MODE_1
 		else if(Cyberry_Potter_Status.System_Mode == SYSTEM_MODE_1){
 				//User input
-			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD){
+			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD && Cyberry_Potter_Status.IMU_Status == IMU_Idle){
 				Cyberry_Potter_Mode1();
 			}
 		}

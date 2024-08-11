@@ -36,7 +36,6 @@
 #define nnom_us_get()       0       // return a microsecond timestamp
 #define nnom_ms_get()       0       // return a millisecond timestamp
 #define NNOM_LOG(...)       printf(__VA_ARGS__)
-//#define NNOM_LOG(...)       
 
 /* NNoM configuration */
 #define NNOM_BLOCK_NUM  	(8)		// maximum number of memory blocks, increase it when log request.   

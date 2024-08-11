@@ -183,13 +183,13 @@ void System_Init(void)
 		Module.Type = Module_Detect();
 		Module_Init();
 		#ifdef SERIAL_DEBUG
-			printf("Module:%d Detected",Module.Type);
+			printf("Module:%d Detected\n",Module.Type);
 		#endif //SERIAL_DEBUG
 		LED_ON;
 	}
 	else{
 		#ifdef SERIAL_DEBUG
-			printf("No Module Detected");
+			printf("No Module Detected\n");
 		#endif //SERIAL_DEBUG
 		LED_OFF;
 	}
@@ -316,12 +316,6 @@ void TIM4_IRQHandler(void)
 		//Read Button status on GPIO for now
 		uint8_t current_status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0);
 		
-				//If status for now and previous is NOT same.
-		if(current_status != previous_stuatus){
-			time_hold_count_ms = 0;
-			time_release_count_ms = 0;
-		}
-		
 		//If status for now and previous is same,and button is held
 		if(previous_stuatus == current_status && current_status == 0){
 			
@@ -330,6 +324,9 @@ void TIM4_IRQHandler(void)
 			if(time_hold_count_ms >= BUTTON_LONG_VERYLONG_THRESHOLD_MS){
 					Cyberry_Potter_Status.Button_Status = BUTTON_HOLD_VERY_LONG;
 					Cyberry_Potter_System_Status_Update();
+					#ifdef SERIAL_DEBUG
+					printf("very long\n ");
+					#endif //SERIAL_DEBUG
 					Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
 					time_hold_count_ms = 0;
 					time_release_count_ms = 0;
@@ -346,7 +343,7 @@ void TIM4_IRQHandler(void)
 				if(time_hold_count_ms >= BUTTON_SHORT_LONG_THRESHOLD_MS){
 					Cyberry_Potter_Status.Button_Status = BUTTON_HOLD_LONG;
 					#ifdef SERIAL_DEBUG
-					printf("long ");
+					printf("long\n ");
 					#endif //SERIAL_DEBUG
 					
 				}
@@ -354,7 +351,7 @@ void TIM4_IRQHandler(void)
 				else if(time_hold_count_ms >= BUTTON_IDLE_SHORT_THRESHOLD_MS){
 					Cyberry_Potter_Status.Button_Status = BUTTON_HOLD;
 					#ifdef SERIAL_DEBUG
-					printf("hold ");
+					printf("hold\n ");
 					#endif //SERIAL_DEBUG
 					
 				}

@@ -8,6 +8,9 @@ extern uint8_t W25Q64_Buffer[4096];
 extern volatile ROM_Address_t ROM_Address;
 extern volatile Model_Output_t model_output;
 
+#define RECEIVER_DISABLE EXTI->IMR &= ~(EXTI_Line7)
+#define RECEIVER_ENABLE EXTI->IMR |= EXTI_Line7
+
 /// @brief Initalize IR and RF module according to module type
 /// @param  None
 void Module_IR_RF_Init(void)
@@ -20,11 +23,12 @@ void Module_IR_RF_Init(void)
 			Module1_RF433_Init();
 			break;
 		case Module_Type_2_RF_315MHZ:
-			//Module2_RF433_Init();
+			//Module2_RF315_Init();
 			break;
 		default:
 			break;
 		}
+	RECEIVER_DISABLE;
 }
 
 /// @brief Read IR RF signal from external ROM and transimit it.
@@ -37,14 +41,18 @@ void Module_IR_RF_Transmit(void)
 	printf("Address:%X",ROM_Address);
 	W25Q64_Read_Sector(ROM_Address);
 	Module_IR_RF_Copy_From_Buffer();
+	Cyberry_Potter_Status.Signal_Status = SIGNAL_READY;
+	Module_IR_RF_Print();
 	LED_Blink();
 	while(Cyberry_Potter_Status.Signal_Status != SIGNAL_READY);
 	if(Cyberry_Potter_Status.Signal_Status == SIGNAL_READY)
 	{
+		printf("Ready");
 		//Prevent singal transmition from interrupted by EXTI
-		EXTI_Stop();
+		RECEIVER_DISABLE;
 		switch(Module.Type){
 			case Module_Type_0_IR:
+				printf("type IR");
 				Module0_IR_Transmit();
 				break;
 			case Module_Type_1_RF_433MHZ:
@@ -55,7 +63,7 @@ void Module_IR_RF_Transmit(void)
 			default:
 				break;
 		}
-		EXTI_Restore();
+		RECEIVER_ENABLE;
 	}
 }
 
@@ -63,9 +71,9 @@ void Module_IR_RF_Transmit(void)
 /// @param  None
 void Module_IR_RF_Receive(void)
 {
-	EXTI->IMR |= EXTI_Line7;
+	RECEIVER_ENABLE;
 	while(Cyberry_Potter_Status.Signal_Status != SIGNAL_READY);
-	EXTI_Stop();
+	RECEIVER_DISABLE;
 	Cyberry_Potter_Status.LED_Status = LED_5HZ;
 	LED_Blink();
 	ROM_Address = W25Q64_SIGNAL_TYPE_INCREMENT * Module.Type + 
@@ -75,10 +83,8 @@ void Module_IR_RF_Receive(void)
 	#endif //SERIAL_DEBUG
 	Module_IR_RF_Copy_To_Buffer();
 	W25Q64_Write_Sector(ROM_Address);
-	Module_IR_RF_Transmit();
-	EXTI_Restore();
-	Module.Mode1_Handler();
-	
+	Module_IR_RF_Print();
+	EXTI_Restore();	
 }
 
 void Module_IR_RF_receiver_start(void)
@@ -107,42 +113,38 @@ void Module_IR_RF_receiver_stop(void)
 
 void Module_IR_RF_Copy_From_Buffer(void)
 {
-	uint8_t temp_high, temp_low, i;
-	volatile uint16_t *duration_ptr = &IR_RF_Signal.duration[0];
-	uint8_t *buffer_ptr = W25Q64_Buffer;
+    uint8_t temp_high, temp_low, i;
 
-	// Extract the length from the first two bytes of the buffer
-	temp_low = *buffer_ptr++;
-	temp_high = *buffer_ptr++;
-	IR_RF_Signal.length = (temp_high << 8) | temp_low;
+    // Extract the length from the first two bytes of the buffer
+    temp_low = W25Q64_Buffer[0];
+    temp_high = W25Q64_Buffer[1];
+    IR_RF_Signal.length = (temp_high << 8) | temp_low;
 
-	// Copy the rest of the signal data
-	for (i = 0; i < IR_RF_Signal.length; i++) {
-		temp_low = *buffer_ptr++;
-		temp_high = *buffer_ptr++;
-		*duration_ptr++ = (temp_high << 8) | temp_low;
-	}
+    // Copy the rest of the signal data
+    for (i = 0; i < IR_RF_Signal.length; i++) {
+        temp_low = W25Q64_Buffer[i * 2 + 2]; // Offset by 2 to skip the length bytes
+        temp_high = W25Q64_Buffer[i * 2 + 3];
+        IR_RF_Signal.duration[i] = (temp_high << 8) | temp_low;
+    }
 }
 
 void Module_IR_RF_Copy_To_Buffer(void)
 {
-	uint8_t temp_high, temp_low, i;
-	volatile uint16_t *duration_ptr = &IR_RF_Signal.duration[0];
-	uint8_t *buffer_ptr = W25Q64_Buffer;
-	
-	// Write the length to the first two bytes of the buffer
-	temp_low = IR_RF_Signal.length & 0xFF;
-	temp_high = IR_RF_Signal.length >> 8;
-	*buffer_ptr++ = temp_low;
-	*buffer_ptr++ = temp_high;
+    uint8_t temp_high, temp_low, i;
 
-	// Copy the rest of the signal data
-	for (i = 0; i < IR_RF_Signal.length; i++, duration_ptr++) {
-		temp_low = *duration_ptr & 0xFF;
-		temp_high = *duration_ptr >> 8;
-		*buffer_ptr++ = temp_low;
-		*buffer_ptr++ = temp_high;
-	}
+    // Write the length to the first two bytes of the buffer
+    temp_low = IR_RF_Signal.length & 0xFF;
+    temp_high = IR_RF_Signal.length >> 8;
+    W25Q64_Buffer[0] = temp_low;
+    W25Q64_Buffer[1] = temp_high;
+
+    // Copy the rest of the signal data
+    for (i = 0; i < IR_RF_Signal.length; i++) {
+        temp_low = IR_RF_Signal.duration[i] & 0xFF;
+        temp_high = IR_RF_Signal.duration[i] >> 8;
+        W25Q64_Buffer[i * 2 + 2] = temp_low; // Offset by 2 to skip the length bytes
+        W25Q64_Buffer[i * 2 + 3] = temp_high;
+    }
 }
 
 void Module_IR_RF_Data_Reset(void)
@@ -173,8 +175,6 @@ void Module_IR_RF_Print(void)
 				       i+1, IR_RF_Signal.duration[i] * US_PER_TIMER2_COUNT,
 					IR_RF_Signal.length);
 			}
-				
-			Module_IR_RF_Transmit(); 
                }
 }
 
