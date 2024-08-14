@@ -18,7 +18,7 @@
 - 动作识别模型训练脚本(Software/CNN)
 - 动作的卡片(Software\CNN\SpellsCard)
 
-<img src="D:/EECS/Project/Cyberry_Porter_Elctromagic_Wand/CyberryPotterBasicProject/CyberryPotter_ElectromagicWand_Basic_Project/CNN/SpellsCard/Spell_Card.jpg" alt="Spell Card" width="200" height="auto">
+<img src=".\Software\CNN\SpellsCard/Spell_Card.jpg" alt="Spell Card" width="200" height="auto">
 
 ##### 项目视频教程：[还没弄好](https://www.bilibili.com/video/BV13E421w7PY/)
 
