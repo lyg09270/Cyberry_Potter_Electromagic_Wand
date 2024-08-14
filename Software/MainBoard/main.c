@@ -2,37 +2,57 @@
 #include "weights.h"
 #include "nnom.h"
 
-extern Cyberry_Potter_Status_Typedef Cyberry_Potter_Status;
-extern IR_RF_Signal_Typedef IR_RF_Signal;
-extern Module_Typedef Module;
-extern float IMU_Data_mAngle[IMU_SEQUENCE_LENGTH_MAX][3];
-extern float IMU_Data_mAcc[IMU_SEQUENCE_LENGTH_MAX][3];
-extern uint8_t W25Q64_Buffer[4096];
-volatile Model_Output_t model_output = 0;
-volatile ROM_Address_t ROM_Address;
-nnom_model_t* model;
 #define QUANTIFICATION_SCALE (pow(2,INPUT_1_OUTPUT_DEC))
 
 #ifdef NNOM_USING_STATIC_MEMORY
-	uint8_t static_buf[1024 * 6];
+	uint8_t static_buf[1024 * 4];
 #endif //NNOM_USING_STATIC_MEMORY
+nnom_model_t* model;
 
-/// @brief quantirize IMU data and feed to CNN model
-/// @param  None
+extern struct Button_t Button;
+extern struct LED_t LED;
+extern struct IMU_t IMU;
+extern struct Module_t Module;
+extern struct Cyberry_Potter_t Cyberry_Potter;
+volatile Model_Output_t model_output = 0;
+volatile ROM_Address_t ROM_Address;
+extern volatile uint8_t W25Q64_Buffer[4096];
+
+/*
+ * @brief Quantirize IMU data and feed to CNN model
+ * @param None
+ * @return None
+ */
 void model_feed_data(void)
 {
 	const double scale = QUANTIFICATION_SCALE;
 	uint16_t i = 0;
 	for(i = 0; i < IMU_SEQUENCE_LENGTH_MAX;i++){
-		nnom_input_data[i*3] = (int8_t)round(IMU_Data_mAcc[i][0] * scale);
-		nnom_input_data[i*3+1] = (int8_t)round(IMU_Data_mAcc[i][1] * scale);
-		nnom_input_data[i*3+2] = (int8_t)round(IMU_Data_mAcc[i][2] * scale);
+		nnom_input_data[i*3] = (int8_t)round(IMU.acc[i][AccX] * scale);
+		nnom_input_data[i*3+1] = (int8_t)round(IMU.acc[i][AccY] * scale);
+		nnom_input_data[i*3+2] = (int8_t)round(IMU.acc[i][AccZ] * scale);
 	}
 }
 
-/// @brief get output of CNN model
-/// @param  None
-/// @return Model_Output_t: type of recognized motion
+//void model_feed_data(void)
+//{
+//	const double scale = QUANTIFICATION_SCALE;
+//	uint16_t i = 0;
+//	for(i = 0; i < IMU_SEQUENCE_LENGTH_MAX;i++){
+//		nnom_input_data[i*6] = 	 (int8_t)round(IMU.acc[i][AccX] * scale);
+//		nnom_input_data[i*6+1] = (int8_t)round(IMU.acc[i][AccY] * scale);
+//		nnom_input_data[i*6+2] = (int8_t)round(IMU.acc[i][AccZ] * scale);
+//		nnom_input_data[i*6+3] = (int8_t)round(IMU.gyro[i][Roll] * scale);
+//		nnom_input_data[i*6+4] = (int8_t)round(IMU.gyro[i][Pitch] * scale);
+//		nnom_input_data[i*6+5] = (int8_t)round(IMU.gyro[i][Yaw] * scale);
+//	}
+//}
+
+/*
+ * @brief get output of CNN model
+ * @param  None
+ * @return Model_Output_t: type of recognized motion
+ */
 Model_Output_t model_get_output(void)
 {
 	volatile uint8_t i = 0;
@@ -106,107 +126,55 @@ Model_Output_t model_get_output(void)
 	return ret;
 }
 
-/// @brief System mode 0 handler
-/// @param  None
-void Cyberry_Potter_Mode0(void)
-{
-	//Start Sample and wait untill IMU_Sampled.
-	IMU_Sample_Start();	
-	while(Cyberry_Potter_Status.IMU_Status != IMU_Sampled);
-	LED_ON;
-	
-	#ifdef SYSTEM_MODE_DATA_COLLECT
-	Delay_ms(200);
-	IMU_Data_Print();
-	#endif //SYSTEM_MODE_DATA_COLLECT
-	
-	#ifndef SYSTEM_MODE_DATA_COLLECT
-	
-	//Inference by using sampled data
-	model_output = model_get_output();
-	if(model_output != Unrecognized){
-		printf("Recognized");
-		//Module.Mode0_Handler();
-		Module_IR_RF_Transmit();
-	}
-	//Fail to identify motions.
-	else{
-		Cyberry_Potter_Status.LED_Status = LED_2HZ;
-		LED_Blink();
-		EXTI_Restore();
-	}
-	#endif //SYSTEM_MODE_DATA_COLLECT
-
-	Cyberry_Potter_Status.IMU_Status = IMU_Idle;
-	EXTI_Restore();	
-	Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
-}
-
-/// @brief System mode 1 handler
-/// @param  None
-void Cyberry_Potter_Mode1(void)
-{
-	//Start Sample and wait till IMU_Sampled.
-	IMU_Sample_Start();	
-	while(Cyberry_Potter_Status.IMU_Status != IMU_Sampled);
-	LED_ON;
-	//Inference by using sampled data
-	model_output = model_get_output();
-	EXTI_Restore();
-	Cyberry_Potter_Status.IMU_Status = IMU_Idle;
-	
-	//Inference by using sampled data
-	if(model_output != Unrecognized){
-		Module.Mode1_Handler();
-	}	//model_output != -1
-	//Fail to identify motions.
-	else{
-		Cyberry_Potter_Status.LED_Status = LED_2HZ;
-		LED_Blink();
-		EXTI_Restore();
-	}
-	Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
-}
-
-extern int32_t ADC_Sample_Avg;
-int8_t ADC_GetAvg(void);
-/// @brief main function
 int main(void)
 {       
 	//initalize system
-    System_Init();
+	System_Init();
 	//crate CNN model
 	#ifdef NNOM_USING_STATIC_MEMORY
 		nnom_set_static_buf(static_buf, sizeof(static_buf)); 
 	#endif //NNOM_USING_STATIC_MEMORY
 	model = nnom_model_create();
 	
+	printf("While");
 	while(1){
 		//Button Status reset and wait button status change.
-		Cyberry_Potter_Status.Button_Status = BUTTON_IDLE;
-		while(Cyberry_Potter_Status.Button_Status == BUTTON_IDLE){
-			//ADC_GetAvg();
-			//Delay_ms(200);
+		
+		
+		if(Button.status == BUTTON_HOLD){
+			printf("BUTTON_HOLD\n");
+//			IMU.Sample_Start();
+//			LED.Operate(OFF);
+//			while(IMU.status != IMU_Sampled);
+//			LED.Operate(ON);
+//			#ifndef SYSTEM_MODE_DATA_COLLECT
+//			model_get_output();
+//			#endif
+			model_output = 0;
+			switch(Cyberry_Potter.System_Mode)
+			{
+				case SYSTEM_MODE_0:
+					Module.Mode0_Handler();
+					break;
+				case SYSTEM_MODE_1:
+					Module.Mode1_Handler();
+					break;
+				default:
+					break;
+				
+			}
+			Button.status_clear();
+			printf("cleared");
+		}
+		else if(Button.status == BUTTON_HOLD_LONG){
+			printf("BUTTON_HOLD_LONG\n");
+			LED.Operate(BLINK_10HZ);
+			Cyberry_Potter_System_Status_Update();
+			Button.status_clear();
 		}
 		
-		//SYSTEM_MODE_0
-		if(Cyberry_Potter_Status.System_Mode == SYSTEM_MODE_0){
-			//User input
-			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD && Cyberry_Potter_Status.IMU_Status == IMU_Idle){
-				Cyberry_Potter_Mode0();
-			}
-		}//SYSTEM_MODE_0
-		
-		//SYSTEM_MODE_1
-		else if(Cyberry_Potter_Status.System_Mode == SYSTEM_MODE_1){
-				//User input
-			if(Cyberry_Potter_Status.Button_Status == BUTTON_HOLD && Cyberry_Potter_Status.IMU_Status == IMU_Idle){
-				Cyberry_Potter_Mode1();
-			}
-		}
-			
 		
 		
 	}
-}//main
+}
 

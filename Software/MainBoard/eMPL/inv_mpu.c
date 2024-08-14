@@ -44,8 +44,8 @@
 #if defined EMPL_TARGET_STM32F4
 #include "IIC.h"
 
-#define i2c_write IIC_write
-#define i2c_read IIC_read
+#define i2c_write IIC1_write
+#define i2c_read IIC1_read
 #define delay_ms    Delay_ms
 #define get_ms      get_tick_count
 #define log_i       printf

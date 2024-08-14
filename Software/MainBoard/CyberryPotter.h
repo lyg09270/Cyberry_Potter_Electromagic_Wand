@@ -10,6 +10,10 @@
 #include <stdarg.h>
 #include <math.h>
 #include "W25Q64.h"
+#include "Button.h"
+#include "LED.h"
+#include "USART.h"
+#include "ADC.h"
 
 #include "module0_IR.h"
 #include "module1_RF433.h"
@@ -27,28 +31,7 @@
 typedef enum eSystem_Mode{
         SYSTEM_MODE_0 = 0,
         SYSTEM_MODE_1 = 1,
-}eSystem_Mode;
-
-typedef enum eButton_Status{
-	BUTTON_IDLE = 0,
-        BUTTON_RELEASE = 1,
-        BUTTON_HOLD = 2,
-	BUTTON_HOLD_LONG = 3,
-	BUTTON_HOLD_VERY_LONG = 4
-	
-}eButton_Status;     
-
-typedef enum eIMU_STATUS{
-        IMU_Idle = 0,
-        IMU_Sampling = 1,
-        IMU_Sampled = 2,
-}eIMU_STATUS;
-
-typedef enum eSignal_Status{
-        SIGNAL_EMPTY = 0,
-        SIGNAL_RECORDING = 1,
-        SIGNAL_READY = 2,
-}eSignal_Status;
+}eSystem_Mode;  
 
 typedef enum eModule_Type{
         Module_Type_None = -1,
@@ -65,14 +48,6 @@ typedef enum eModule_Type{
 	Module_Type_10 = 10,
 	
 }eModule_Type;
-
-typedef enum eLED_LED{
-        LED_IDLE = 0,
-	LED_2HZ = 1,
-        LED_5HZ = 2,
-        LED_10HZ = 3,
-	LED_ALWAYS_ON = 4
-}eLED_STATUS;
 
 typedef enum eModel_Output{
 	Unrecognized = -1,
@@ -91,33 +66,26 @@ typedef enum eModel_Output{
 	NoMotion = 12
 }eModel_Output;
 
-typedef struct IR_RF_Signal_Typedef{
-        volatile uint16_t duration[SIGNAL_SEQUENCE_SET_LENGTH];
-        volatile uint16_t length;
-	
-}IR_RF_Signal_Typedef;
 
-typedef struct Cyberry_Potter_Status_Typedef{
-        volatile eSystem_Mode System_Mode;
-        volatile eButton_Status Button_Status;
-        volatile eIMU_STATUS IMU_Status;
-	volatile eLED_STATUS LED_Status;
-	volatile eSignal_Status Signal_Status;
-}Cyberry_Potter_Status_Typedef;
 
-typedef struct Module_Typedef
+typedef struct Cyberry_Potter_t{
+        eSystem_Mode System_Mode;
+	void (*System_Handler)(void);
+}Cyberry_Potter_t;
+
+typedef struct Module_t
 {
 	volatile eModule_Type Type;
 	void (*Mode0_Handler)(void);
 	void (*Mode1_Handler)(void);
 	
-}Module_Typedef;
+}Module_t;
 
 typedef int8_t Model_Output_t;
 typedef uint32_t ROM_Address_t;
 
 void System_Init(void);
-void LED_Blink(void);
+void Cyberry_Potter_System_Status_Update(void);
 
 
 #ifdef Signal_DEBUG

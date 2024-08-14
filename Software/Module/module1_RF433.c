@@ -1,7 +1,6 @@
 #include "module1_RF433.h"
 
-extern Cyberry_Potter_Status_Typedef Cyberry_Potter_Status;
-extern IR_RF_Signal_Typedef IR_RF_Signal;
+extern IR_RF_Signal_t IR_RF_Signal;
 
 void Module1_RF433_Init(void)
 {

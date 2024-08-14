@@ -6,6 +6,8 @@
 #ifndef	_W25Q64_H_
 #define	_W25Q64_H_
 
+#include "SPI.h"
+
 #define W25Q64_WRITE_ENABLE				0x06
 #define W25Q64_WRITE_DISABLE				0x04
 #define W25Q64_READ_STATUS_REGISTER_1			0x05

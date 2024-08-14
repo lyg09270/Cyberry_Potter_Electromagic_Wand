@@ -1,8 +1,8 @@
 //********************************************************************************
 #ifndef	_MODULE_IR_H_
 #define	_MODULE_IR_H_
-#include "CyberryPotter.h"
 #include "stm32f10x.h"
+#include "module_IR_RF.h"
 
 #define IR_PWM_ENABLE TIM_Cmd(TIM3,ENABLE)
 #define IR_PWM_DISABLE TIM_Cmd(TIM3,DISABLE)

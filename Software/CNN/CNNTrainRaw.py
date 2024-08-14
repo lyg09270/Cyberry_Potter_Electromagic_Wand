@@ -13,19 +13,21 @@ motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h',
 
 # 定义目录路径
 #DEF_SAVE_TO_PATH = './TraningData_7_23/'
-DEF_SAVE_TO_PATH = './TraningData_8_11/'
+DEF_SAVE_TO_PATH = './TraningData_8_12/'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
 DEF_FILE_MAX = 100
 #DEF_N_ROWS = 60
 DEF_N_ROWS = 150
+#DEF_COLUMNS = (0, 1, 2, 3, 4, 5)
+DEF_COLUMNS = (3, 4, 5)
 
 # 文件格式
 DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
-DEF_BATCH_SIZE = 80
-DEF_NUM_EPOCH = 200
+DEF_BATCH_SIZE = 120
+DEF_NUM_EPOCH = 2000
 
 # 动作名称到标签的映射
 motion_to_label = {name: idx for idx, name in enumerate(motion_names)}
@@ -34,17 +36,17 @@ def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_cla
     inputs = layers.Input(shape=input_shape) # type: ignore
     # 卷积层1
     x = layers.Conv1D(30, kernel_size=3, strides=3)(inputs) # type: ignore
-    x = layers.ReLU()(x) # type: ignore
+    x = layers.ReLU()(x)# type: ignore
     x = layers.Conv1D(15, kernel_size=3, strides=1)(x) # type: ignore
     x = layers.ReLU()(x)# type: ignore
 
     #x = layers.MaxPooling1D(pool_size=3, strides=3)(x)# type: ignore
     # 展平层
     x = layers.Flatten()(x)# type: ignore
-   # x = layers.Dropout(0.5)(x)# type: ignore
+    x = layers.Dropout(0.2)(x)# type: ignore
     # 全连接层1
     x = layers.Dense(num_classes)(x)# type: ignore
-    x = layers.Dropout(0.5)(x)# type: ignore
+    x = layers.Dropout(0.2)(x)# type: ignore
     outputs = layers.Softmax()(x)# type: ignore
     
     model = models.Model(inputs=inputs, outputs=outputs)# type: ignore
@@ -93,7 +95,7 @@ def load_dataset(root_dir, max_rows=None):
                     if motion_name in motion_to_label:
                         file_path = os.path.join(root_dir, filename)
                         # 使用max_rows参数限制读取的行数
-                        data = np.loadtxt(file_path, delimiter=' ', usecols=(0, 1, 2), max_rows=max_rows)
+                        data = np.loadtxt(file_path, delimiter=' ', usecols=DEF_COLUMNS, max_rows=max_rows)
                         file_list.append(data)
                         labels.append(motion_to_label[motion_name])
                     else:

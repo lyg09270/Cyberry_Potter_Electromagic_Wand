@@ -1,29 +1,8 @@
 #include "W25Q64.h"
 #include "CyberryPotter.h"
 
-extern IR_RF_Signal_Typedef IR_RF_Signal;
+extern IR_RF_Signal_t IR_RF_Signal;
 volatile uint8_t W25Q64_Buffer[4096] = {0};
-
-void SPI2_Start(void)
-{
-	GPIO_WriteBit(GPIOB, GPIO_Pin_12, Bit_RESET);
-}
-
-void SPI2_Stop(void)
-{
-	GPIO_WriteBit(GPIOB, GPIO_Pin_12, Bit_SET);
-}
-
-uint8_t SPI2_SwapByte(uint8_t ByteSend)
-{
-	while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) != SET);
-	
-	SPI_I2S_SendData(SPI2, ByteSend);
-	
-	while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_RXNE) != SET);
-	
-	return SPI_I2S_ReceiveData(SPI2);
-}
 
 void W25Q64_ReadID(uint8_t *MID, uint16_t *DID)
 {

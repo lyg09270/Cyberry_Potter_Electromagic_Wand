@@ -13,7 +13,7 @@ DEF_FILE_NAME_SEPERATOR = '_'
 DEF_SAVE_TO_PATH = './TraningData'+DEF_FILE_NAME_SEPERATOR + DEF_TIME_MONTH + DEF_FILE_NAME_SEPERATOR + DEF_TIME_DAY+'/'
 DEF_FILE_FORMAT = '.txt'
 DEF_TITLE_STRING = 'IMU\n'
-DEF_BAUD_RATE = 115200
+DEF_BAUD_RATE = 921600
 
 motion_name = ['RightAngle','SharpAngle','Lightning','Triangle','Letter_h','letter_R','letter_W','letter_phi','Circle','UpAndDown','Horn','Wave','NoMotion']
 port_list = list(serial.tools.list_ports.comports())

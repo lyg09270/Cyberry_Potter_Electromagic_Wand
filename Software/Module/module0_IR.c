@@ -1,7 +1,6 @@
 #include "module0_IR.h"
 
-extern Cyberry_Potter_Status_Typedef Cyberry_Potter_Status;
-extern IR_RF_Signal_Typedef IR_RF_Signal;
+extern IR_RF_Signal_t IR_RF_Signal;
 
 void Module0_IR_Init(void)
 {
@@ -61,11 +60,11 @@ void Module0_IR_Init(void)
         TIM_ClearFlag(TIM2,TIM_FLAG_Update);
 	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
 	
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 7;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 7;
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 8;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 8;
 	NVIC_Init(&NVIC_InitStruct);        
         
         TIM_Cmd(TIM2,DISABLE);
