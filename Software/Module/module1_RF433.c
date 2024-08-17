@@ -10,7 +10,6 @@ void Module1_RF433_Init(void)
 	
 	GPIO_InitTypeDef GPIO_InitStruct;
         TIM_TimeBaseInitTypeDef TIM_TimerBaseInitStruct;
-        TIM_OCInitTypeDef TIM_OCInitStruct;
         EXTI_InitTypeDef EXTI_InitStruct;
         NVIC_InitTypeDef NVIC_InitStruct;
 //FR receriver init*****************************************//

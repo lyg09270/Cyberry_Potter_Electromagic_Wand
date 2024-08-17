@@ -39,12 +39,14 @@ void IMU_Data_Print(void){
 
 void IMU_Sample_Start(void)
 {
+	EXTI->IMR &= ~(EXTI_Line0);
 	INT_START;
 	IMU.status = IMU_Sampling;
 }
 
 void IMU_Sample_Stop(void)
 {
+	EXTI->IMR |= EXTI_Line0;
 	INT_STOP;
 	IMU.status = IMU_Sampled;
 }
@@ -80,3 +82,4 @@ void IMU_Init(void)
 	IMU.Sample_Start = &IMU_Sample_Start;
 	IMU.Sample_Stop = &IMU_Sample_Stop;
 }
+

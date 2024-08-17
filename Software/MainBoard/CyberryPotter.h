@@ -3,14 +3,13 @@
 //********************************************************************************
 #ifndef	_CYBERRY_POTTER_H_
 #define	_CYBERRY_POTTER_H_
-#include "hardware.h"
 #include "Delay.h"
 #include "IMU.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include <math.h>
 #include "W25Q64.h"
-#include "Button.h"
+#include "button.h"
 #include "LED.h"
 #include "USART.h"
 #include "ADC.h"
@@ -86,6 +85,9 @@ typedef uint32_t ROM_Address_t;
 
 void System_Init(void);
 void Cyberry_Potter_System_Status_Update(void);
+void EXTI_Stop(void);
+void EXTI_Restore(void);
+uint16_t ADC_GetValue(void);
 
 
 #ifdef Signal_DEBUG

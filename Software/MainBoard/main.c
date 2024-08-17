@@ -5,7 +5,7 @@
 #define QUANTIFICATION_SCALE (pow(2,INPUT_1_OUTPUT_DEC))
 
 #ifdef NNOM_USING_STATIC_MEMORY
-	uint8_t static_buf[1024 * 4];
+	uint8_t static_buf[1024 * 6];
 #endif //NNOM_USING_STATIC_MEMORY
 nnom_model_t* model;
 
@@ -14,7 +14,7 @@ extern struct LED_t LED;
 extern struct IMU_t IMU;
 extern struct Module_t Module;
 extern struct Cyberry_Potter_t Cyberry_Potter;
-volatile Model_Output_t model_output = 0;
+volatile Model_Output_t model_output = -1;
 volatile ROM_Address_t ROM_Address;
 extern volatile uint8_t W25Q64_Buffer[4096];
 
@@ -129,41 +129,51 @@ Model_Output_t model_get_output(void)
 int main(void)
 {       
 	//initalize system
-	System_Init();
+	USART1_Init();
+	
+	
 	//crate CNN model
 	#ifdef NNOM_USING_STATIC_MEMORY
 		nnom_set_static_buf(static_buf, sizeof(static_buf)); 
 	#endif //NNOM_USING_STATIC_MEMORY
 	model = nnom_model_create();
 	
+	LED_Init();
+	SPI2_Init();
+	IMU_Init();
+	Button_Init();
+	
 	printf("While");
 	while(1){
 		//Button Status reset and wait button status change.
 		
 		
-		if(Button.status == BUTTON_HOLD){
+		if(Button.status == BUTTON_HOLD && IMU.status == IMU_Idle){
+			IMU.Sample_Start();
+			EXTI_Stop();
 			printf("BUTTON_HOLD\n");
-//			IMU.Sample_Start();
-//			LED.Operate(OFF);
-//			while(IMU.status != IMU_Sampled);
-//			LED.Operate(ON);
-//			#ifndef SYSTEM_MODE_DATA_COLLECT
-//			model_get_output();
-//			#endif
+			LED.Operate(OFF);
+			while(IMU.status != IMU_Sampled);
+			LED.Operate(ON);
+			#ifndef SYSTEM_MODE_DATA_COLLECT
+			model_output = model_get_output();
+			#endif
 			model_output = 0;
-			switch(Cyberry_Potter.System_Mode)
-			{
-				case SYSTEM_MODE_0:
-					Module.Mode0_Handler();
-					break;
-				case SYSTEM_MODE_1:
-					Module.Mode1_Handler();
-					break;
-				default:
-					break;
-				
-			}
+//			switch(Cyberry_Potter.System_Mode)
+//			{
+//				case SYSTEM_MODE_0:
+//					Module.Mode0_Handler();
+//					break;
+//				case SYSTEM_MODE_1:
+//					Module.Mode1_Handler();
+//					break;
+//				default:
+//					break;
+//				
+//			}
+			IMU.status = IMU_Idle;
 			Button.status_clear();
+			EXTI_Restore();
 			printf("cleared");
 		}
 		else if(Button.status == BUTTON_HOLD_LONG){

@@ -21,7 +21,6 @@ Button_t Button;
 static volatile uint16_t time_release_count_ms = 0;
 static volatile uint16_t time_hold_count_ms = 0;
 static volatile uint8_t previous_status = 0;
-static volatile uint8_t detect_status = 0;
 
 
 

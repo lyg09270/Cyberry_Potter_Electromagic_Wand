@@ -32,7 +32,6 @@
 ".\objects\nnom_zero_padding.o"
 ".\objects\cyberrypotter.o"
 ".\objects\delay.o"
-".\objects\hardware.o"
 ".\objects\iic.o"
 ".\objects\imu.o"
 ".\objects\main.o"

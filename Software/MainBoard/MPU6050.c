@@ -69,6 +69,8 @@ static  unsigned short inv_orientation_matrix_to_scalar(const signed char *mtx)
 
 void MPU6050_Init(void)
 {
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	
 	GPIO_InitTypeDef GPIO_InitStruct;
         EXTI_InitTypeDef EXTI_InitStruct;
         NVIC_InitTypeDef NVIC_InitStruct;

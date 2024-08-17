@@ -145,20 +145,20 @@ void System_Init(void)
         Button_Init();
 	SPI2_Init();
 	IMU_Init();
-	Module.Mode0_Handler = &Module_None_Mode0_Handler;
-	Module.Mode1_Handler = &Module_None_Mode1_Handler;
-	ADC_PB1_Init();
-	
-	if(ADC_PB1_GetAvg() == -1){
-		Module.Type = Module_Type_None;
-		printf("No Module Detected\n");
-	}
-	else{
-		Module.Type = Module_Detect();
-		printf("Module:%d Detected\n",Module.Type);
-	}
-	ADC1_Deinit();
-	Module_Init();
+	//Module.Mode0_Handler = &Module_None_Mode0_Handler;
+	//Module.Mode1_Handler = &Module_None_Mode1_Handler;
+//	ADC_PB1_Init();
+//	
+//	if(ADC_PB1_GetAvg() == -1){
+//		Module.Type = Module_Type_None;
+//		printf("No Module Detected\n");
+//	}
+//	else{
+//		Module.Type = Module_Detect();
+//		printf("Module:%d Detected\n",Module.Type);
+//	}
+//	ADC1_Deinit();
+//	Module_Init();
 
 }
 
@@ -188,10 +188,11 @@ void EXTI9_5_IRQHandler(void)
 	//IMU read
 	if(EXTI_GetITStatus(EXTI_Line5)==SET){
 		IMU_Get_Data(i);
+		printf("%d",i);
 		i++;
 		if(i >= IMU_SEQUENCE_LENGTH_MAX){
 			i = 0;
-			printf("Samlpled");
+			printf("Samlpled\n");
 			IMU.Sample_Stop();
 			#ifdef SYSTEM_MODE_DATA_COLLECT
 			Delay_ms(200);
@@ -201,16 +202,35 @@ void EXTI9_5_IRQHandler(void)
 	EXTI_ClearITPendingBit(EXTI_Line5);	
         }
 	
-	//IR and RF Receiver
-        if(EXTI_GetITStatus(EXTI_Line7)==SET){
-                if(IR_RF_Signal.status == SIGNAL_EMPTY){
-			printf("Start");
-                        Module_IR_RF_receiver_start();
-                }
-                else if(IR_RF_Signal.status == SIGNAL_RECORDING){
-                        Module_IR_RF_Record_Duration();
-                        
-                }
-        EXTI_ClearITPendingBit(EXTI_Line7);
-        }
+//	//IR and RF Receiver
+//        if(EXTI_GetITStatus(EXTI_Line7)==SET){
+//                if(IR_RF_Signal.status == SIGNAL_EMPTY){
+//			printf("Start");
+//                        Module_IR_RF_receiver_start();
+//                }
+//                else if(IR_RF_Signal.status == SIGNAL_RECORDING){
+//                        Module_IR_RF_Record_Duration();
+//                        
+//                }
+//        EXTI_ClearITPendingBit(EXTI_Line7);
+//        }
+}
+
+void EXTI_Stop(void)
+{
+	EXTI->IMR &= ~(EXTI_Line0);
+	EXTI->IMR &= ~(EXTI_Line7);
+}
+
+void EXTI_Restore(void)
+{
+	EXTI->IMR |= EXTI_Line0;
+	EXTI->IMR |= EXTI_Line7;
+}
+
+uint16_t ADC_GetValue(void)
+{
+	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+	while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET);
+	return ADC_GetConversionValue(ADC1);
 }

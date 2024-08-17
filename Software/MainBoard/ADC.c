@@ -69,7 +69,7 @@ static uint16_t ADC_PB1_GetValue(void)
 int8_t ADC_PB1_GetAvg(void)
 {
 	uint8_t i = 0 ;
-	uint8_t samples_count;
+	uint8_t samples_count = 0;
 	int32_t sample[ADC_MAX_SAMPLES] = {0};
 	
 	float var = 0;

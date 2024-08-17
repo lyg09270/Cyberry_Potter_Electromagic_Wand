@@ -63,8 +63,8 @@ void Module0_IR_Init(void)
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 8;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 8;
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 5;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 5;
 	NVIC_Init(&NVIC_InitStruct);        
         
         TIM_Cmd(TIM2,DISABLE);
