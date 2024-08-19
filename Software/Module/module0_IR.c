@@ -5,7 +5,7 @@ extern IR_RF_Signal_t IR_RF_Signal;
 void Module0_IR_Init(void)
 {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO,ENABLE);
-        RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3 ,ENABLE);
+        RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3 | RCC_APB1Periph_TIM2,ENABLE);
         
         GPIO_InitTypeDef GPIO_InitStruct;
         TIM_TimeBaseInitTypeDef TIM_TimerBaseInitStruct;
@@ -50,6 +50,12 @@ void Module0_IR_Init(void)
         EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
         EXTI_Init(&EXTI_InitStruct);
 	
+	NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5_IRQn;
+        NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+        NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 6;
+        NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
+        NVIC_Init(&NVIC_InitStruct);
+	
 //TIM2 15ms*************************************************************//
 	TIM_TimerBaseInitStruct.TIM_Prescaler = TIM2_PRESCALE - 1;
 	TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
@@ -63,8 +69,8 @@ void Module0_IR_Init(void)
 	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 5;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 5;
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 7;
+	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 7;
 	NVIC_Init(&NVIC_InitStruct);        
         
         TIM_Cmd(TIM2,DISABLE);

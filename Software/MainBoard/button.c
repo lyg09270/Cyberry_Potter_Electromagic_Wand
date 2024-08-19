@@ -31,7 +31,6 @@ void EXTI0_IRQHandler(void)
         if(EXTI_GetITStatus(EXTI_Line0)==SET){
 		//If previous button status is handled.Then button status must change to IDLE.
 		if(Button.status == BUTTON_IDLE){
-			printf("Button EXTI\n");
 			TIMER_FOR_BUTTON_ENABLE;
 		}
                 EXTI_ClearITPendingBit(EXTI_Line0);

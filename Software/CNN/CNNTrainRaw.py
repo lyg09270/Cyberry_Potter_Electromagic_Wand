@@ -13,7 +13,7 @@ motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h',
 
 # 定义目录路径
 #DEF_SAVE_TO_PATH = './TraningData_7_23/'
-DEF_SAVE_TO_PATH = './TraningData_8_12/'
+DEF_SAVE_TO_PATH = './TraningData_8_17/'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
 DEF_FILE_MAX = 100
@@ -21,6 +21,7 @@ DEF_FILE_MAX = 100
 DEF_N_ROWS = 150
 #DEF_COLUMNS = (0, 1, 2, 3, 4, 5)
 DEF_COLUMNS = (3, 4, 5)
+#DEF_COLUMNS = (0, 1, 2)
 
 # 文件格式
 DEF_FILE_FORMAT = '.txt'

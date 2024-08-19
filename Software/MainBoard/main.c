@@ -28,9 +28,9 @@ void model_feed_data(void)
 	const double scale = QUANTIFICATION_SCALE;
 	uint16_t i = 0;
 	for(i = 0; i < IMU_SEQUENCE_LENGTH_MAX;i++){
-		nnom_input_data[i*3] = (int8_t)round(IMU.acc[i][AccX] * scale);
-		nnom_input_data[i*3+1] = (int8_t)round(IMU.acc[i][AccY] * scale);
-		nnom_input_data[i*3+2] = (int8_t)round(IMU.acc[i][AccZ] * scale);
+		nnom_input_data[i*3] = (int8_t)round(IMU.gyro[i][Roll] * scale);
+		nnom_input_data[i*3+1] = (int8_t)round(IMU.gyro[i][Pitch] * scale);
+		nnom_input_data[i*3+2] = (int8_t)round(IMU.gyro[i][Yaw] * scale);
 	}
 }
 
@@ -129,19 +129,15 @@ Model_Output_t model_get_output(void)
 int main(void)
 {       
 	//initalize system
-	USART1_Init();
-	
-	
+	System_Init();
+	LED.Operate(BLINK_10HZ);
 	//crate CNN model
 	#ifdef NNOM_USING_STATIC_MEMORY
 		nnom_set_static_buf(static_buf, sizeof(static_buf)); 
 	#endif //NNOM_USING_STATIC_MEMORY
 	model = nnom_model_create();
 	
-	LED_Init();
-	SPI2_Init();
-	IMU_Init();
-	Button_Init();
+	
 	
 	printf("While");
 	while(1){
@@ -151,30 +147,29 @@ int main(void)
 		if(Button.status == BUTTON_HOLD && IMU.status == IMU_Idle){
 			IMU.Sample_Start();
 			EXTI_Stop();
-			printf("BUTTON_HOLD\n");
 			LED.Operate(OFF);
 			while(IMU.status != IMU_Sampled);
 			LED.Operate(ON);
+			
 			#ifndef SYSTEM_MODE_DATA_COLLECT
 			model_output = model_get_output();
 			#endif
-			model_output = 0;
-//			switch(Cyberry_Potter.System_Mode)
-//			{
-//				case SYSTEM_MODE_0:
-//					Module.Mode0_Handler();
-//					break;
-//				case SYSTEM_MODE_1:
-//					Module.Mode1_Handler();
-//					break;
-//				default:
-//					break;
-//				
-//			}
+			if(model_output != Unrecognized){
+				switch(Cyberry_Potter.System_Mode){
+					case SYSTEM_MODE_0:
+						Module.Mode0_Handler();
+						break;
+					case SYSTEM_MODE_1:
+						Module.Mode1_Handler();
+						break;
+					default:
+						break;
+					
+				}
+			}
 			IMU.status = IMU_Idle;
 			Button.status_clear();
 			EXTI_Restore();
-			printf("cleared");
 		}
 		else if(Button.status == BUTTON_HOLD_LONG){
 			printf("BUTTON_HOLD_LONG\n");

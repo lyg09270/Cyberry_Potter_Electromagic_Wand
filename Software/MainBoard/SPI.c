@@ -17,7 +17,7 @@
 // SPI1 Initialization
 void SPI1_Init(void)
 {
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
 
 	GPIO_InitTypeDef GPIO_InitStruct;
@@ -80,7 +80,7 @@ uint8_t SPI1_SwapByte(uint8_t ByteSend)
 
 void SPI2_Init(void)
 {
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO,ENABLE);
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);
 	
 	GPIO_InitTypeDef GPIO_InitStruct;

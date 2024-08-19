@@ -47,7 +47,7 @@ def Serial_init():
                                 bytesize=serial.EIGHTBITS,
                                 parity=serial.PARITY_NONE,
                                 stopbits=serial.STOPBITS_ONE,
-                                timeout=0.5) 
+                                timeout=0.2) 
     
 #检查数据串口数据标题是否符合定义的标题，数据的标题可以修改DEF_TITLE_STRING
 #Check if the title from recerived data same as DEF_TITLE_STRING.

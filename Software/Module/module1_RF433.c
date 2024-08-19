@@ -29,8 +29,8 @@ void Module1_RF433_Init(void)
     
         NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5_IRQn;
         NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-        NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 7;
-        NVIC_InitStruct.NVIC_IRQChannelSubPriority = 7;
+        NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 6;
+        NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
         NVIC_Init(&NVIC_InitStruct);     
 	
 //FR transmitter init*****************************************//

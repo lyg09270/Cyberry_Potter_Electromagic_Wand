@@ -78,56 +78,67 @@ void Module_Init(void)
 			break;
 		case Module_Type_0_IR:
 			Module_IR_RF_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module_IR_RF_Transmit;
 			Module.Mode1_Handler = &Module_IR_RF_Receive;
 			break;
 		case Module_Type_1_RF_433MHZ:
 			Module_IR_RF_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module_IR_RF_Transmit;
 			Module.Mode1_Handler = &Module_IR_RF_Receive;
 			break;
 		case Module_Type_2_RF_315MHZ:
 			Module_IR_RF_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module_IR_RF_Transmit;
 			Module.Mode1_Handler = &Module_IR_RF_Receive;
 			break;
 		case Module_Type_3:
 			Module3_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module3_Mode0_Handler;
 			Module.Mode1_Handler = &Module3_Mode1_Handler;
 			break;
 		case Module_Type_4:
 			Module4_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module4_Mode0_Handler;
 			Module.Mode1_Handler = &Module4_Mode1_Handler;
 			break;
 		case Module_Type_5:
 			Module5_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module5_Mode0_Handler;
 			Module.Mode1_Handler = &Module5_Mode1_Handler;
 			break;
 		case Module_Type_6:
 			Module6_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module6_Mode0_Handler;
 			Module.Mode1_Handler = &Module6_Mode1_Handler;
 			break;
 		case Module_Type_7:
 			Module7_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module7_Mode0_Handler;
 			Module.Mode1_Handler = &Module7_Mode1_Handler;
 			break;
 		case Module_Type_8:
 			Module8_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module8_Mode0_Handler;
 			Module.Mode1_Handler = &Module8_Mode1_Handler;
 			break;
 		case Module_Type_9:
 			Module9_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module9_Mode0_Handler;
 			Module.Mode1_Handler = &Module9_Mode1_Handler;
 			break;
 		case Module_Type_10: 
 			Module10_Init();
+			printf("Module %d Init\n",Module.Type);
 			Module.Mode0_Handler = &Module10_Mode0_Handler;
 			Module.Mode1_Handler = &Module10_Mode1_Handler;
 			break;
@@ -145,20 +156,20 @@ void System_Init(void)
         Button_Init();
 	SPI2_Init();
 	IMU_Init();
-	//Module.Mode0_Handler = &Module_None_Mode0_Handler;
-	//Module.Mode1_Handler = &Module_None_Mode1_Handler;
-//	ADC_PB1_Init();
-//	
-//	if(ADC_PB1_GetAvg() == -1){
-//		Module.Type = Module_Type_None;
-//		printf("No Module Detected\n");
-//	}
-//	else{
-//		Module.Type = Module_Detect();
-//		printf("Module:%d Detected\n",Module.Type);
-//	}
-//	ADC1_Deinit();
-//	Module_Init();
+	Module.Mode0_Handler = &Module_None_Mode0_Handler;
+	Module.Mode1_Handler = &Module_None_Mode1_Handler;
+	ADC_PB1_Init();
+	
+	if(ADC_PB1_GetAvg() == -1){
+		Module.Type = Module_Type_None;
+		printf("No Module Detected\n\n");
+	}
+	else{
+		Module.Type = Module_Detect();
+		printf("Module:%d Detected\n\n",Module.Type);
+	}
+	ADC1_Deinit();
+	Module_Init();
 
 }
 
@@ -188,11 +199,10 @@ void EXTI9_5_IRQHandler(void)
 	//IMU read
 	if(EXTI_GetITStatus(EXTI_Line5)==SET){
 		IMU_Get_Data(i);
-		printf("%d",i);
 		i++;
 		if(i >= IMU_SEQUENCE_LENGTH_MAX){
 			i = 0;
-			printf("Samlpled\n");
+			//printf("Samlpled\n");
 			IMU.Sample_Stop();
 			#ifdef SYSTEM_MODE_DATA_COLLECT
 			Delay_ms(200);
@@ -202,30 +212,27 @@ void EXTI9_5_IRQHandler(void)
 	EXTI_ClearITPendingBit(EXTI_Line5);	
         }
 	
-//	//IR and RF Receiver
-//        if(EXTI_GetITStatus(EXTI_Line7)==SET){
-//                if(IR_RF_Signal.status == SIGNAL_EMPTY){
-//			printf("Start");
-//                        Module_IR_RF_receiver_start();
-//                }
-//                else if(IR_RF_Signal.status == SIGNAL_RECORDING){
-//                        Module_IR_RF_Record_Duration();
-//                        
-//                }
-//        EXTI_ClearITPendingBit(EXTI_Line7);
-//        }
+	//IR and RF Receiver
+        if(EXTI_GetITStatus(EXTI_Line7)==SET){
+                if(IR_RF_Signal.status == SIGNAL_EMPTY){
+                        Module_IR_RF_receiver_start();
+                }
+                else if(IR_RF_Signal.status == SIGNAL_RECORDING){
+                        Module_IR_RF_Record_Duration();
+                        
+                }
+        EXTI_ClearITPendingBit(EXTI_Line7);
+        }
 }
 
 void EXTI_Stop(void)
 {
 	EXTI->IMR &= ~(EXTI_Line0);
-	EXTI->IMR &= ~(EXTI_Line7);
 }
 
 void EXTI_Restore(void)
 {
 	EXTI->IMR |= EXTI_Line0;
-	EXTI->IMR |= EXTI_Line7;
 }
 
 uint16_t ADC_GetValue(void)

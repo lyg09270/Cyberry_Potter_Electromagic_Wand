@@ -7,7 +7,7 @@
 #include "module2_RF315.h"
 #include "CyberryPotter.h"
 
-#define SIGNAL_SEQUENCE_SET_LENGTH 512
+#define SIGNAL_SEQUENCE_SET_LENGTH 1024
 
 //Define TIM2 
 #define TIM2_RECORD_OVERTIME_US 15000
