@@ -5,7 +5,7 @@
 #define QUANTIFICATION_SCALE (pow(2,INPUT_1_OUTPUT_DEC))
 
 #ifdef NNOM_USING_STATIC_MEMORY
-	uint8_t static_buf[1024 * 6];
+	uint8_t static_buf[1024 * 8];
 #endif //NNOM_USING_STATIC_MEMORY
 nnom_model_t* model;
 
@@ -137,13 +137,9 @@ int main(void)
 	#endif //NNOM_USING_STATIC_MEMORY
 	model = nnom_model_create();
 	
-	
-	
 	printf("While");
 	while(1){
 		//Button Status reset and wait button status change.
-		
-		
 		if(Button.status == BUTTON_HOLD && IMU.status == IMU_Idle){
 			IMU.Sample_Start();
 			EXTI_Stop();

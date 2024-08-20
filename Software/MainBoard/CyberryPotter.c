@@ -214,6 +214,7 @@ void EXTI9_5_IRQHandler(void)
 	
 	//IR and RF Receiver
         if(EXTI_GetITStatus(EXTI_Line7)==SET){
+		printf("Start");
                 if(IR_RF_Signal.status == SIGNAL_EMPTY){
                         Module_IR_RF_receiver_start();
                 }

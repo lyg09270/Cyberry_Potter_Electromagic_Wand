@@ -12,9 +12,9 @@ void Module1_RF433_Init(void)
         TIM_TimeBaseInitTypeDef TIM_TimerBaseInitStruct;
         EXTI_InitTypeDef EXTI_InitStruct;
         NVIC_InitTypeDef NVIC_InitStruct;
-//FR receriver init*****************************************//
+//RF receriver init*****************************************//
         
-        GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
+        GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;
         GPIO_InitStruct.GPIO_Pin = GPIO_Pin_4;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOA,&GPIO_InitStruct);
@@ -33,7 +33,7 @@ void Module1_RF433_Init(void)
         NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
         NVIC_Init(&NVIC_InitStruct);     
 	
-//FR transmitter init*****************************************//
+//RF transmitter init*****************************************//
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
         GPIO_InitStruct.GPIO_Pin = GPIO_Pin_5;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
