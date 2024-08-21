@@ -1,1 +1,1 @@
-{'input_1': [4, 0], 'conv1d': [4, 0], 're_lu': [4, 0], 'intermediate_lstm': [7, 2, 4], 'lstm': [7, 0], 'flatten': [7, 0], 'dense': [4, 0], 'softmax': [7, 0]}
+{'input_1': [4, 0], 'conv1d': [3, 0], 're_lu': [3, 0], 'conv1d_1': [3, 0], 're_lu_1': [3, 0], 'intermediate_lstm': [7, 2, 3], 'lstm': [7, 0], 'flatten': [7, 0], 'dense': [4, 0], 'dropout': [4, 0], 'softmax': [7, 0]}
