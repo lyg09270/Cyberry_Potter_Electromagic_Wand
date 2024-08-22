@@ -40,7 +40,7 @@
 
 ##### 项目视频教程：[还没弄好](https://www.bilibili.com/video/BV13E421w7PY/)
 
-
+立创开源平台：[赛博魔杖_STM32卷积神经网络](https://oshwhub.com/lyg0927/cyberwand-stm32-convolutional-ne)
 
 在使用过程中出现问题可以在Bilibili私信我
 

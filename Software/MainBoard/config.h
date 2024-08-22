@@ -20,9 +20,9 @@
 //Define system configuration
 #define SYSTEM_FREQUENCY (72000000)
 #define SERIAL_DEBUG
+//#define SYSTEM_MODE_DATA_COLLECT
 
 //Define ADC Module Detect
-
 #define MODULE0_LOWER_LIM 186
 #define MODULE0_UPPER_LIM 555
 #define MODULE1_LOWER_LIM 555

@@ -36,13 +36,10 @@ motion_to_label = {name: idx for idx, name in enumerate(motion_names)}
 def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_classes=len(motion_names), batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH):
     inputs = layers.Input(shape=input_shape) # type: ignore
     # 卷积层1
-    x = layers.Conv1D(20, kernel_size=3, strides=3)(inputs) # type: ignore
+    x = layers.Conv1D(30, kernel_size=3, strides=3)(inputs) # type: ignore
     x = layers.ReLU()(x)# type: ignore
     x = layers.Conv1D(15, kernel_size=3, strides=1)(x) # type: ignore
     x = layers.ReLU()(x)# type: ignore
-    
-    x = LSTM(units=52, return_sequences=False)(x) # type: ignore
-    
     
     # 展平层
     x = layers.Flatten()(x)# type: ignore
