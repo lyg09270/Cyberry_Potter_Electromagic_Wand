@@ -38,7 +38,7 @@
 
 <img src=".\Software\CNN\SpellsCard/Spell_Card.jpg" alt="Spell Card" width="200" height="auto">
 
-##### 项目视频教程：[还没弄好](https://www.bilibili.com/video/BV13E421w7PY/)
+##### 项目视频教程：[bilibili](https://m.bilibili.com/video/BV187pUeKEMr?buvid=XUB1E20B2F44D29D71F181695C9E7F83B9E21&is_story_h5=false&mid=rZPDj1CLrJQMczPBIKGRQw%3D%3D&plat_id=147&share_from=ugc&share_medium=android&share_plat=android&share_session_id=a18d49a9-681d-4397-9cd8-edce4fd64c8c&share_source=GENERIC&share_tag=s_i&timestamp=1724387723&unique_k=6tcr5N7&up_id=34271655)
 
 立创开源平台：[赛博魔杖_STM32卷积神经网络](https://oshwhub.com/lyg0927/cyberwand-stm32-convolutional-ne)
 
