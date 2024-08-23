@@ -104,7 +104,7 @@ Type-c口的作用：可以用于串口调试和电池充电，在有Type-c连�
   - 激活环境
   - `conda activate py39_env`
   - 切换到工程目录的CNN文件夹
-  - `cd /path/to/your/directory/CyberryPotter_ElectromagicWand_Basic_Project/CNN`
+  - `cd /path/to/your/directory/Cyberry_Potter_Electromagic_Wand-main/Software/CNN`
   - 安装项目依赖
   - `pip install -r requirements.txt`
 
