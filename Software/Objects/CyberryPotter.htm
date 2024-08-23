@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\CyberryPotter.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\CyberryPotter.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Thu Aug 22 21:25:50 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Fri Aug 23 20:24:48 2024
 <BR><P>
 <H3>Maximum Stack Usage =        412 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -21,7 +21,7 @@ Mutually Recursive functions
  <LI><a href="#[8]">PendSV_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[8]">PendSV_Handler</a><BR>
  <LI><a href="#[9]">SysTick_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[9]">SysTick_Handler</a><BR>
  <LI><a href="#[1c]">ADC1_2_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1c]">ADC1_2_IRQHandler</a><BR>
- <LI><a href="#[114]">compile_layers</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[114]">compile_layers</a><BR>
+ <LI><a href="#[115]">compile_layers</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[115]">compile_layers</a><BR>
 </UL>
 <P>
 <H3>
@@ -120,6 +120,7 @@ Function Pointers
  <LI><a href="#[64]">fputc</a> from usart.o(.text.fputc) referenced from printfa.o(i.__0printf)
  <LI><a href="#[5c]">input_build</a> from nnom_input.o(.text.input_build) referenced 2 times from nnom_input.o(.text.input_s)
  <LI><a href="#[5b]">input_run</a> from nnom_input.o(.text.input_run) referenced 2 times from nnom_input.o(.text.input_s)
+ <LI><a href="#[54]">leaky_relu_run</a> from nnom_activation.o(.text.leaky_relu_run) referenced 2 times from nnom_activation.o(.text.act_leaky_relu)
  <LI><a href="#[35]">main</a> from main.o(.text.main) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
  <LI><a href="#[61]">model_active</a> from nnom.o(.text.model_active) referenced 2 times from nnom.o(.text.new_model)
  <LI><a href="#[5d]">model_add</a> from nnom.o(.text.model_add) referenced 2 times from nnom.o(.text.new_model)
@@ -127,7 +128,6 @@ Function Pointers
  <LI><a href="#[5f]">model_merge</a> from nnom.o(.text.model_merge) referenced 2 times from nnom.o(.text.new_model)
  <LI><a href="#[60]">model_mergex</a> from nnom.o(.text.model_mergex) referenced 2 times from nnom.o(.text.new_model)
  <LI><a href="#[62]">output_run</a> from nnom_output.o(.text.output_run) referenced 2 times from nnom_output.o(.text.output_s)
- <LI><a href="#[54]">relu_run</a> from nnom_activation.o(.text.relu_run) referenced 2 times from nnom_activation.o(.text.act_relu)
  <LI><a href="#[53]">softmax_build</a> from nnom_softmax.o(.text.softmax_build) referenced 2 times from nnom_softmax.o(.text.Softmax)
  <LI><a href="#[52]">softmax_run</a> from nnom_softmax.o(.text.softmax_run) referenced 2 times from nnom_softmax.o(.text.Softmax)
 </UL>
@@ -367,14 +367,14 @@ Global Symbols
 <P><STRONG><a name="[143]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;output_run
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_run
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr_v
 </UL>
 
 <P><STRONG><a name="[16f]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
+<BR><BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
 </UL>
 
 <P><STRONG><a name="[188]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
@@ -396,7 +396,7 @@ Global Symbols
 
 <P><STRONG><a name="[89]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PB1_GetAvg
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_model
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_model
 </UL>
 
 <P><STRONG><a name="[18b]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -405,10 +405,10 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
-<P><STRONG><a name="[15f]"></a>memcmp</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, memcmp.o(.text))
+<P><STRONG><a name="[161]"></a>memcmp</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, memcmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = memcmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Called By]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 
 <P><STRONG><a name="[6e]"></a>__aeabi_fadd</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, fadd.o(.text))
@@ -436,7 +436,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PB1_GetAvg
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_leaky_relu
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
@@ -448,7 +449,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PB1_GetAvg
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
 </UL>
@@ -458,10 +459,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
+<BR>[Called By]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 </UL>
 
@@ -471,9 +472,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Get_Data
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
+<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_divzero
 </UL>
@@ -520,7 +521,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 </UL>
 
 <P><STRONG><a name="[7a]"></a>__aeabi_i2d</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, dflti.o(.text))
@@ -530,12 +531,13 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Get_Data
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PB1_GetAvg
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
-<P><STRONG><a name="[13f]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<P><STRONG><a name="[110]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_leaky_relu
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 </UL>
 
@@ -545,14 +547,14 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PB1_GetAvg
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
 </UL>
 
 <P><STRONG><a name="[90]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PB1_GetAvg
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
 </UL>
 
 <P><STRONG><a name="[7c]"></a>__aeabi_d2f</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, d2f.o(.text))
@@ -640,7 +642,7 @@ Global Symbols
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;round
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
 </UL>
@@ -651,7 +653,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;round
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[80]"></a>__aeabi_drsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
@@ -660,13 +662,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;round
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[177]"></a>__ARM_scalbn</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, dscalb.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
 <LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
 </UL>
@@ -699,7 +701,7 @@ Global Symbols
 <P><STRONG><a name="[17a]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdrcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;round
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[66]"></a>__scatterload</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, init.o(.text))
@@ -872,8 +874,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Blink
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
@@ -1016,8 +1018,8 @@ Global Symbols
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_Send_Ack
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_Get_Data
-<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
@@ -1032,16 +1034,16 @@ Global Symbols
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_Send_Byte
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_Start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
-<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
-<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
-<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
-<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
+<BR>[Called By]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
-<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_gyro_fsr
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_accel_fsr
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
@@ -1540,7 +1542,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_init
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_s
+<BR>[Called By]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_s
 </UL>
 
 <P><STRONG><a name="[36]"></a>SystemInit</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, system_stm32f10x.o(.text.SystemInit))
@@ -1761,7 +1763,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Module_IR_RF_Receive
 </UL>
 
-<P><STRONG><a name="[11f]"></a>act_get_dec_bit</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, nnom_activation.o(.text.act_get_dec_bit))
+<P><STRONG><a name="[120]"></a>act_get_dec_bit</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, nnom_activation.o(.text.act_get_dec_bit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = act_get_dec_bit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_build
@@ -1769,86 +1771,88 @@ Global Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_build
 </UL>
 
-<P><STRONG><a name="[10f]"></a>act_relu</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, nnom_activation.o(.text.act_relu))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = act_relu &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
+<P><STRONG><a name="[10f]"></a>act_leaky_relu</STRONG> (Thumb, 74 bytes, Stack size 24 bytes, nnom_activation.o(.text.act_leaky_relu))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = act_leaky_relu &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[153]"></a>block_mem_set</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, nnom.o(.text.block_mem_set))
+<P><STRONG><a name="[155]"></a>block_mem_set</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, nnom.o(.text.block_mem_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = block_mem_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
 </UL>
 
-<P><STRONG><a name="[113]"></a>check_model_version</STRONG> (Thumb, 142 bytes, Stack size 32 bytes, nnom.o(.text.check_model_version))
+<P><STRONG><a name="[114]"></a>check_model_version</STRONG> (Thumb, 142 bytes, Stack size 32 bytes, nnom.o(.text.check_model_version))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = check_model_version &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[114]"></a>compile_layers</STRONG> (Thumb, 960 bytes, Stack size 88 bytes, nnom.o(.text.compile_layers))
+<P><STRONG><a name="[115]"></a>compile_layers</STRONG> (Thumb, 960 bytes, Stack size 88 bytes, nnom.o(.text.compile_layers))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156 + In Cycle
 <LI>Call Chain = compile_layers &rArr;  compile_layers (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_hook_length
-<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_input_mem
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_comp_mem
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_memory_block_info
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_layer_info
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;layer_shortcut_add
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_block
+<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_hook_length
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_input_mem
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_comp_mem
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_memory_block_info
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_layer_info
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;layer_shortcut_add
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_block
 </UL>
-<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
 <P><STRONG><a name="[56]"></a>conv2d_build</STRONG> (Thumb, 350 bytes, Stack size 24 bytes, nnom_conv2d.o(.text.conv2d_build))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = conv2d_build &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv_output_length
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_get_dec_bit
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv_output_length
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_get_dec_bit
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_conv2d.o(.text.conv2d_s)
 </UL>
 <P><STRONG><a name="[57]"></a>conv2d_free</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, nnom_conv2d.o(.text.conv2d_free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = conv2d_free &rArr; delete_tensor &rArr; nnom_free
 </UL>
-<BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_tensor
+<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_tensor
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_conv2d.o(.text.conv2d_s)
 </UL>
 <P><STRONG><a name="[55]"></a>conv2d_run</STRONG> (Thumb, 470 bytes, Stack size 216 bytes, nnom_conv2d.o(.text.conv2d_run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 412<LI>Call Chain = conv2d_run &rArr; local_convolve_HWC_q15_nonsquare &rArr; __NNOM_SSAT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q15_nonsquare
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q7_nonsquare
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q15_nonsquare
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q7_nonsquare
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_conv2d.o(.text.conv2d_s)
 </UL>
-<P><STRONG><a name="[124]"></a>conv2d_s</STRONG> (Thumb, 482 bytes, Stack size 104 bytes, nnom_conv2d.o(.text.conv2d_s))
+<P><STRONG><a name="[125]"></a>conv2d_s</STRONG> (Thumb, 482 bytes, Stack size 104 bytes, nnom_conv2d.o(.text.conv2d_s))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = conv2d_s &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_init
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dilation
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stride
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;kernel
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dilation
+<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stride
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;kernel
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[120]"></a>conv_output_length</STRONG> (Thumb, 86 bytes, Stack size 28 bytes, nnom_conv2d.o(.text.conv_output_length))
+<P><STRONG><a name="[121]"></a>conv_output_length</STRONG> (Thumb, 86 bytes, Stack size 28 bytes, nnom_conv2d.o(.text.conv_output_length))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = conv_output_length
 </UL>
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_build
@@ -1857,17 +1861,17 @@ Global Symbols
 <P><STRONG><a name="[63]"></a>default_build</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, nnom_baselayer.o(.text.default_build))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = default_build &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_get_dec_bit
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_get_dec_bit
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_output.o(.text.output_s)
 </UL>
-<P><STRONG><a name="[121]"></a>delete_tensor</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, nnom_tensor.o(.text.delete_tensor))
+<P><STRONG><a name="[122]"></a>delete_tensor</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, nnom_tensor.o(.text.delete_tensor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = delete_tensor &rArr; nnom_free
 </UL>
-<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_free
+<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_free
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_free
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_free
@@ -1876,52 +1880,52 @@ Global Symbols
 <P><STRONG><a name="[59]"></a>dense_build</STRONG> (Thumb, 308 bytes, Stack size 48 bytes, nnom_dense.o(.text.dense_build))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = dense_build &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_get_dec_bit
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_get_dec_bit
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_dense.o(.text.dense_s)
 </UL>
 <P><STRONG><a name="[5a]"></a>dense_free</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, nnom_dense.o(.text.dense_free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = dense_free &rArr; delete_tensor &rArr; nnom_free
 </UL>
-<BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_tensor
+<BR>[Calls]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_tensor
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_dense.o(.text.dense_s)
 </UL>
 <P><STRONG><a name="[58]"></a>dense_run</STRONG> (Thumb, 146 bytes, Stack size 72 bytes, nnom_dense.o(.text.dense_run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 180<LI>Call Chain = dense_run &rArr; local_fully_connected_q7_opt &rArr; __NNOM_SSAT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_fully_connected_q7_opt
+<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_fully_connected_q7_opt
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_dense.o(.text.dense_s)
 </UL>
-<P><STRONG><a name="[12c]"></a>dense_s</STRONG> (Thumb, 196 bytes, Stack size 40 bytes, nnom_dense.o(.text.dense_s))
+<P><STRONG><a name="[12d]"></a>dense_s</STRONG> (Thumb, 196 bytes, Stack size 40 bytes, nnom_dense.o(.text.dense_s))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dense_s &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_init
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[127]"></a>dilation</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, nnom_layers.o(.text.dilation))
+<P><STRONG><a name="[128]"></a>dilation</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, nnom_layers.o(.text.dilation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = dilation &rArr; shape
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
 </UL>
-<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
+<BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
 </UL>
 
-<P><STRONG><a name="[12e]"></a>dmp_enable_6x_lp_quat</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_enable_6x_lp_quat))
+<P><STRONG><a name="[12f]"></a>dmp_enable_6x_lp_quat</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_enable_6x_lp_quat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_enable_6x_lp_quat &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
@@ -1929,36 +1933,36 @@ Global Symbols
 <P><STRONG><a name="[cd]"></a>dmp_enable_feature</STRONG> (Thumb, 682 bytes, Stack size 32 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_enable_feature))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = dmp_enable_feature &rArr; dmp_enable_gyro_cal &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
-<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
-<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
-<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
-<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
+<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
+<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
+<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[131]"></a>dmp_enable_gyro_cal</STRONG> (Thumb, 106 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_enable_gyro_cal))
+<P><STRONG><a name="[132]"></a>dmp_enable_gyro_cal</STRONG> (Thumb, 106 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_enable_gyro_cal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = dmp_enable_gyro_cal &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[13a]"></a>dmp_enable_lp_quat</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_enable_lp_quat))
+<P><STRONG><a name="[13b]"></a>dmp_enable_lp_quat</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_enable_lp_quat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_enable_lp_quat &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
@@ -1966,16 +1970,16 @@ Global Symbols
 <P><STRONG><a name="[ca]"></a>dmp_load_motion_driver_firmware</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_load_motion_driver_firmware))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = dmp_load_motion_driver_firmware &rArr; mpu_load_firmware &rArr; mpu_read_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[13c]"></a>dmp_set_accel_bias</STRONG> (Thumb, 342 bytes, Stack size 56 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_accel_bias))
+<P><STRONG><a name="[13d]"></a>dmp_set_accel_bias</STRONG> (Thumb, 342 bytes, Stack size 56 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_accel_bias))
 <BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = dmp_set_accel_bias &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 </UL>
@@ -1983,7 +1987,7 @@ Global Symbols
 <P><STRONG><a name="[ce]"></a>dmp_set_fifo_rate</STRONG> (Thumb, 164 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_fifo_rate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = dmp_set_fifo_rate &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
@@ -1991,7 +1995,7 @@ Global Symbols
 <P><STRONG><a name="[d1]"></a>dmp_set_gyro_bias</STRONG> (Thumb, 336 bytes, Stack size 32 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_gyro_bias))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = dmp_set_gyro_bias &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
@@ -2000,76 +2004,76 @@ Global Symbols
 <P><STRONG><a name="[cc]"></a>dmp_set_orientation</STRONG> (Thumb, 432 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_orientation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = dmp_set_orientation &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[137]"></a>dmp_set_shake_reject_thresh</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_shake_reject_thresh))
+<P><STRONG><a name="[138]"></a>dmp_set_shake_reject_thresh</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_shake_reject_thresh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = dmp_set_shake_reject_thresh &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[138]"></a>dmp_set_shake_reject_time</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_shake_reject_time))
+<P><STRONG><a name="[139]"></a>dmp_set_shake_reject_time</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_shake_reject_time))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_set_shake_reject_time &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[139]"></a>dmp_set_shake_reject_timeout</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_shake_reject_timeout))
+<P><STRONG><a name="[13a]"></a>dmp_set_shake_reject_timeout</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_shake_reject_timeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_set_shake_reject_timeout &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[133]"></a>dmp_set_tap_axes</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_axes))
+<P><STRONG><a name="[134]"></a>dmp_set_tap_axes</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_axes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_set_tap_axes &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[134]"></a>dmp_set_tap_count</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_count))
+<P><STRONG><a name="[135]"></a>dmp_set_tap_count</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_count))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_set_tap_count &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[132]"></a>dmp_set_tap_thresh</STRONG> (Thumb, 508 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_thresh))
+<P><STRONG><a name="[133]"></a>dmp_set_tap_thresh</STRONG> (Thumb, 508 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_thresh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = dmp_set_tap_thresh &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[135]"></a>dmp_set_tap_time</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_time))
+<P><STRONG><a name="[136]"></a>dmp_set_tap_time</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_time))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_set_tap_time &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[136]"></a>dmp_set_tap_time_multi</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_time_multi))
+<P><STRONG><a name="[137]"></a>dmp_set_tap_time_multi</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(.text.dmp_set_tap_time_multi))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = dmp_set_tap_time_multi &rArr; mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
@@ -2077,10 +2081,10 @@ Global Symbols
 <P><STRONG><a name="[3a]"></a>flatten_build</STRONG> (Thumb, 104 bytes, Stack size 32 bytes, nnom_flatten.o(.text.flatten_build))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = flatten_build &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<BR>[Calls]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_flatten.o(.text.Flatten)
 </UL>
@@ -2094,7 +2098,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flatten
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
 <P><STRONG><a name="[64]"></a>fputc</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart.o(.text.fputc))
@@ -2105,16 +2109,16 @@ Global Symbols
 <P><STRONG><a name="[5c]"></a>input_build</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, nnom_input.o(.text.input_build))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = input_build &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_input.o(.text.input_s)
 </UL>
 <P><STRONG><a name="[5b]"></a>input_run</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, nnom_input.o(.text.input_run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = input_run &rArr; tensor_size
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_input.o(.text.input_s)
@@ -2123,14 +2127,14 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = input_s &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr_v
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_init
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
+<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;output_s
-<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;output_s
+<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
 <P><STRONG><a name="[b2]"></a>io_init</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, nnom_layers.o(.text.io_init))
@@ -2139,16 +2143,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Softmax
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_s
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flatten
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
 </UL>
 
-<P><STRONG><a name="[125]"></a>kernel</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, nnom_layers.o(.text.kernel))
+<P><STRONG><a name="[126]"></a>kernel</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, nnom_layers.o(.text.kernel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = kernel &rArr; shape
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
 </UL>
-<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
+<BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
 </UL>
 
 <P><STRONG><a name="[148]"></a>layer_run</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, nnom.o(.text.layer_run))
@@ -2156,50 +2160,50 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run_to
+<BR>[Called By]<UL><LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run_to
 </UL>
 
-<P><STRONG><a name="[122]"></a>local_convolve_HWC_q15_nonsquare</STRONG> (Thumb, 878 bytes, Stack size 176 bytes, nnom_local_q15.o(.text.local_convolve_HWC_q15_nonsquare))
+<P><STRONG><a name="[123]"></a>local_convolve_HWC_q15_nonsquare</STRONG> (Thumb, 878 bytes, Stack size 176 bytes, nnom_local_q15.o(.text.local_convolve_HWC_q15_nonsquare))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196<LI>Call Chain = local_convolve_HWC_q15_nonsquare &rArr; __NNOM_SSAT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
+<BR>[Calls]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_run
 </UL>
 
-<P><STRONG><a name="[123]"></a>local_convolve_HWC_q7_nonsquare</STRONG> (Thumb, 832 bytes, Stack size 168 bytes, nnom_local.o(.text.local_convolve_HWC_q7_nonsquare))
+<P><STRONG><a name="[124]"></a>local_convolve_HWC_q7_nonsquare</STRONG> (Thumb, 832 bytes, Stack size 168 bytes, nnom_local.o(.text.local_convolve_HWC_q7_nonsquare))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = local_convolve_HWC_q7_nonsquare &rArr; __NNOM_SSAT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
+<BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_run
 </UL>
 
-<P><STRONG><a name="[12b]"></a>local_fully_connected_q7_opt</STRONG> (Thumb, 1208 bytes, Stack size 88 bytes, nnom_local.o(.text.local_fully_connected_q7_opt))
+<P><STRONG><a name="[12c]"></a>local_fully_connected_q7_opt</STRONG> (Thumb, 1208 bytes, Stack size 88 bytes, nnom_local.o(.text.local_fully_connected_q7_opt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = local_fully_connected_q7_opt &rArr; __NNOM_SSAT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
+<BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_run
 </UL>
 
-<P><STRONG><a name="[16c]"></a>local_relu_q15</STRONG> (Thumb, 64 bytes, Stack size 12 bytes, nnom_local_q15.o(.text.local_relu_q15))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = local_relu_q15
+<P><STRONG><a name="[149]"></a>local_leaky_relu_q15</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, nnom_local_q15.o(.text.local_leaky_relu_q15))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = local_leaky_relu_q15
 </UL>
-<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;relu_run
-</UL>
-
-<P><STRONG><a name="[16d]"></a>local_relu_q7</STRONG> (Thumb, 60 bytes, Stack size 12 bytes, nnom_local.o(.text.local_relu_q7))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = local_relu_q7
-</UL>
-<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;relu_run
+<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leaky_relu_run
 </UL>
 
-<P><STRONG><a name="[14b]"></a>local_softmax_q7</STRONG> (Thumb, 280 bytes, Stack size 40 bytes, nnom_local.o(.text.local_softmax_q7))
+<P><STRONG><a name="[14a]"></a>local_leaky_relu_q7</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, nnom_local.o(.text.local_leaky_relu_q7))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = local_leaky_relu_q7
+</UL>
+<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leaky_relu_run
+</UL>
+
+<P><STRONG><a name="[14d]"></a>local_softmax_q7</STRONG> (Thumb, 280 bytes, Stack size 40 bytes, nnom_local.o(.text.local_softmax_q7))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = local_softmax_q7 &rArr; __NNOM_SSAT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_USAT
-<LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
+<BR>[Calls]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_USAT
+<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NNOM_SSAT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_run
 </UL>
@@ -2211,55 +2215,55 @@ Global Symbols
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Stop
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyberry_Potter_System_Status_Update
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_set_static_buf
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
-<LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_set_static_buf
+<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
+<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[150]"></a>mem_analysis_result</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, nnom.o(.text.mem_analysis_result))
+<P><STRONG><a name="[152]"></a>mem_analysis_result</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, nnom.o(.text.mem_analysis_result))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = mem_analysis_result &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
 </UL>
 
-<P><STRONG><a name="[152]"></a>model_compile</STRONG> (Thumb, 370 bytes, Stack size 48 bytes, nnom.o(.text.model_compile))
+<P><STRONG><a name="[154]"></a>model_compile</STRONG> (Thumb, 370 bytes, Stack size 48 bytes, nnom.o(.text.model_compile))
 <BR><BR>[Stack]<UL><LI>Max Depth = 204<LI>Call Chain = model_compile &rArr; compile_layers &rArr;  compile_layers (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tailed_activation
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_mem_set
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;block_mem_set
-<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_analysis_result
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Calls]<UL><LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tailed_activation
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_mem_set
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;block_mem_set
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_analysis_result
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_set_ops
-<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_last
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_set_ops
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_last
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[157]"></a>model_feed_data</STRONG> (Thumb, 234 bytes, Stack size 48 bytes, main.o(.text.model_feed_data))
+<P><STRONG><a name="[159]"></a>model_feed_data</STRONG> (Thumb, 234 bytes, Stack size 48 bytes, main.o(.text.model_feed_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = model_feed_data &rArr; pow &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;round
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
+<BR>[Called By]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
 </UL>
 
-<P><STRONG><a name="[14f]"></a>model_get_output</STRONG> (Thumb, 470 bytes, Stack size 32 bytes, main.o(.text.model_get_output))
+<P><STRONG><a name="[151]"></a>model_get_output</STRONG> (Thumb, 470 bytes, Stack size 32 bytes, main.o(.text.model_get_output))
 <BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = model_get_output &rArr; model_feed_data &rArr; pow &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run
+<BR>[Calls]<UL><LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
@@ -2267,59 +2271,59 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[159]"></a>model_run</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, nnom.o(.text.model_run))
+<P><STRONG><a name="[15b]"></a>model_run</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, nnom.o(.text.model_run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = model_run &rArr; model_run_to &rArr; layer_run &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run_to
+<BR>[Calls]<UL><LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run_to
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
+<BR>[Called By]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
 </UL>
 
-<P><STRONG><a name="[15a]"></a>model_run_to</STRONG> (Thumb, 252 bytes, Stack size 32 bytes, nnom.o(.text.model_run_to))
+<P><STRONG><a name="[15c]"></a>model_run_to</STRONG> (Thumb, 252 bytes, Stack size 32 bytes, nnom.o(.text.model_run_to))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = model_run_to &rArr; layer_run &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;layer_run
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run
+<BR>[Called By]<UL><LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run
 </UL>
 
 <P><STRONG><a name="[c8]"></a>mpu_configure_fifo</STRONG> (Thumb, 210 bytes, Stack size 24 bytes, inv_mpu.o(.text.mpu_configure_fifo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
-<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
+<BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[13e]"></a>mpu_get_accel_fsr</STRONG> (Thumb, 108 bytes, Stack size 12 bytes, inv_mpu.o(.text.mpu_get_accel_fsr))
+<P><STRONG><a name="[13f]"></a>mpu_get_accel_fsr</STRONG> (Thumb, 108 bytes, Stack size 12 bytes, inv_mpu.o(.text.mpu_get_accel_fsr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = mpu_get_accel_fsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
-<P><STRONG><a name="[13d]"></a>mpu_get_accel_sens</STRONG> (Thumb, 116 bytes, Stack size 12 bytes, inv_mpu.o(.text.mpu_get_accel_sens))
+<P><STRONG><a name="[13e]"></a>mpu_get_accel_sens</STRONG> (Thumb, 116 bytes, Stack size 12 bytes, inv_mpu.o(.text.mpu_get_accel_sens))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = mpu_get_accel_sens
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
+<BR>[Called By]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 </UL>
 
-<P><STRONG><a name="[166]"></a>mpu_get_fifo_config</STRONG> (Thumb, 24 bytes, Stack size 4 bytes, inv_mpu.o(.text.mpu_get_fifo_config))
+<P><STRONG><a name="[168]"></a>mpu_get_fifo_config</STRONG> (Thumb, 24 bytes, Stack size 4 bytes, inv_mpu.o(.text.mpu_get_fifo_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = mpu_get_fifo_config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
-<P><STRONG><a name="[163]"></a>mpu_get_gyro_fsr</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, inv_mpu.o(.text.mpu_get_gyro_fsr))
+<P><STRONG><a name="[165]"></a>mpu_get_gyro_fsr</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, inv_mpu.o(.text.mpu_get_gyro_fsr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = mpu_get_gyro_fsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
 <P><STRONG><a name="[16e]"></a>mpu_get_gyro_sens</STRONG> (Thumb, 104 bytes, Stack size 12 bytes, inv_mpu.o(.text.mpu_get_gyro_sens))
@@ -2328,24 +2332,24 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 </UL>
 
-<P><STRONG><a name="[164]"></a>mpu_get_lpf</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, inv_mpu.o(.text.mpu_get_lpf))
+<P><STRONG><a name="[166]"></a>mpu_get_lpf</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, inv_mpu.o(.text.mpu_get_lpf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = mpu_get_lpf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
-<P><STRONG><a name="[165]"></a>mpu_get_sample_rate</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, inv_mpu.o(.text.mpu_get_sample_rate))
+<P><STRONG><a name="[167]"></a>mpu_get_sample_rate</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, inv_mpu.o(.text.mpu_get_sample_rate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = mpu_get_sample_rate
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
 <P><STRONG><a name="[c6]"></a>mpu_init</STRONG> (Thumb, 304 bytes, Stack size 40 bytes, inv_mpu.o(.text.mpu_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = mpu_init &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
-<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_gyro_fsr
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_accel_fsr
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
@@ -2356,59 +2360,59 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[13b]"></a>mpu_load_firmware</STRONG> (Thumb, 308 bytes, Stack size 56 bytes, inv_mpu.o(.text.mpu_load_firmware))
+<P><STRONG><a name="[13c]"></a>mpu_load_firmware</STRONG> (Thumb, 308 bytes, Stack size 56 bytes, inv_mpu.o(.text.mpu_load_firmware))
 <BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = mpu_load_firmware &rArr; mpu_read_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
-<LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
+<LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
-<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_load_motion_driver_firmware
 </UL>
 
-<P><STRONG><a name="[160]"></a>mpu_lp_accel_mode</STRONG> (Thumb, 294 bytes, Stack size 24 bytes, inv_mpu.o(.text.mpu_lp_accel_mode))
+<P><STRONG><a name="[162]"></a>mpu_lp_accel_mode</STRONG> (Thumb, 294 bytes, Stack size 24 bytes, inv_mpu.o(.text.mpu_lp_accel_mode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
-<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
+<BR>[Calls]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_configure_fifo
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 </UL>
 
-<P><STRONG><a name="[15e]"></a>mpu_read_mem</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, inv_mpu.o(.text.mpu_read_mem))
+<P><STRONG><a name="[160]"></a>mpu_read_mem</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, inv_mpu.o(.text.mpu_read_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = mpu_read_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_read
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Called By]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 
-<P><STRONG><a name="[130]"></a>mpu_reset_fifo</STRONG> (Thumb, 656 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_reset_fifo))
+<P><STRONG><a name="[131]"></a>mpu_reset_fifo</STRONG> (Thumb, 656 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_reset_fifo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
+<BR>[Called By]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_configure_fifo
 </UL>
 
-<P><STRONG><a name="[162]"></a>mpu_run_self_test</STRONG> (Thumb, 386 bytes, Stack size 72 bytes, inv_mpu.o(.text.mpu_run_self_test))
+<P><STRONG><a name="[164]"></a>mpu_run_self_test</STRONG> (Thumb, 386 bytes, Stack size 72 bytes, inv_mpu.o(.text.mpu_run_self_test))
 <BR><BR>[Stack]<UL><LI>Max Depth = 260<LI>Call Chain = mpu_run_self_test &rArr; mpu_set_dmp_state &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_fifo_config
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_sample_rate
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_lpf
-<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_gyro_fsr
-<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
+<BR>[Calls]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_fifo_config
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_sample_rate
+<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_lpf
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_gyro_fsr
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
@@ -2427,12 +2431,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[15d]"></a>mpu_set_bypass</STRONG> (Thumb, 498 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_set_bypass))
+<P><STRONG><a name="[15f]"></a>mpu_set_bypass</STRONG> (Thumb, 498 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_set_bypass))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = mpu_set_bypass &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
@@ -2446,13 +2450,13 @@ Global Symbols
 <P><STRONG><a name="[d0]"></a>mpu_set_dmp_state</STRONG> (Thumb, 208 bytes, Stack size 40 bytes, inv_mpu.o(.text.mpu_set_dmp_state))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = mpu_set_dmp_state &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
-<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
+<BR>[Calls]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
+<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
@@ -2461,27 +2465,27 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[161]"></a>mpu_set_int_latched</STRONG> (Thumb, 184 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_set_int_latched))
+<P><STRONG><a name="[163]"></a>mpu_set_int_latched</STRONG> (Thumb, 184 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_set_int_latched))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = mpu_set_int_latched &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
+<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 </UL>
 
-<P><STRONG><a name="[15c]"></a>mpu_set_lpf</STRONG> (Thumb, 226 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_set_lpf))
+<P><STRONG><a name="[15e]"></a>mpu_set_lpf</STRONG> (Thumb, 226 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_set_lpf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = mpu_set_lpf &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 </UL>
@@ -2489,11 +2493,11 @@ Global Symbols
 <P><STRONG><a name="[c9]"></a>mpu_set_sample_rate</STRONG> (Thumb, 250 bytes, Stack size 16 bytes, inv_mpu.o(.text.mpu_set_sample_rate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
+<BR>[Calls]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
@@ -2503,52 +2507,52 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = mpu_set_sensors &rArr; mpu_set_int_latched &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_int_latched
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[12f]"></a>mpu_write_mem</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, inv_mpu.o(.text.mpu_write_mem))
+<P><STRONG><a name="[130]"></a>mpu_write_mem</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, inv_mpu.o(.text.mpu_write_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = mpu_write_mem &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
-<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
-<LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
-<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
-<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
-<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
-<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
-<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
-<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
-<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
+<BR>[Called By]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
+<LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
+<LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
+<LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
+<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
+<LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
+<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
+<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
+<LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_gyro_bias
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_fifo_rate
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_orientation
 </UL>
 
-<P><STRONG><a name="[167]"></a>new_model</STRONG> (Thumb, 118 bytes, Stack size 16 bytes, nnom.o(.text.new_model))
+<P><STRONG><a name="[169]"></a>new_model</STRONG> (Thumb, 118 bytes, Stack size 16 bytes, nnom.o(.text.new_model))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = new_model &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[11d]"></a>new_tensor</STRONG> (Thumb, 182 bytes, Stack size 48 bytes, nnom_tensor.o(.text.new_tensor))
+<P><STRONG><a name="[11e]"></a>new_tensor</STRONG> (Thumb, 182 bytes, Stack size 48 bytes, nnom_tensor.o(.text.new_tensor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
-<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_build
@@ -2560,32 +2564,32 @@ Global Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_build
 </UL>
 
-<P><STRONG><a name="[116]"></a>nnom_alignto</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, nnom.o(.text.nnom_alignto))
+<P><STRONG><a name="[117]"></a>nnom_alignto</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, nnom.o(.text.nnom_alignto))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = nnom_alignto
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_malloc
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_malloc
 </UL>
 
-<P><STRONG><a name="[129]"></a>nnom_free</STRONG> (Thumb, 8 bytes, Stack size 4 bytes, nnom.o(.text.nnom_free))
+<P><STRONG><a name="[12a]"></a>nnom_free</STRONG> (Thumb, 8 bytes, Stack size 4 bytes, nnom.o(.text.nnom_free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = nnom_free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;output_s
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_tensor
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;output_s
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delete_tensor
 </UL>
 
-<P><STRONG><a name="[11c]"></a>nnom_hook_length</STRONG> (Thumb, 54 bytes, Stack size 12 bytes, nnom.o(.text.nnom_hook_length))
+<P><STRONG><a name="[11d]"></a>nnom_hook_length</STRONG> (Thumb, 54 bytes, Stack size 12 bytes, nnom.o(.text.nnom_hook_length))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = nnom_hook_length
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
-<P><STRONG><a name="[168]"></a>nnom_malloc</STRONG> (Thumb, 148 bytes, Stack size 24 bytes, nnom.o(.text.nnom_malloc))
+<P><STRONG><a name="[16a]"></a>nnom_malloc</STRONG> (Thumb, 148 bytes, Stack size 24 bytes, nnom.o(.text.nnom_malloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
@@ -2594,24 +2598,24 @@ Global Symbols
 <P><STRONG><a name="[b1]"></a>nnom_mem</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, nnom.o(.text.nnom_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_malloc
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_alignto
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_malloc
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Softmax
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_s
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flatten
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_relu
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_model
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_io
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_hook
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_leaky_relu
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_model
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_io
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_hook
 </UL>
 
-<P><STRONG><a name="[14d]"></a>nnom_set_static_buf</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, nnom.o(.text.nnom_set_static_buf))
+<P><STRONG><a name="[14f]"></a>nnom_set_static_buf</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, nnom.o(.text.nnom_set_static_buf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = nnom_set_static_buf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -2620,74 +2624,74 @@ Global Symbols
 <P><STRONG><a name="[62]"></a>output_run</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, nnom_output.o(.text.output_run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = output_run &rArr; tensor_size
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_output.o(.text.output_s)
 </UL>
-<P><STRONG><a name="[16a]"></a>output_s</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, nnom_output.o(.text.output_s))
+<P><STRONG><a name="[16c]"></a>output_s</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, nnom_output.o(.text.output_s))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = output_s &rArr; input_s &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_s
-<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_free
+<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[155]"></a>set_tailed_activation</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, nnom.o(.text.set_tailed_activation))
+<P><STRONG><a name="[157]"></a>set_tailed_activation</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, nnom.o(.text.set_tailed_activation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = set_tailed_activation &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
 </UL>
 
-<P><STRONG><a name="[12d]"></a>shape</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, nnom_layers.o(.text.shape))
+<P><STRONG><a name="[12e]"></a>shape</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, nnom_layers.o(.text.shape))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = shape
 </UL>
 <BR>[Called By]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_s
-<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dilation
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stride
-<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;kernel
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dilation
+<LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stride
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;kernel
 </UL>
 
 <P><STRONG><a name="[53]"></a>softmax_build</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, nnom_softmax.o(.text.softmax_build))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = softmax_build &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_softmax.o(.text.Softmax)
 </UL>
 <P><STRONG><a name="[52]"></a>softmax_run</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, nnom_softmax.o(.text.softmax_run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = softmax_run &rArr; local_softmax_q7 &rArr; __NNOM_SSAT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
-<LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_softmax_q7
+<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_softmax_q7
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom_softmax.o(.text.Softmax)
 </UL>
-<P><STRONG><a name="[169]"></a>softmax_s</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, nnom_softmax.o(.text.softmax_s))
+<P><STRONG><a name="[16b]"></a>softmax_s</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, nnom_softmax.o(.text.softmax_s))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = softmax_s &rArr; Softmax &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Softmax
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
+<BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_model_create
 </UL>
 
-<P><STRONG><a name="[126]"></a>stride</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, nnom_layers.o(.text.stride))
+<P><STRONG><a name="[127]"></a>stride</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, nnom_layers.o(.text.stride))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = stride &rArr; shape
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shape
 </UL>
-<BR>[Called By]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
+<BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
 </UL>
 
-<P><STRONG><a name="[11e]"></a>tensor_cpy_attr</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, nnom_tensor.o(.text.tensor_cpy_attr))
+<P><STRONG><a name="[11f]"></a>tensor_cpy_attr</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, nnom_tensor.o(.text.tensor_cpy_attr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = tensor_cpy_attr &rArr; tensor_get_num_channel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
@@ -2697,7 +2701,7 @@ Global Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_build
 </UL>
 
-<P><STRONG><a name="[128]"></a>tensor_get_num_channel</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, nnom_tensor.o(.text.tensor_get_num_channel))
+<P><STRONG><a name="[129]"></a>tensor_get_num_channel</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, nnom_tensor.o(.text.tensor_get_num_channel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = tensor_get_num_channel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_build
@@ -2705,22 +2709,22 @@ Global Symbols
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_s
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flatten_build
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_build
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;default_build
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
-<LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_cpy_attr
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_set_attr
 </UL>
 
-<P><STRONG><a name="[154]"></a>tensor_mem_set</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, nnom.o(.text.tensor_mem_set))
+<P><STRONG><a name="[156]"></a>tensor_mem_set</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, nnom.o(.text.tensor_mem_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = tensor_mem_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
 </UL>
 
-<P><STRONG><a name="[12a]"></a>tensor_set_attr</STRONG> (Thumb, 112 bytes, Stack size 32 bytes, nnom_tensor.o(.text.tensor_set_attr))
+<P><STRONG><a name="[12b]"></a>tensor_set_attr</STRONG> (Thumb, 112 bytes, Stack size 32 bytes, nnom_tensor.o(.text.tensor_set_attr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = tensor_set_attr &rArr; tensor_get_num_channel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
+<BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_get_num_channel
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
@@ -2736,7 +2740,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_s
 </UL>
 
-<P><STRONG><a name="[115]"></a>tensor_size</STRONG> (Thumb, 74 bytes, Stack size 12 bytes, nnom_tensor.o(.text.tensor_size))
+<P><STRONG><a name="[116]"></a>tensor_size</STRONG> (Thumb, 74 bytes, Stack size 12 bytes, nnom_tensor.o(.text.tensor_size))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = tensor_size
 </UL>
 <BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_run
@@ -2746,8 +2750,8 @@ Global Symbols
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_build
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_run
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_build
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;relu_run
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leaky_relu_run
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_mem_size
 </UL>
 
@@ -2773,26 +2777,26 @@ Global Symbols
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Module_IR_RF_Receive
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Module_IR_RF_Transmit
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Module_Init
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_model_version
-<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run_to
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_tensor
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_model_version
+<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_run_to
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;layer_run
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tailed_activation
-<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_analysis_result
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_malloc
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_memory_block_info
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_layer_info
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_block
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tailed_activation
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_analysis_result
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_malloc
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_memory_block_info
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_layer_info
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_block
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_add
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Module_IR_RF_Print
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
+<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_get_output
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
 <P><STRONG><a name="[180]"></a>__ARM_fpclassify</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, fpclassify.o(i.__ARM_fpclassify))
-<BR><BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR><BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[172]"></a>__kernel_poly</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
@@ -2801,7 +2805,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[173]"></a>__mathlib_dbl_divzero</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_divzero))
@@ -2809,7 +2813,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[174]"></a>__mathlib_dbl_infnan2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_infnan2))
@@ -2817,7 +2821,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[175]"></a>__mathlib_dbl_invalid</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_invalid))
@@ -2825,7 +2829,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[176]"></a>__mathlib_dbl_overflow</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_overflow))
@@ -2833,7 +2837,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[178]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_underflow))
@@ -2841,7 +2845,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 
 <P><STRONG><a name="[197]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
@@ -2851,11 +2855,11 @@ Global Symbols
 <P><STRONG><a name="[199]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[17e]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
-<BR><BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR><BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 </UL>
 
-<P><STRONG><a name="[158]"></a>pow</STRONG> (Thumb, 2532 bytes, Stack size 112 bytes, pow.o(i.pow))
+<P><STRONG><a name="[15a]"></a>pow</STRONG> (Thumb, 2532 bytes, Stack size 112 bytes, pow.o(i.pow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = pow &rArr; __kernel_poly &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -2876,7 +2880,7 @@ Global Symbols
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_divzero
 </UL>
-<BR>[Called By]<UL><LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
+<BR>[Called By]<UL><LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
 </UL>
 
 <P><STRONG><a name="[8e]"></a>round</STRONG> (Thumb, 136 bytes, Stack size 32 bytes, round.o(i.round))
@@ -2890,7 +2894,7 @@ Global Symbols
 <LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_PB1_GetAvg
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_feed_data
 </UL>
 
 <P><STRONG><a name="[17f]"></a>sqrt</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, sqrt.o(i.sqrt))
@@ -2899,36 +2903,36 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
+<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pow
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[14a]"></a>__NNOM_SSAT</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, nnom_local.o(.text.__NNOM_SSAT))
+<P><STRONG><a name="[14c]"></a>__NNOM_SSAT</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, nnom_local.o(.text.__NNOM_SSAT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __NNOM_SSAT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_softmax_q7
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_fully_connected_q7_opt
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q7_nonsquare
+<BR>[Called By]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_softmax_q7
+<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_fully_connected_q7_opt
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q7_nonsquare
 </UL>
 
-<P><STRONG><a name="[14c]"></a>__NNOM_USAT</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, nnom_local.o(.text.__NNOM_USAT))
+<P><STRONG><a name="[14e]"></a>__NNOM_USAT</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, nnom_local.o(.text.__NNOM_USAT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __NNOM_USAT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_softmax_q7
+<BR>[Called By]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_softmax_q7
 </UL>
 
-<P><STRONG><a name="[149]"></a>__NNOM_SSAT</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, nnom_local_q15.o(.text.__NNOM_SSAT))
+<P><STRONG><a name="[14b]"></a>__NNOM_SSAT</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, nnom_local_q15.o(.text.__NNOM_SSAT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __NNOM_SSAT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q15_nonsquare
+<BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_convolve_HWC_q15_nonsquare
 </UL>
 
 <P><STRONG><a name="[5d]"></a>model_add</STRONG> (Thumb, 102 bytes, Stack size 32 bytes, nnom.o(.text.model_add))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = model_add &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_last
+<BR>[Calls]<UL><LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_last
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom.o(.text.new_model)
@@ -2936,8 +2940,8 @@ Local Symbols
 <P><STRONG><a name="[5e]"></a>model_hook</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, nnom.o(.text.model_hook))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = model_hook &rArr; allocate_hook &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_io
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_hook
+<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_io
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;allocate_hook
 </UL>
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_mergex
 </UL>
@@ -2964,14 +2968,14 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nnom.o(.text.new_model)
 </UL>
-<P><STRONG><a name="[151]"></a>find_last</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, nnom.o(.text.find_last))
+<P><STRONG><a name="[153]"></a>find_last</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, nnom.o(.text.find_last))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = find_last
 </UL>
-<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_add
 </UL>
 
-<P><STRONG><a name="[111]"></a>allocate_hook</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, nnom.o(.text.allocate_hook))
+<P><STRONG><a name="[112]"></a>allocate_hook</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, nnom.o(.text.allocate_hook))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = allocate_hook &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
@@ -2979,7 +2983,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_hook
 </UL>
 
-<P><STRONG><a name="[112]"></a>allocate_io</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, nnom.o(.text.allocate_io))
+<P><STRONG><a name="[113]"></a>allocate_io</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, nnom.o(.text.allocate_io))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = allocate_io &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nnom_mem
@@ -2987,82 +2991,82 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_hook
 </UL>
 
-<P><STRONG><a name="[110]"></a>allocate_block</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, nnom.o(.text.allocate_block))
+<P><STRONG><a name="[111]"></a>allocate_block</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, nnom.o(.text.allocate_block))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = allocate_block &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
-<P><STRONG><a name="[117]"></a>layer_shortcut_add</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, nnom.o(.text.layer_shortcut_add))
+<P><STRONG><a name="[118]"></a>layer_shortcut_add</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, nnom.o(.text.layer_shortcut_add))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = layer_shortcut_add
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
-<P><STRONG><a name="[118]"></a>print_layer_info</STRONG> (Thumb, 578 bytes, Stack size 40 bytes, nnom.o(.text.print_layer_info))
+<P><STRONG><a name="[119]"></a>print_layer_info</STRONG> (Thumb, 578 bytes, Stack size 40 bytes, nnom.o(.text.print_layer_info))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = print_layer_info &rArr; io_mem_size &rArr; tensor_size
 </UL>
 <BR>[Calls]<UL><LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_mem_size
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
-<P><STRONG><a name="[119]"></a>print_memory_block_info</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, nnom.o(.text.print_memory_block_info))
+<P><STRONG><a name="[11a]"></a>print_memory_block_info</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, nnom.o(.text.print_memory_block_info))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = print_memory_block_info &rArr; printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
-<P><STRONG><a name="[11a]"></a>release_comp_mem</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, nnom.o(.text.release_comp_mem))
+<P><STRONG><a name="[11b]"></a>release_comp_mem</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, nnom.o(.text.release_comp_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = release_comp_mem &rArr; release_block
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_block
+<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_block
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
-<P><STRONG><a name="[11b]"></a>release_input_mem</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, nnom.o(.text.release_input_mem))
+<P><STRONG><a name="[11c]"></a>release_input_mem</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, nnom.o(.text.release_input_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = release_input_mem &rArr; release_block
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_block
+<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_block
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compile_layers
 </UL>
 
 <P><STRONG><a name="[147]"></a>io_mem_size</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, nnom.o(.text.io_mem_size))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = io_mem_size &rArr; tensor_size
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
 </UL>
-<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_layer_info
+<BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_layer_info
 </UL>
 
-<P><STRONG><a name="[16b]"></a>release_block</STRONG> (Thumb, 44 bytes, Stack size 4 bytes, nnom.o(.text.release_block))
+<P><STRONG><a name="[16d]"></a>release_block</STRONG> (Thumb, 44 bytes, Stack size 4 bytes, nnom.o(.text.release_block))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = release_block
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_input_mem
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_comp_mem
+<BR>[Called By]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_input_mem
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;release_comp_mem
 </UL>
 
-<P><STRONG><a name="[156]"></a>model_set_ops</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, nnom.o(.text.model_set_ops))
+<P><STRONG><a name="[158]"></a>model_set_ops</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, nnom.o(.text.model_set_ops))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = model_set_ops
 </UL>
-<BR>[Called By]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
 </UL>
 
-<P><STRONG><a name="[54]"></a>relu_run</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, nnom_activation.o(.text.relu_run))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = relu_run &rArr; tensor_size
+<P><STRONG><a name="[54]"></a>leaky_relu_run</STRONG> (Thumb, 92 bytes, Stack size 32 bytes, nnom_activation.o(.text.leaky_relu_run))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = leaky_relu_run &rArr; local_leaky_relu_q15
 </UL>
-<BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_relu_q15
-<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_relu_q7
+<BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tensor_size
+<LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_leaky_relu_q15
+<LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;local_leaky_relu_q7
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> nnom_activation.o(.text.act_relu)
+<BR>[Address Reference Count : 1]<UL><LI> nnom_activation.o(.text.act_leaky_relu)
 </UL>
 <P><STRONG><a name="[bd]"></a>IIC1_Start</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, iic.o(.text.IIC1_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = IIC1_Start &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
@@ -3161,19 +3165,19 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_read
 </UL>
 
-<P><STRONG><a name="[14e]"></a>nnom_model_create</STRONG> (Thumb, 266 bytes, Stack size 80 bytes, main.o(.text.nnom_model_create))
-<BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = nnom_model_create &rArr; output_s &rArr; input_s &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
+<P><STRONG><a name="[150]"></a>nnom_model_create</STRONG> (Thumb, 278 bytes, Stack size 88 bytes, main.o(.text.nnom_model_create))
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = nnom_model_create &rArr; output_s &rArr; input_s &rArr; new_tensor &rArr; nnom_mem &rArr; nnom_malloc &rArr; printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_s
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;output_s
+<BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;softmax_s
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;output_s
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;input_s
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flatten_s
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_relu
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_model_version
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
-<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_model
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dense_s
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;conv2d_s
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;act_leaky_relu
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_model_version
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;model_compile
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_model
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -3193,13 +3197,13 @@ Local Symbols
 <P><STRONG><a name="[cf]"></a>run_self_test</STRONG> (Thumb, 138 bytes, Stack size 48 bytes, mpu6050.o(.text.run_self_test))
 <BR><BR>[Stack]<UL><LI>Max Depth = 308<LI>Call Chain = run_self_test &rArr; mpu_run_self_test &rArr; mpu_set_dmp_state &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
-<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
+<LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
+<LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
 <LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_gyro_sens
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_gyro_bias
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
@@ -3211,7 +3215,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inv_orientation_matrix_to_scalar
 </UL>
 
-<P><STRONG><a name="[15b]"></a>set_int_enable</STRONG> (Thumb, 242 bytes, Stack size 16 bytes, inv_mpu.o(.text.set_int_enable))
+<P><STRONG><a name="[15d]"></a>set_int_enable</STRONG> (Thumb, 242 bytes, Stack size 16 bytes, inv_mpu.o(.text.set_int_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = set_int_enable &rArr; IIC1_write &rArr; IIC1_Stop &rArr; IIC1_W_SCL &rArr; GPIO_WriteBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
@@ -3228,7 +3232,7 @@ Local Symbols
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_write
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
 <P><STRONG><a name="[10a]"></a>accel_self_test</STRONG> (Thumb, 260 bytes, Stack size 64 bytes, inv_mpu.o(.text.accel_self_test))
@@ -3244,7 +3248,7 @@ Local Symbols
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
 <P><STRONG><a name="[142]"></a>gyro_self_test</STRONG> (Thumb, 366 bytes, Stack size 64 bytes, inv_mpu.o(.text.gyro_self_test))
@@ -3260,7 +3264,7 @@ Local Symbols
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC1_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
 <P><STRONG><a name="[10b]"></a>get_accel_prod_shift</STRONG> (Thumb, 262 bytes, Stack size 32 bytes, inv_mpu.o(.text.get_accel_prod_shift))

@@ -27,7 +27,7 @@ DEF_COLUMNS = (3, 4, 5)
 DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
-DEF_BATCH_SIZE = 200
+DEF_BATCH_SIZE = 480
 DEF_NUM_EPOCH = 2000
 
 # 动作名称到标签的映射
@@ -37,15 +37,17 @@ def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_cla
     inputs = layers.Input(shape=input_shape) # type: ignore
     # 卷积层1
     x = layers.Conv1D(30, kernel_size=3, strides=3)(inputs) # type: ignore
-    x = layers.ReLU()(x)# type: ignore
-    x = layers.Conv1D(15, kernel_size=3, strides=1)(x) # type: ignore
-    x = layers.ReLU()(x)# type: ignore
+    x = BatchNormalization()(x) # type: ignore
+    x = layers.LeakyReLU()(x)# type: ignore
+    x = layers.Conv1D(15, kernel_size=1, strides=1)(x) # type: ignore
+    x = BatchNormalization()(x) # type: ignore
+    x = layers.LeakyReLU()(x)# type: ignore
     
     # 展平层
     x = layers.Flatten()(x)# type: ignore
     # 全连接层1
     x = layers.Dense(num_classes)(x)# type: ignore
-    x = layers.Dropout(0.5)(x)# type: ignore
+    #x = layers.Dropout(0.5)(x)# type: ignore
     outputs = layers.Softmax()(x)# type: ignore
     
     model = models.Model(inputs=inputs, outputs=outputs)# type: ignore
@@ -58,7 +60,7 @@ def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_cla
     model.summary()
     
     # Callbacks
-    early_stopping = callbacks.EarlyStopping(monitor='val_loss', patience=10)# type: ignore
+    early_stopping = callbacks.EarlyStopping(monitor='val_loss', patience=50)# type: ignore
     checkpoint = callbacks.ModelCheckpoint(DEF_MODEL_NAME, monitor='val_accuracy', save_best_only=True, mode='max')# type: ignore
     
     # 训练模型

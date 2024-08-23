@@ -91,7 +91,7 @@ void SPI2_Init(void)
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStruct);					
 	
-	// Configure MOSI (PB13) and SCK (PB15)
+	// Configure MOSI (PB15) and SCK (PB13)
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_15;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
