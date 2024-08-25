@@ -97,7 +97,7 @@ Type-c口的作用：可以用于串口调试和电池充电，在有Type-c连�
 
 ### Python环境：（如果你需要训练自己的模型）
 
-- 首先需要安装一个anaconda
+- 首先需要安装一个anaconda（请各位大哥大姐从官网下载，不要在网上随便找安装包，求求你们了）
 
   - 创建一个python3.9环境
   - `conda create --name py39_env python=3.9`
