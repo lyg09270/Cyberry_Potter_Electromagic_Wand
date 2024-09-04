@@ -30,6 +30,9 @@
 typedef enum eSystem_Mode{
         SYSTEM_MODE_0 = 0,
         SYSTEM_MODE_1 = 1,
+	#ifdef LASER_ENABLE
+	SYSTEM_MODE_2 = 2
+	#endif
 }eSystem_Mode;  
 
 typedef enum eModule_Type{
@@ -82,6 +85,9 @@ typedef struct Module_t
 
 typedef int8_t Model_Output_t;
 typedef uint32_t ROM_Address_t;
+
+extern struct Module_t Module;
+extern struct Cyberry_Potter_t Cyberry_Potter;
 
 void System_Init(void);
 void Cyberry_Potter_System_Status_Update(void);

@@ -3,20 +3,15 @@
 #include "nnom.h"
 
 #define QUANTIFICATION_SCALE (pow(2,INPUT_1_OUTPUT_DEC))
+#define OUPUT_THRESHOLD 63 //The out put of model must bigger than this value unless the out put would be unrecognized.
 
 #ifdef NNOM_USING_STATIC_MEMORY
 	uint8_t static_buf[1024 * 8];
 #endif //NNOM_USING_STATIC_MEMORY
 nnom_model_t* model;
 
-extern struct Button_t Button;
-extern struct LED_t LED;
-extern struct IMU_t IMU;
-extern struct Module_t Module;
-extern struct Cyberry_Potter_t Cyberry_Potter;
 volatile Model_Output_t model_output = -1;
 volatile ROM_Address_t ROM_Address;
-extern volatile uint8_t W25Q64_Buffer[4096];
 
 /*
  * @brief Quantirize IMU data and feed to CNN model
@@ -169,8 +164,18 @@ int main(void)
 		}
 		else if(Button.status == BUTTON_HOLD_LONG){
 			printf("BUTTON_HOLD_LONG\n");
-			LED.Operate(BLINK_10HZ);
+			LED.Operate(BLINK_5HZ);
 			Cyberry_Potter_System_Status_Update();
+			#ifdef LASER_ENABLE
+			if(Cyberry_Potter.System_Mode == SYSTEM_MODE_2){
+				Laser.status = ON;
+				Laser.Operate(Laser.status);
+			}
+			else{
+				Laser.status = OFF;
+				Laser.Operate(Laser.status);
+			}
+			#endif
 			Button.status_clear();
 		}
 		

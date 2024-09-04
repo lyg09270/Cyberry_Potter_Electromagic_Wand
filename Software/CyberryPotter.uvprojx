@@ -721,11 +721,6 @@
               <FilePath>.\MainBoard\CyberryPotter.h</FilePath>
             </File>
             <File>
-              <FileName>CyberryPotter_status.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\MainBoard\CyberryPotter_status.h</FilePath>
-            </File>
-            <File>
               <FileName>Delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\MainBoard\Delay.c</FilePath>

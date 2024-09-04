@@ -17,7 +17,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"    // Device header
 
-#define SERIAL_DEBUG
+
 #define ADC_MAX_SAMPLES 10
 #define ADC_MAX_TESTS 10
 

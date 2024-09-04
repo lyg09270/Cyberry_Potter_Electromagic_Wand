@@ -183,11 +183,23 @@ void Cyberry_Potter_System_Status_Update(void)
 			#endif //SERIAL_DEBUG
 			break;
 	      case SYSTEM_MODE_1:
+			#ifdef LASER_ENABLE
+			Cyberry_Potter.System_Mode = SYSTEM_MODE_2;
+			#else
+			Cyberry_Potter.System_Mode = SYSTEM_MODE_0;
+			#endif
+			#ifdef SERIAL_DEBUG
+			printf("SYSTEM_MODE_0\n");
+			#endif //SERIAL_DEBUG
+			break;
+	      #ifdef LASER_ENABLE
+	      case SYSTEM_MODE_2:
 			Cyberry_Potter.System_Mode = SYSTEM_MODE_0;
 			#ifdef SERIAL_DEBUG
 			printf("SYSTEM_MODE_0\n");
 			#endif //SERIAL_DEBUG
 			break;
+	      #endif
       }  
 }
 

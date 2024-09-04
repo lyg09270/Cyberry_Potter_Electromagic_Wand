@@ -28,11 +28,18 @@ typedef enum eLED_LED{
 typedef struct LED_t
 {
 	void (*Operate)(eLED_STATUS status);
+	eLED_STATUS status;
 }LED_t;
 
 //Define LED
 #define LED_GPIO GPIOA
 #define LED_GPIO_PIN GPIO_Pin_1
+//#define LASER_ENABLE
+
+extern struct LED_t LED;
+#ifdef LASER_ENABLE
+extern struct LED_t Laser;
+#endif
 
 /* Functions -----------------------------------------------------------------*/
 void LED_Init(void);

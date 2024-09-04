@@ -17,8 +17,11 @@
 
 #define LED_ON GPIO_WriteBit(LED_GPIO,LED_GPIO_PIN,Bit_SET)
 #define LED_OFF GPIO_WriteBit(LED_GPIO,LED_GPIO_PIN,Bit_RESET)
+#define LASER_ON GPIO_WriteBit(GPIOA,GPIO_Pin_2,Bit_SET)
+#define LASER_OFF GPIO_WriteBit(GPIOA,GPIO_Pin_2,Bit_RESET)
 
 LED_t LED;
+LED_t Laser;
 
 void LED_Blink(eLED_STATUS status)
 {
@@ -59,6 +62,23 @@ void LED_Blink(eLED_STATUS status)
 	}
 }
 
+#ifdef LASER_ENABLE
+void Lazer_operate(eLED_STATUS status)
+{
+	switch(status)
+	{
+		case OFF:
+			LASER_OFF;
+			break;
+		case ON:
+			LASER_ON;
+			break;
+		default:
+			break;	
+	}
+}
+#endif
+
 void LED_Init(void)
 {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
@@ -69,13 +89,17 @@ void LED_Init(void)
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(LED_GPIO,&GPIO_InitStruct); 	
 	
+	#ifdef LASER_ENABLE
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
         GPIO_InitStruct.GPIO_Pin = GPIO_Pin_2;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOA,&GPIO_InitStruct); 	
 	
-	GPIO_WriteBit(GPIOA,GPIO_Pin_2,Bit_SET);
-	
+	Laser.status = OFF;
+	Laser.Operate = &Lazer_operate;
+	Laser.Operate(Laser.status);
+	#endif
+	LED.status = OFF;
 	LED.Operate = &LED_Blink;
-	LED.Operate(ON);
+	LED.Operate(LED.status);
 }

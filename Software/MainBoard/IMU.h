@@ -64,4 +64,6 @@ void IMU_Data_Print(void);
 void IMU_Get_Data(uint8_t index);
 void IMU_Init(void);
 
+extern struct IMU_t IMU;
+
 #endif	//_IMU_H_

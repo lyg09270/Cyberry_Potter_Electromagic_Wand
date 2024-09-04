@@ -42,7 +42,8 @@ typedef struct Button_t
 #define BUTTON_IDLE_SHORT_THRESHOLD_MS (10)
 #define BUTTON_SHORT_LONG_THRESHOLD_MS (500)
 
+extern struct Button_t Button;
+
 /* Functions -----------------------------------------------------------------*/
 void Button_Init(void);
-
 #endif	//_BUTTON_H_
