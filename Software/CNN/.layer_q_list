@@ -1,1 +1,1 @@
-{'input_1': [4, 0], 'conv1d': [4, 0], 'leaky_re_lu': [4, 0], 'conv1d_1': [3, 0], 'leaky_re_lu_1': [3, 0], 'flatten': [3, 0], 'dense': [2, 0], 'dropout': [2, 0], 'softmax': [7, 0]}
+{'input_1': [4, 0], 'conv2d': [4, 0], 'leaky_re_lu': [4, 0], 'conv2d_1': [3, 0], 'leaky_re_lu_1': [3, 0], 'average_pooling2d': [3, 0], 'flatten': [3, 0], 'dense': [3, 0], 'softmax': [7, 0]}

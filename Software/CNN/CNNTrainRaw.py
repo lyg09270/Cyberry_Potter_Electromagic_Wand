@@ -13,7 +13,7 @@ from sklearn.metrics import classification_report
 motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h', 'letter_R', 'letter_W', 'letter_phi', 'Circle', 'UpAndDown', 'Horn', 'Wave', 'NoMotion']
 
 # 定义目录路径
-DEF_SAVE_TO_PATH = './TraningData_8_23/'
+DEF_SAVE_TO_PATH = './TraningData_9_4/'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
 DEF_FILE_MAX = 100
@@ -28,23 +28,24 @@ DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
 DEF_BATCH_SIZE = 120
-DEF_NUM_EPOCH = 500
+DEF_NUM_EPOCH = 200
 
 # 动作名称到标签的映射
 motion_to_label = {name: idx for idx, name in enumerate(motion_names)}
 
-def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_classes=len(motion_names), batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH):
+def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3, 1), num_classes=len(motion_names), batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH):
     inputs = layers.Input(shape=input_shape) # type: ignore
     # 卷积层1
-    x = layers.Conv1D(30, kernel_size=3, strides=3)(inputs) # type: ignore
+    x = layers.Conv2D(30, kernel_size=(3, 3), strides=(3, 1), padding='same')(inputs) # type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
-    x = layers.Conv1D(15, kernel_size=3, strides=3)(x) # type: ignore
+    x = layers.Conv2D(15, kernel_size=(3, 3), strides=(3, 1), padding='same')(x)# type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
+    x = layers.AveragePooling2D(pool_size=(3, 1), strides=(3, 1))(x)# type: ignore
     # 展平层
     x = layers.Flatten()(x)# type: ignore
     # 全连接层
     x = Dense(num_classes)(x)  # type: ignore
-    x = Dropout(0.5)(x)  # type: ignore
+    #x = Dropout(0.5)(x)  # type: ignore
     outputs = Softmax()(x)  # type: ignore
     
     model = models.Model(inputs=inputs, outputs=outputs)# type: ignore
@@ -122,7 +123,7 @@ train_size = int(num_elements * 0.8)
 # 训练模型并保存最佳模型
 best_val_accuracy = 0
 best_model = None
-for _ in range(10):  # 重复训练10次
+for _ in range(3):  # 重复训练3次
     # 先shuffle再分割
     indices = np.arange(num_elements)
     np.random.shuffle(indices)
