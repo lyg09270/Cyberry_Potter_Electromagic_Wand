@@ -7,13 +7,13 @@ from tensorflow.keras import * # type: ignore
 from tensorflow.keras.layers import * # type: ignore
 from nnom import * # type: ignore
 import re
+from sklearn.metrics import classification_report
 
 # 动作分类名
 motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h', 'letter_R', 'letter_W', 'letter_phi', 'Circle', 'UpAndDown', 'Horn', 'Wave', 'NoMotion']
 
 # 定义目录路径
-#DEF_SAVE_TO_PATH = './TraningData_7_23/'
-DEF_SAVE_TO_PATH = './TraningData_8_17/'
+DEF_SAVE_TO_PATH = './TraningData_8_23/'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
 DEF_FILE_MAX = 100
@@ -27,8 +27,8 @@ DEF_COLUMNS = (3, 4, 5)
 DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
-DEF_BATCH_SIZE = 480
-DEF_NUM_EPOCH = 2000
+DEF_BATCH_SIZE = 120
+DEF_NUM_EPOCH = 500
 
 # 动作名称到标签的映射
 motion_to_label = {name: idx for idx, name in enumerate(motion_names)}
@@ -37,18 +37,15 @@ def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_cla
     inputs = layers.Input(shape=input_shape) # type: ignore
     # 卷积层1
     x = layers.Conv1D(30, kernel_size=3, strides=3)(inputs) # type: ignore
-    x = BatchNormalization()(x) # type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
-    x = layers.Conv1D(15, kernel_size=1, strides=1)(x) # type: ignore
-    x = BatchNormalization()(x) # type: ignore
+    x = layers.Conv1D(15, kernel_size=3, strides=3)(x) # type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
-    
     # 展平层
     x = layers.Flatten()(x)# type: ignore
-    # 全连接层1
-    x = layers.Dense(num_classes)(x)# type: ignore
-    #x = layers.Dropout(0.5)(x)# type: ignore
-    outputs = layers.Softmax()(x)# type: ignore
+    # 全连接层
+    x = Dense(num_classes)(x)  # type: ignore
+    x = Dropout(0.5)(x)  # type: ignore
+    outputs = Softmax()(x)  # type: ignore
     
     model = models.Model(inputs=inputs, outputs=outputs)# type: ignore
     
@@ -60,7 +57,7 @@ def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_cla
     model.summary()
     
     # Callbacks
-    early_stopping = callbacks.EarlyStopping(monitor='val_loss', patience=50)# type: ignore
+    early_stopping = callbacks.EarlyStopping(monitor='val_loss', patience=10)# type: ignore
     checkpoint = callbacks.ModelCheckpoint(DEF_MODEL_NAME, monitor='val_accuracy', save_best_only=True, mode='max')# type: ignore
     
     # 训练模型
@@ -122,31 +119,41 @@ num_elements = len(file_list_padded)
 
 train_size = int(num_elements * 0.8)
 
-# 先shuffle再分割
-indices = np.arange(num_elements)
-np.random.shuffle(indices)
+# 训练模型并保存最佳模型
+best_val_accuracy = 0
+best_model = None
+for _ in range(10):  # 重复训练10次
+    # 先shuffle再分割
+    indices = np.arange(num_elements)
+    np.random.shuffle(indices)
 
-# 分割数据集
-train_indices = indices[:train_size]
-test_indices = indices[train_size:]
+    # 分割数据集
+    train_indices = indices[:train_size]
+    test_indices = indices[train_size:]
 
-# 获取训练和测试数据
-x_train = file_list_padded[train_indices]
-y_train = labels_one_hot[train_indices]
-x_test = file_list_padded[test_indices]
-y_test = labels_one_hot[test_indices]
-
-# 训练模型
-history = train(x_train, y_train, x_test, y_test, batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH)
-
-# 加载模型
-model = load_model(DEF_MODEL_NAME)
-
-model.compile(optimizer=optimizers.Adam(),              # type: ignore
-              loss=losses.CategoricalCrossentropy(), # type: ignore
-              metrics=['accuracy'])                 # type: ignore
-
-model.summary()
+    # 获取训练和测试数据
+    x_train = file_list_padded[train_indices]
+    y_train = labels_one_hot[train_indices]
+    x_test = file_list_padded[test_indices]
+    y_test = labels_one_hot[test_indices]
+        
+    history = train(x_train, y_train, x_test, y_test, batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH)
+    # 加载最佳模型
+    model = load_model(DEF_MODEL_NAME)
+    
+    # 评估模型
+    y_pred = model.predict(x_test)
+    y_pred_classes = np.argmax(y_pred, axis=1)
+    y_true_classes = np.argmax(y_test, axis=1)
+    
+    # 获取验证集上的准确率
+    val_accuracy = history.history['val_accuracy'][-1]
+    print(f"Validation Accuracy: {val_accuracy:.4f}")
+    
+    # 保存最佳模型
+    if val_accuracy > best_val_accuracy:
+        best_val_accuracy = val_accuracy
+        best_model = model
 
 # 从训练数据集中获取一个批次作为校准数据集
 # 这里直接使用x_test
@@ -154,3 +161,18 @@ x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
 
 # 假设generate_model函数已经定义在nnom模块中
 generate_model(model, x_test_sample, format='hwc', name=DEF_MODEL_H_NAME)
+
+# 使用最佳模型进行最终评估
+if best_model is not None:
+    y_pred = best_model.predict(x_test)
+    y_pred_classes = np.argmax(y_pred, axis=1)
+    y_true_classes = np.argmax(y_test, axis=1)
+    
+    # 从训练数据集中获取一个批次作为校准数据集
+    x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
+    
+    # 假设generate_model函数已经定义在nnom模块中
+    generate_model(best_model, x_test_sample, format='hwc', name=DEF_MODEL_H_NAME)
+    
+    # 打印每个类别的准确率
+    print(classification_report(y_true_classes, y_pred_classes, target_names=motion_names))

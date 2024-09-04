@@ -136,9 +136,8 @@ void Module_IR_RF_Print(void)
 				printf("Signal_Type_RF_433MHZ:\n");
 			}
 			for(i = 0; i < IR_RF_Signal.length; i++){
-				printf("NO:%d  Duration: %d us Total:%d\n" , 
-				       i+1, IR_RF_Signal.duration[i] * US_PER_TIMER2_COUNT,
-					IR_RF_Signal.length);
+				printf("NO:%d，Duration: %d us\n" , 
+				       i+1, IR_RF_Signal.duration[i] * US_PER_TIMER2_COUNT);
 			}
                }
 }
@@ -190,7 +189,10 @@ void Module_IR_RF_Receive(void)
 {
 	IR_RF_Signal.status = SIGNAL_EMPTY;
 	RECEIVER_ENABLE;
-	while(IR_RF_Signal.status != SIGNAL_READY);
+	while(IR_RF_Signal.status != SIGNAL_READY)
+	{
+		LED.Operate(BLINK_2HZ);
+	}
 	RECEIVER_DISABLE;
 	ROM_Address = W25Q64_SIGNAL_TYPE_INCREMENT * Module.Type + 
 			W25Q64_SECTOR_ADDRESS_INCREMENT * model_output;

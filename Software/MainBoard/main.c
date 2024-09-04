@@ -146,10 +146,9 @@ int main(void)
 			LED.Operate(OFF);
 			while(IMU.status != IMU_Sampled);
 			LED.Operate(ON);
-			
 			#ifndef SYSTEM_MODE_DATA_COLLECT
 			model_output = model_get_output();
-			#endif
+			
 			if(model_output != Unrecognized){
 				switch(Cyberry_Potter.System_Mode){
 					case SYSTEM_MODE_0:
@@ -163,6 +162,7 @@ int main(void)
 					
 				}
 			}
+			#endif
 			IMU.status = IMU_Idle;
 			Button.status_clear();
 			EXTI_Restore();

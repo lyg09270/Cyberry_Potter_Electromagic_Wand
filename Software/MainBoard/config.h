@@ -55,6 +55,6 @@
 
 //Define CNN
 //The out put of model must bigger than this value unless it will give a unrecognized message
-#define OUPUT_THRESHOLD 76 
+#define OUPUT_THRESHOLD 63 
 
 #endif  //_CONFIG_H_
