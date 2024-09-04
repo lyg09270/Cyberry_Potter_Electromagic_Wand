@@ -69,6 +69,13 @@ void LED_Init(void)
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(LED_GPIO,&GPIO_InitStruct); 	
 	
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
+        GPIO_InitStruct.GPIO_Pin = GPIO_Pin_2;
+        GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+        GPIO_Init(GPIOA,&GPIO_InitStruct); 	
+	
+	GPIO_WriteBit(GPIOA,GPIO_Pin_2,Bit_SET);
+	
 	LED.Operate = &LED_Blink;
 	LED.Operate(ON);
 }
