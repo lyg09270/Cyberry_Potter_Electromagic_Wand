@@ -56,7 +56,7 @@ void Module0_IR_Init(void)
         NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
         NVIC_Init(&NVIC_InitStruct);
 	
-//TIM2 15ms*************************************************************//
+//TIM2*************************************************************//
 	TIM_TimerBaseInitStruct.TIM_Prescaler = TIM2_PRESCALE - 1;
 	TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimerBaseInitStruct.TIM_Period = TIM2_RECORD_OVERTIME_US / US_PER_TIMER2_COUNT - 1;

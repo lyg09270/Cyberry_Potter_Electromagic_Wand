@@ -39,7 +39,7 @@ void Module1_RF433_Init(void)
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOA,&GPIO_InitStruct); 
 	
-//TIM2 15ms*************************************************************//
+//TIM2*************************************************************//
 	TIM_TimerBaseInitStruct.TIM_Prescaler = TIM2_PRESCALE - 1;
 	TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimerBaseInitStruct.TIM_Period = TIM2_RECORD_OVERTIME_US / US_PER_TIMER2_COUNT - 1;
