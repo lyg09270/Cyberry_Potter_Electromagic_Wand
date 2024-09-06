@@ -46,7 +46,7 @@ def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_cla
     x = layers.LeakyReLU()(x)# type: ignore
     #x = layers.MaxPooling1D(pool_size=3, strides=3)(x)# type: ignore
     # LSTM 层
-    #x = layers.LSTM(5, return_sequences=True)(inputs)  # type: ignore
+    #x = layers.LSTM(5, return_sequences=True)(x)  # type: ignore
    
     x = layers.Flatten()(x)# type: ignore
 
