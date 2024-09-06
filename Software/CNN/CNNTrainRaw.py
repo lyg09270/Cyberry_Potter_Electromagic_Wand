@@ -1,22 +1,26 @@
 import os
-import numpy as np # type: ignore
+import re
+from nnom import * # type: ignore
+import numpy as np
 import tensorflow as tf # type: ignore
 from tensorflow.keras.models import load_model, save_model # type: ignore
 from tensorflow.keras.preprocessing.sequence import pad_sequences # type: ignore
 from tensorflow.keras import * # type: ignore
 from tensorflow.keras.layers import * # type: ignore
-from nnom import * # type: ignore
-import re
+from tensorflow.keras.regularizers import l2 # type: ignore
+
 from sklearn.metrics import classification_report
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 # 动作分类名
 motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h', 'letter_R', 'letter_W', 'letter_phi', 'Circle', 'UpAndDown', 'Horn', 'Wave', 'NoMotion']
 
 # 定义目录路径
-DEF_SAVE_TO_PATH = './TraningData_9_4/'
+DEF_SAVE_TO_PATH = './TraningData_8_17/'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
-DEF_FILE_MAX = 100
+DEF_FILE_MAX = 50
+DEF_MAX_TRIALS = 3
 #DEF_N_ROWS = 60
 DEF_N_ROWS = 150
 #DEF_COLUMNS = (0, 1, 2, 3, 4, 5)
@@ -27,28 +31,31 @@ DEF_COLUMNS = (3, 4, 5)
 DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
-DEF_BATCH_SIZE = 120
-DEF_NUM_EPOCH = 200
+DEF_BATCH_SIZE = 80
+DEF_NUM_EPOCH = 500
 
 # 动作名称到标签的映射
 motion_to_label = {name: idx for idx, name in enumerate(motion_names)}
 
-def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3, 1), num_classes=len(motion_names), batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH):
+def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_classes=len(motion_names), batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH):
     inputs = layers.Input(shape=input_shape) # type: ignore
-    # 卷积层1
-    x = layers.Conv2D(30, kernel_size=(3, 3), strides=(3, 1), padding='same')(inputs) # type: ignore
+
+    x = layers.Conv1D(30, kernel_size=3, strides=3, padding='same')(inputs) # type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
-    x = layers.Conv2D(15, kernel_size=(3, 3), strides=(3, 1), padding='same')(x)# type: ignore
+    x = layers.Conv1D(15, kernel_size=3, strides=3, padding='same')(x)# type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
-    x = layers.AveragePooling2D(pool_size=(3, 1), strides=(3, 1))(x)# type: ignore
-    # 展平层
+    #x = layers.MaxPooling1D(pool_size=3, strides=3)(x)# type: ignore
+    # LSTM 层
+    #x = layers.LSTM(5, return_sequences=True)(inputs)  # type: ignore
+   
     x = layers.Flatten()(x)# type: ignore
+
     # 全连接层
-    x = Dense(num_classes)(x)  # type: ignore
-    #x = Dropout(0.5)(x)  # type: ignore
-    outputs = Softmax()(x)  # type: ignore
-    
-    model = models.Model(inputs=inputs, outputs=outputs)# type: ignore
+    x = layers.Dense(num_classes)(x) # type: ignore
+    x = layers.Dropout(0.3)(x) # type: ignore
+    outputs = layers.Softmax()(x) # type: ignore
+
+    model = models.Model(inputs=inputs, outputs=outputs) # type: ignore
     
     # 编译模型
     model.compile(optimizer=optimizers.Adam(), # type: ignore
@@ -123,7 +130,7 @@ train_size = int(num_elements * 0.8)
 # 训练模型并保存最佳模型
 best_val_accuracy = 0
 best_model = None
-for _ in range(3):  # 重复训练3次
+for _ in range(DEF_MAX_TRIALS):  # 重复训练DEF_MAX_TRIALS次
     # 先shuffle再分割
     indices = np.arange(num_elements)
     np.random.shuffle(indices)
@@ -160,20 +167,21 @@ for _ in range(3):  # 重复训练3次
 # 这里直接使用x_test
 x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
 
-# 假设generate_model函数已经定义在nnom模块中
-generate_model(model, x_test_sample, format='hwc', name=DEF_MODEL_H_NAME)
-
 # 使用最佳模型进行最终评估
 if best_model is not None:
     y_pred = best_model.predict(x_test)
     y_pred_classes = np.argmax(y_pred, axis=1)
     y_true_classes = np.argmax(y_test, axis=1)
     
+    # 确保 target_names 的长度与实际类别数相匹配
+    unique_classes = np.unique(np.concatenate((y_true_classes, y_pred_classes)))
+    target_names = [motion_names[i] for i in sorted(unique_classes)]
+
+    # 打印每个类别的准确率
+    print(classification_report(y_true_classes, y_pred_classes, target_names=target_names))
+
     # 从训练数据集中获取一个批次作为校准数据集
     x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
     
     # 假设generate_model函数已经定义在nnom模块中
     generate_model(best_model, x_test_sample, format='hwc', name=DEF_MODEL_H_NAME)
-    
-    # 打印每个类别的准确率
-    print(classification_report(y_true_classes, y_pred_classes, target_names=motion_names))
