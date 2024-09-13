@@ -120,30 +120,7 @@ Type-c口的作用：可以用于串口调试和电池充电，在有Type-c连�
   - 安装项目依赖
   - `pip install -r requirements.txt`
   - 使用清华镜像源：`pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt`
-  
-  
-  
-  ##### Python环境配置可能出现的问题：
-  
-  `pip install -r requirements.txt`时出现
-  
-  'C:\Users\xxx\AppData\Local\Temp\pip-install-vmn8hi4e\nnom_e898a2d1f9a04e84b72bd63c378042ad' did not run successfully. │ exit code: 128 ╰─> See above for output. note: This error originates from a subprocess, and is likely not a problem with pip.
-  
-  解决方法：
-  
-  1. 在安装依赖时使用网络代理
-  
-  2. 从[nnom](https://github.com/majianjia/nnom)链接中下载nnom的压缩包，解压得到nnom-master（从本地安装nnom）
-  
-     - 先使用 `pip install nnom-master`（nnom-master存在的位置）
-  
-     - 例如你解压到桌面并且anaconda prompt的当前位置在C:/User/xxxx(xxxx是你的当前账户)
-  
-     - 此时你需要使用 `pip install Desktop/nnom-master`
-  
-     - 随后再安装其他依赖`pip install -r requirements.txt`
-  
-       
+      
   
   ### Keil环境配置：（如果你需要修改程序）
   
@@ -175,7 +152,7 @@ C:/Users/xxx/AppData/Local/arm/packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_D
 （AppData文件夹默认是隐藏的，请先设置显示隐藏文件）
     
 请将device库中将misc.c文件里的上述代码（131行）修改为
-NVIC->IPR[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority
+NVIC->IPR[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
     
 
 # 如何自己制作模块
