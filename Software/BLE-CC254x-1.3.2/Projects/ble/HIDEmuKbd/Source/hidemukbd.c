@@ -143,10 +143,14 @@ uint8 hidEmuKbdTaskId;
  */
 
 const char ascii_to_hid_key_map[128][2] = {
-    {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0},
-    {0, 0}, {0, 0}, {0, KEY_ENTER}, {0, 0}, {0, KEY_TAB}, {0, 0}, {0, 0}, {0, 0},
-    {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0},
-    {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0},
+    {KEY_MOD_LCTRL, 0}, {KEY_MOD_LSHIFT, 0}, {KEY_MOD_LALT, 0}, {KEY_MOD_LMETA, 0}, 
+    {0, KEY_ESC}, {0, KEY_BACKSPACE}, {0, KEY_F1}, {0, KEY_F2},
+    {0, KEY_F3}, {0, KEY_F4}, {0, KEY_ENTER}, {0, KEY_F5}, 
+    {0, KEY_TAB}, {0, KEY_F6}, {0, KEY_F7}, {0, KEY_F8},
+    {0, KEY_F9}, {0, KEY_F10}, {0, KEY_F11}, {0, KEY_F12}, 
+    {0, KEY_RIGHT}, {0, KEY_LEFT}, {0, KEY_DOWN}, {0, KEY_UP},
+    {0, KEY_UNDO}, {0, KEY_CUT}, {0, KEY_COPY}, {0, KEY_PASTE}, 
+    {0, KEY_FIND}, {0, KEY_MUTE}, {0, KEY_VOLUMEUP}, {0, KEY_VOLUMEDOWN},
     {0, KEY_SPACE}, {KEY_MOD_LSHIFT, KEY_1}, {KEY_MOD_LSHIFT, KEY_APOSTROPHE},
     {KEY_MOD_LSHIFT, KEY_3}, {KEY_MOD_LSHIFT, KEY_4}, {KEY_MOD_LSHIFT, KEY_5},
     {KEY_MOD_LSHIFT, KEY_7}, {0, KEY_APOSTROPHE}, {KEY_MOD_LSHIFT, KEY_9},
