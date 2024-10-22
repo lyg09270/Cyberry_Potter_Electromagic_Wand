@@ -4,6 +4,13 @@
 
 
 
+#### 10月22日更新：
+
+- 添加了蓝牙HID模块的代码
+- 路径在`\Software\BLE-CC254x-1.3.2\Projects\ble\HIDEmuKbd\CC2540DB`
+- Hardware文件夹的硬件文件长时间没有更新，请参考立创开源平台：[赛博魔杖_STM32卷积神经网络](https://oshwhub.com/lyg0927/cyberwand-stm32-convolutional-ne)
+- 蓝牙模块的烧录需要一个CCdebugger，和一个1.27 2*5P的探针座，或者焊接1.27排针，使用杜邦线与CCdebugger连接，开发需要用到IAR8.10，请自行准备软件
+
 #### 9.7日更新
 
 - 添加了InstallEnviroment.bat自动安装环境的脚本（需要用anaconda prompt运行），但是不确定是否可以正常使用，不能正常使用的话给我反馈
@@ -120,7 +127,7 @@ Type-c口的作用：可以用于串口调试和电池充电，在有Type-c连�
   - 安装项目依赖
   - `pip install -r requirements.txt`
   - 使用清华镜像源：`pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt`
-      
+    
   
   ### Keil环境配置：（如果你需要修改程序）
   

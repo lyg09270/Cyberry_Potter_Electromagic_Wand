@@ -20,6 +20,7 @@
 
 #define ADC_MAX_SAMPLES 10
 #define ADC_MAX_TESTS 10
+#define SERIAL_DEBUG
 
 /* Functions -----------------------------------------------------------------*/
 void ADC_PB1_Init(void);

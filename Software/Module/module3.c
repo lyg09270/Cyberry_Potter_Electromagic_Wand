@@ -35,10 +35,20 @@ extern volatile Model_Output_t model_output;
 void Module3_Init(void)
 {
 	USART3_Init();
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
+        
+        GPIO_InitTypeDef GPIO_InitStruct;
+	
+//        GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
+//        GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0;
+//        GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+//        GPIO_Init(GPIOB,&GPIO_InitStruct);
+//	GPIO_ResetBits(GPIOB,GPIO_Pin_0);
 }
 
 void Module3_Mode0_Handler(void)
 {
+	printf("Module3_Mode0_Handler\n");
 	switch (model_output) {
 		case RightAngle:
 		    strcpy(Send_Buffer, MODE0_MOTION1_STRING);

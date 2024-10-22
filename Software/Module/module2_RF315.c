@@ -2,7 +2,7 @@
 
 extern IR_RF_Signal_t IR_RF_Signal;
 
-void Module1_RF315_Init(void)
+void Module2_RF315_Init(void)
 {
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO,ENABLE);
@@ -60,7 +60,7 @@ void Module1_RF315_Init(void)
 	
 }
 
-void Module1_RF315_Logic(uint8_t logic)
+void Module2_RF315_Logic(uint8_t logic)
 {
 	if(logic == 0){
 		GPIO_WriteBit(GPIOA,GPIO_Pin_6,Bit_RESET);
@@ -70,13 +70,13 @@ void Module1_RF315_Logic(uint8_t logic)
 	}
 }
 
-void Module1_RF315_Transmit(void)
+void Module2_RF315_Transmit(void)
 {
 	volatile uint16_t i = 0;
         uint8_t logic = 1;
         for(i = 0; i < IR_RF_Signal.length ;i++)
         {
-                Module1_RF315_Logic(logic);
+                Module2_RF315_Logic(logic);
 		Delay_us(IR_RF_Signal.duration[i] * US_PER_TIMER2_COUNT);
 		logic = !logic;
 		

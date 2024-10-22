@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\KeyFobDemo.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>all</name>
+      <member>
+        <project>KeyFobDemo</project>
+        <configuration>CC2540 MiniDK PG1 Slave</configuration>
+      </member>
+      <member>
+        <project>KeyFobDemo</project>
+        <configuration>CC2540 MiniDK PG2 Slave</configuration>
+      </member>
+      <member>
+        <project>KeyFobDemo</project>
+        <configuration>CC2540 SmartRF PG1 Slave</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

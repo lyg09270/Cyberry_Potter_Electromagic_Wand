@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\HIDAdvRemoteDongle.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>all libraries</name>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>MiniDK-PG1-Slave-Library</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>MiniDK-PG2-Slave-Library</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>SmartRF-PG1-Slave-Library</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>CC2540 MiniDK Slave</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>CC2540 Slave</configuration>
+      </member>
+    </batchDefinition>
+    <batchDefinition>
+      <name>all projects</name>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>MiniDK-PG1-Slave-Library</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>MiniDK-PG2-Slave-Library</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>SmartRF-PG1-Slave-Library</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>CC2540 MiniDK Slave</configuration>
+      </member>
+      <member>
+        <project>HIDDemoSrc</project>
+        <configuration>CC2540 Slave</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

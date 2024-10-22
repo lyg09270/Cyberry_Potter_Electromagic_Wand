@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\SimpleBLEPeripheral.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>All</name>
+      <member>
+        <project>SimpleBLEPeripheral</project>
+        <configuration>CC2541</configuration>
+      </member>
+      <member>
+        <project>SimpleBLEPeripheral</project>
+        <configuration>CC2541DK-MINI Keyfob</configuration>
+      </member>
+      <member>
+        <project>SimpleBLEPeripheral</project>
+        <configuration>CC2541-OAD-ImgA</configuration>
+      </member>
+      <member>
+        <project>SimpleBLEPeripheral</project>
+        <configuration>CC2541-OAD-ImgB</configuration>
+      </member>
+      <member>
+        <project>SimpleBLEPeripheral</project>
+        <configuration>CC2541-OAD-Encrypted-ImgA</configuration>
+      </member>
+      <member>
+        <project>SimpleBLEPeripheral</project>
+        <configuration>CC2541-OAD-Encrypted-ImgB</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

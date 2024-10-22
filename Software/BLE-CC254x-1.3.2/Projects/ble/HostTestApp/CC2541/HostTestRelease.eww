@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\HostTestRelease.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>All</name>
+      <member>
+        <project>HostTestRelease</project>
+        <configuration>CC2541EM</configuration>
+      </member>
+      <member>
+        <project>HostTestRelease</project>
+        <configuration>CC2541EM-SBL</configuration>
+      </member>
+      <member>
+        <project>HostTestRelease</project>
+        <configuration>CC2541EM-EBL</configuration>
+      </member>
+      <member>
+        <project>HostTestRelease</project>
+        <configuration>CC2541SPI</configuration>
+      </member>
+      <member>
+        <project>HostTestRelease</project>
+        <configuration>CC2541SPI-SBL</configuration>
+      </member>
+      <member>
+        <project>HostTestRelease</project>
+        <configuration>CC2541SPI-EBL</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

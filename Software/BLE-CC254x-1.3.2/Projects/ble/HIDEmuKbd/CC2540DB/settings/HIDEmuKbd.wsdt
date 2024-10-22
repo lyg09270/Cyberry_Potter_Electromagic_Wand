@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>HidEmuKbd/CC2540DK-MINI Keyfob Slave</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>215</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1236</ColumnWidth1><ColumnWidth2>329</ColumnWidth2><ColumnWidth3>82</ColumnWidth3></Build>
+      <TerminalIO/>
+    <Debug-Log><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1648</ColumnWidth1></Debug-Log></Static>
+    <Windows>
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-23962-24086</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>HidEmuKbd</ExpandedNode><ExpandedNode>HidEmuKbd/APP</ExpandedNode><ExpandedNode>HidEmuKbd/NPI</ExpandedNode><ExpandedNode>HidEmuKbd/NPI/npi.c</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-23440-24095</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-11948-26093</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>1</SelectedTab></Wnd1></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Source\hidemukbd_Main.c</Filename><XPos>0</XPos><YPos>59</YPos><SelStart>3270</SelStart><SelEnd>3270</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Source\hidemukbd.c</Filename><XPos>0</XPos><YPos>605</YPos><SelStart>20525</SelStart><SelEnd>20525</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\common\npi\npi_np\npi.h</Filename><XPos>0</XPos><YPos>63</YPos><SelStart>3397</SelStart><SelEnd>3417</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Source\hidemukbd.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>2719</SelStart><SelEnd>2719</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Components\hal\include\hal_sleep.h</Filename><XPos>0</XPos><YPos>48</YPos><SelStart>2650</SelStart><SelEnd>2662</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Components\hal\include\hal_key.h</Filename><XPos>0</XPos><YPos>141</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Profiles\HidDevKbd\hidkbdservice.h</Filename><XPos>0</XPos><YPos>78</YPos><SelStart>2991</SelStart><SelEnd>2991</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Profiles\HidDev\hid_uuid.h</Filename><XPos>0</XPos><YPos>42</YPos><SelStart>2762</SelStart><SelEnd>2787</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Components\osal\include\comdef.h</Filename><XPos>0</XPos><YPos>105</YPos><SelStart>4065</SelStart><SelEnd>4065</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Components\hal\include\hal_uart.h</Filename><XPos>0</XPos><YPos>217</YPos><SelStart>3501</SelStart><SelEnd>3501</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Profiles\HIDDev\hiddev.c</Filename><XPos>0</XPos><YPos>398</YPos><SelStart>12302</SelStart><SelEnd>12302</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Source\hid_keys.h</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>2424</SelStart><SelEnd>2424</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Components\hal\common\hal_drivers.c</Filename><XPos>0</XPos><YPos>148</YPos><SelStart>4520</SelStart><SelEnd>4520</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\Components\ble\include\gap.h</Filename><XPos>0</XPos><YPos>306</YPos><SelStart>21814</SelStart><SelEnd>21821</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Profiles\Batt\battservice.h</Filename><XPos>0</XPos><YPos>45</YPos><SelStart>2612</SelStart><SelEnd>2612</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-05263210><key>iaridepm.enu1</key></Toolbar-05263210></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>626</Bottom><Right>289</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>117165</sizeHorzCX><sizeHorzCY>230150</sizeHorzCY><sizeVertCX>170475</sizeVertCX><sizeVertCY>722670</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1709</Right><x>-2</x><y>-2</y><xscreen>1711</xscreen><yscreen>200</yscreen><sizeHorzCX>1002343</sizeHorzCX><sizeHorzCY>230150</sizeHorzCY><sizeVertCX>117165</sizeVertCX><sizeVertCY>230150</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

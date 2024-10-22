@@ -32,7 +32,7 @@ DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
 DEF_BATCH_SIZE = 80
-DEF_NUM_EPOCH = 500
+DEF_NUM_EPOCH = 80
 
 # 动作名称到标签的映射
 motion_to_label = {name: idx for idx, name in enumerate(motion_names)}

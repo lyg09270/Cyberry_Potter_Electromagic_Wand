@@ -25,7 +25,7 @@ void Module_IR_RF_Init(void)
 			Module1_RF433_Init();
 			break;
 		case Module_Type_2_RF_315MHZ:
-			//Module2_RF315_Init();
+			Module2_RF315_Init();
 			break;
 		default:
 			break;
