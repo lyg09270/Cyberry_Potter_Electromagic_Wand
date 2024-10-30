@@ -54,6 +54,7 @@
 #include "gatt.h"
 
 #include "hci.h"
+#include "npi.h"
 
 #include "gapgattserver.h"
 #include "gattservapp.h"
@@ -226,6 +227,8 @@ static void peripheralStateNotificationCB( gaprole_States_t newState );
 static void performPeriodicTask( void );
 static void simpleProfileChangeCB( uint8 paramID );
 
+void NpiCallBack(uint8 port, uint8 events);
+
 #if defined( CC2540_MINIDK )
 static void simpleBLEPeripheral_HandleKeys( uint8 shift, uint8 keys );
 #endif
@@ -280,6 +283,8 @@ static simpleProfileCBs_t simpleBLEPeripheral_SimpleProfileCBs =
  */
 void SimpleBLEPeripheral_Init( uint8 task_id )
 {
+  
+  NPI_InitTransport(NpiCallBack);
   simpleBLEPeripheral_TaskID = task_id;
 
   // Setup the GAP
@@ -771,6 +776,14 @@ static void simpleProfileChangeCB( uint8 paramID )
       // should not reach here!
       break;
   }
+}
+
+void s(uint8 port, uint8 events)
+{
+    uint8 length = NPI_RxBufLen();
+    char *buffer = osal_mem_alloc(numBytes);
+    NPI_ReadTransport(buffer,length);
+    NPI_WriteTransport(buffer,length);
 }
 
 #if (defined HAL_LCD) && (HAL_LCD == TRUE)

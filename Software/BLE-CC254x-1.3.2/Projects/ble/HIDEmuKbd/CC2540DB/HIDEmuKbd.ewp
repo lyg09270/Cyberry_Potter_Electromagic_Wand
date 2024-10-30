@@ -268,7 +268,7 @@
           <state>INT_HEAP_LEN=3072</state>
           <state>HALNODEBUG</state>
           <state>OSAL_CBTIMER_NUM_TASKS=1</state>
-          <state>HAL_AES_DMA=FALSE</state>
+          <state>HAL_AES_DMA=TRUE</state>
           <state>HAL_DMA=TRUE</state>
           <state>xPLUS_BROADCASTER</state>
           <state>HAL_LCD=FALSE</state>

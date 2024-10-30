@@ -1331,6 +1331,7 @@
           <state>xPLUS_BROADCASTER</state>
           <state>HAL_LCD=TRUE</state>
           <state>HAL_LED=FALSE</state>
+          <state>HAL_UART=TRUE</state>
         </option>
         <option>
           <name>CCPreprocFile</name>

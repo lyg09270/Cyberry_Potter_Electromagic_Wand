@@ -75,7 +75,7 @@
 #define HID_LED_OUT_RPT_LEN         1
 
 // HID mouse input report length
-#define HID_MOUSE_IN_RPT_LEN        5
+#define HID_MOUSE_IN_RPT_LEN        4
 
 /*********************************************************************
  * CONSTANTS
@@ -210,18 +210,14 @@ static uint8 advData[] =
   // appearance
   0x03,   // length of this data
   GAP_ADTYPE_APPEARANCE,
-  LO_UINT16(GAP_APPEARE_HID_KEYBOARD),
-  HI_UINT16(GAP_APPEARE_HID_KEYBOARD),
+  LO_UINT16(GAP_APPEARE_GENERIC_HID),
+  HI_UINT16(GAP_APPEARE_GENERIC_HID),
 
   // service UUIDs
-  0x07,   // length of this data
+  0x03,   // length of this data
   GAP_ADTYPE_16BIT_MORE,
   LO_UINT16(HID_SERVICE_UUID),
   HI_UINT16(HID_SERVICE_UUID),
-  LO_UINT16(HID_BOOT_MOUSE_INPUT_UUID),
-  HI_UINT16(HID_BOOT_MOUSE_INPUT_UUID),
-  LO_UINT16(BATT_SERVICE_UUID),
-  HI_UINT16(BATT_SERVICE_UUID)
 };
 
 // Device name attribute value
@@ -244,7 +240,7 @@ static uint8 hidBootMouseEnabled = TRUE;
 static void hidEmuKbd_ProcessOSALMsg( osal_event_hdr_t *pMsg );
 static void hidEmuKbd_HandleKeys( uint8 shift, uint8 keys );
 static void hidEmuKbdSendReport( uint8 keycode ,uint8 modifier);
-static void hidEmuKbdSendMouseReport( uint8 buttons,uint8 x,uint8 y,uint8 whell);
+static void hidEmuKbdSendMouseReport( uint8 buttons,int8 x,int8 y,uint8 whell);
 static uint8 hidEmuKbdRcvReport( uint8 len, uint8 *pData );
 static uint8 hidEmuKbdRptCB( uint8 id, uint8 type, uint16 uuid,
                              uint8 oper, uint8 *pLen, uint8 *pData );
@@ -491,15 +487,14 @@ static void hidEmuKbdSendReport( uint8 keycode ,uint8 modifier)
  *
  * @return  none
  */
-static void hidEmuKbdSendMouseReport( uint8 buttons,uint8 x,uint8 y,uint8 whell)
+static void hidEmuKbdSendMouseReport( uint8 buttons,int8 x,int8 y,uint8 whell)
 {
   uint8 buf[HID_MOUSE_IN_RPT_LEN];
 
   buf[0] = buttons;   // Buttons
   buf[1] = x;         // X
   buf[2] = y;         // Y
-  buf[3] = whell;         // Wheel
-  buf[4] = 0;         // AC Pan
+  buf[3] = whell;     // Wheel
 
   HidDev_Report( HID_RPT_ID_MOUSE_IN, HID_REPORT_TYPE_INPUT,
                  HID_MOUSE_IN_RPT_LEN, buf );
@@ -613,9 +608,8 @@ static void ASCII_2_Keyboard(uint8 asciiChar)
         uint8 keyIndex = asciiChar;
         uint8 keycode = ascii_to_hid_key_map[keyIndex][1];
         uint8 modifier = ascii_to_hid_key_map[keyIndex][0];
-        uint8 i = 0;
 
-        hidEmuKbdSendReport(keycode, modifier);  // Send the key without modifiers
+        hidEmuKbdSendReport(keycode, modifier);
         hidEmuKbdSendReport(KEY_NONE, KEY_NONE);
         
     }
@@ -638,11 +632,11 @@ static void NpiSerialCallback(uint8 port, uint8 events)
         }
         else
         {
+          
             uint8 *buffer = osal_mem_alloc(numBytes);
             if (buffer)
             {
                 NPI_ReadTransport(buffer, numBytes);   
-                
                 for(i = 0; i < numBytes;i++)
                 {
                  ASCII_2_Keyboard(buffer[i]); 

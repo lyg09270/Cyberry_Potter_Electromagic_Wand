@@ -80,7 +80,7 @@ extern "C"
 #define NPI_UART_FC_THRESHOLD          48
 #define NPI_UART_RX_BUF_SIZE           128
 #define NPI_UART_TX_BUF_SIZE           128
-#define NPI_UART_IDLE_TIMEOUT          6
+#define NPI_UART_IDLE_TIMEOUT          0
 #define NPI_UART_INT_ENABLE            TRUE
 
 #if !defined( NPI_UART_BR )

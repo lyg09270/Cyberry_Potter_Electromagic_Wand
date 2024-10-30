@@ -158,6 +158,8 @@ void osalInitTasks( void )
   GAPBondMgr_Init( taskID++ );
 
   GATTServApp_Init( taskID++ );
+  
+  
 
   /* Application */
   SimpleBLEPeripheral_Init( taskID );
