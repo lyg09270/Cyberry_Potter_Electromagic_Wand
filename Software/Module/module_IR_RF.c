@@ -168,6 +168,7 @@ void Module_IR_RF_Transmit(void)
 					Module1_RF433_Transmit();
 					break;
 				case Module_Type_2_RF_315MHZ:
+					Module2_RF315_Transmit();
 					break;
 				default:
 					break;

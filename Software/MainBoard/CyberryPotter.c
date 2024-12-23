@@ -153,7 +153,7 @@ void System_Init(void)
 {
 	USART1_Init();
 	LED_Init();
-        Button_Init();
+    Button_Init();
 	SPI2_Init();
 	IMU_Init();
 	Module.Mode0_Handler = &Module_None_Mode0_Handler;
