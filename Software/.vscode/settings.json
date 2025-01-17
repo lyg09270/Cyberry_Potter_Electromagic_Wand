@@ -1,0 +1,26 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\13087\\Desktop\\Cyberry_Potter_Electromagic_Wand\\Software\\out\\CyberryPotter\\Target_1"
+    ],
+    "cmsis-csolution.actions": [
+        {
+            "path": "CyberryPotter.csolution.yml",
+            "target": "Target_1",
+            "config": {
+                "run": "Flash Device"
+            },
+            "projects": [
+                {
+                    "path": "CyberryPotter.cproject.yml",
+                    "config": {
+                        "run": "Flash Device"
+                    }
+                }
+            ]
+        }
+    ],
+    "python.analysis.extraPaths": [
+        "c:\\Users\\13087\\.vcpkg\\artifacts\\2139c4c6\\debuggers.arm.armdbg\\6.2.1\\sw\\ide\\plugins\\com.arm.debug.interpreter.jython.api_6.2.1.20240720_113122"
+    ],
+    "cmake.sourceDirectory": "C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp"
+}

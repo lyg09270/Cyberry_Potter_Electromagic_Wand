@@ -1,0 +1,5 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\13087\\Desktop\\Cyberry_Potter_Electromagic_Wand\\Software\\out\\CyberryPotter\\Target_1"
+    ]
+}

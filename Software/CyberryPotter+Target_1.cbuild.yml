@@ -1,0 +1,715 @@
+build:
+  generated-by: csolution version 2.6.0
+  solution: CyberryPotter.csolution.yml
+  project: CyberryPotter.cproject.yml
+  context: CyberryPotter+Target_1
+  compiler: AC6@6.22.0
+  device: STMicroelectronics::STM32F103CB
+  device-pack: Keil::STM32F1xx_DFP@2.4.1
+  processor:
+    endian: little
+    fpu: off
+    core: Cortex-M3
+  packs:
+    - pack: ARM::CMSIS@6.0.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0
+    - pack: Keil::STM32F1xx_DFP@2.4.1
+      path: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1
+  optimize: none
+  debug: on
+  misc:
+    C:
+      - -std=c99
+      - -Wno-nan-infinity-disabled
+      - -fno-rtti
+      - -funsigned-char
+      - -fno-function-sections
+      - -Wno-packed
+      - -Wno-missing-variable-declarations
+      - -Wno-missing-prototypes
+      - -Wno-missing-noreturn
+      - -Wno-sign-conversion
+      - -Wno-nonportable-include-path
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+      - -Wno-license-management
+      - -Wno-parentheses-equality
+    CPP:
+      - -xc++
+      - -std=c++11
+      - -Wno-nan-infinity-disabled
+      - -fno-rtti
+      - -funsigned-char
+      - -fno-function-sections
+      - -Wno-packed
+      - -Wno-missing-variable-declarations
+      - -Wno-missing-prototypes
+      - -Wno-missing-noreturn
+      - -Wno-sign-conversion
+      - -Wno-nonportable-include-path
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+      - -Wno-license-management
+      - -Wno-parentheses-equality
+    Link:
+      - --library_type=microlib
+      - --map
+      - --load_addr_map_info
+      - --xref
+      - --callgraph
+      - --symbols
+      - --info sizes
+      - --info totals
+      - --info unused
+      - --info veneers
+      - --strict
+      - --summary_stderr
+      - --info summarysizes
+  define:
+    - USE_STDPERIPH_DRIVER
+    - __MICROLIB
+    - STM32F10X_MD
+    - _RTE_
+  define-asm:
+    - __MICROLIB
+    - STM32F10X_MD
+    - _RTE_
+  add-path:
+    - CNN/nnom_lib/inc
+    - CNN/nnom_lib/inc/layers
+    - CNN/nnom_lib/port
+    - CNN
+    - MainBoard
+    - MainBoard/eMPL
+    - Module
+    - RTE/Device/STM32F103CB
+    - RTE/_Target_1
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/CMSIS/Core/Include
+    - ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+    - ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc
+  add-path-asm:
+    - RTE/Device/STM32F103CB
+    - RTE/_Target_1
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/CMSIS/Core/Include
+    - ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+    - ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc
+  output-dirs:
+    intdir: tmp
+    outdir: out/CyberryPotter/Target_1
+    rtedir: RTE
+  output:
+    - type: elf
+      file: CyberryPotter.axf
+  components:
+    - component: ARM::CMSIS:CORE@6.0.0
+      condition: ARMv6_7_8-M Device
+      from-pack: ARM::CMSIS@6.0.0
+      selected-by: ARM::CMSIS:CORE
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/CMSIS/Core/Include
+          category: include
+          version: 6.0.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/CMSIS/Core/Include/tz_context.h
+          category: header
+          version: 6.0.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/CMSIS/Core/Template/ARMv8-M/main_s.c
+          category: sourceC
+          attr: template
+          version: 1.1.1
+          select: Secure mode 'main' module for ARMv8-M
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/CMSIS/Core/Template/ARMv8-M/tz_context.c
+          category: sourceC
+          attr: template
+          version: 1.1.1
+          select: RTOS Context Management (TrustZone for ARMv8-M)
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/CMSIS/Documentation/html/Core/index.html
+          category: doc
+          version: 6.0.0
+    - component: Keil::Device:Startup@1.0.0
+      condition: STM32F1xx CMSIS
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:Startup
+      misc:
+        ASM:
+          - -masm=auto
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+          category: include
+          version: 1.0.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/Source/ARM/STM32F1xx_OPT.s
+          category: source
+          attr: template
+          version: 1.0.0
+          select: Flash Option Bytes Template
+        - file: RTE/Device/STM32F103CB/RTE_Device.h
+          category: header
+          attr: config
+          version: 1.1.2
+        - file: RTE/Device/STM32F103CB/startup_stm32f10x_md.s
+          category: source
+          attr: config
+          version: 1.0.1
+        - file: RTE/Device/STM32F103CB/system_stm32f10x.c
+          category: source
+          attr: config
+          version: 1.0.1
+    - component: Keil::Device:StdPeriph Drivers:ADC@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:ADC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_adc.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_adc.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:BKP@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:BKP
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_bkp.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_bkp.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:CAN@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:CAN
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_can.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_can.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:CEC@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:CEC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_cec.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_cec.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:CRC@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:CRC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_crc.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_crc.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:DAC@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:DAC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_dac.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_dac.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:DBGMCU@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:DBGMCU
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_dbgmcu.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_dbgmcu.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:DMA@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:DMA
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_dma.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_dma.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:EXTI@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:EXTI
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_exti.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_exti.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:FSMC@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:FSMC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_fsmc.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_fsmc.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:Flash@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:Flash
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_flash.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_flash.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:Framework@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:Framework
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc
+          category: include
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/misc.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c
+          category: source
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/stm32f10x_stdperiph_lib_um.chm
+          category: doc
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/templates/stm32f10x_it.c
+          category: source
+          attr: template
+          version: 3.6.0
+          select: Interrupt Service Routines
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/templates/stm32f10x_it.h
+          category: header
+          attr: template
+          version: 3.6.0
+          select: Interrupt Service Routines
+        - file: RTE/Device/STM32F103CB/stm32f10x_conf.h
+          category: source
+          attr: config
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:GPIO@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:GPIO
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_gpio.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_gpio.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:I2C@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:I2C
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_i2c.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_i2c.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:IWDG@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:IWDG
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_iwdg.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_iwdg.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:PWR@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:PWR
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_pwr.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_pwr.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:RCC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rcc.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:RTC@3.6.0
+      condition: STM32F1xx STDPERIPH
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:RTC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_rtc.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_rtc.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:SDIO@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:SDIO
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_sdio.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_sdio.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:SPI@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:SPI
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_spi.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_spi.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:TIM@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:TIM
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_tim.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_tim.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:USART@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:USART
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_usart.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_usart.c
+          category: source
+          version: 3.6.0
+    - component: Keil::Device:StdPeriph Drivers:WWDG@3.6.0
+      condition: STM32F1xx STDPERIPH RCC
+      from-pack: Keil::STM32F1xx_DFP@2.4.1
+      selected-by: Keil::Device:StdPeriph Drivers:WWDG
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/inc/stm32f10x_wwdg.h
+          category: header
+          version: 3.6.0
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/stm32f10x_wwdg.c
+          category: source
+          version: 3.6.0
+  linker:
+    script: CyberryPotter_Target_1.sct
+  groups:
+    - group: nnom
+      files:
+        - file: CNN/weights.h
+          category: header
+        - file: CNN/nnom_lib/inc/nnom.h
+          category: header
+        - file: CNN/nnom_lib/inc/nnom_layers.h
+          category: header
+        - file: CNN/nnom_lib/inc/nnom_local.h
+          category: header
+        - file: CNN/nnom_lib/inc/nnom_tensor.h
+          category: header
+        - file: CNN/nnom_lib/inc/nnom_utils.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_activation.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_avgpool.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_baselayer.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_concat.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_conv2d.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_conv2d_trans.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_cropping.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_dense.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_dw_conv2d.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_flatten.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_global_pool.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_gru_cell.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_input.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_lambda.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_lstm_cell.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_matrix.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_maxpool.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_output.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_reshape.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_rnn.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_simple_cell.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_softmax.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_sumpool.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_upsample.h
+          category: header
+        - file: CNN/nnom_lib/inc/layers/nnom_zero_padding.h
+          category: header
+        - file: CNN/nnom_lib/port/nnom_port.h
+          category: header
+        - file: CNN/nnom_lib/src/backends/nnom_local.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/backends/nnom_local_q15.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/core/nnom.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/core/nnom_layers.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/core/nnom_tensor.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/core/nnom_utils.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_activation.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_avgpool.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_baselayer.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_concat.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_conv2d.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_conv2d_trans.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_cropping.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_dense.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_dw_conv2d.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_flatten.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_global_pool.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_gru_cell.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_input.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_lambda.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_lstm_cell.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_matrix.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_maxpool.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_output.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_reshape.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_rnn.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_simple_cell.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_softmax.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_sumpool.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_upsample.c
+          category: sourceC
+        - file: CNN/nnom_lib/src/layers/nnom_zero_padding.c
+          category: sourceC
+    - group: MainBoard
+      files:
+        - file: MainBoard/config.h
+          category: header
+        - file: MainBoard/CyberryPotter.c
+          category: sourceC
+        - file: MainBoard/CyberryPotter.h
+          category: header
+        - file: MainBoard/Delay.c
+          category: sourceC
+        - file: MainBoard/Delay.h
+          category: header
+        - file: MainBoard/IIC.c
+          category: sourceC
+        - file: MainBoard/IIC.h
+          category: header
+        - file: MainBoard/IMU.c
+          category: sourceC
+        - file: MainBoard/IMU.h
+          category: header
+        - file: MainBoard/main.c
+          category: sourceC
+        - file: MainBoard/MPU6050.c
+          category: sourceC
+        - file: MainBoard/MPU6050.h
+          category: header
+        - file: MainBoard/MPU6050_Reg.h
+          category: header
+        - file: MainBoard/W25Q64.c
+          category: sourceC
+        - file: MainBoard/W25Q64.h
+          category: header
+        - file: MainBoard/eMPL/dmpKey.h
+          category: header
+        - file: MainBoard/eMPL/dmpmap.h
+          category: header
+        - file: MainBoard/eMPL/inv_mpu.c
+          category: sourceC
+        - file: MainBoard/eMPL/inv_mpu.h
+          category: header
+        - file: MainBoard/eMPL/inv_mpu_dmp_motion_driver.c
+          category: sourceC
+        - file: MainBoard/eMPL/inv_mpu_dmp_motion_driver.h
+          category: header
+        - file: MainBoard/SPI.c
+          category: sourceC
+        - file: MainBoard/SPI.h
+          category: header
+        - file: MainBoard/USART.c
+          category: sourceC
+        - file: MainBoard/USART.h
+          category: header
+        - file: MainBoard/button.c
+          category: sourceC
+        - file: MainBoard/button.h
+          category: header
+        - file: MainBoard/LED.c
+          category: sourceC
+        - file: MainBoard/LED.h
+          category: header
+        - file: MainBoard/ADC.c
+          category: sourceC
+        - file: MainBoard/ADC.h
+          category: header
+    - group: Module
+      files:
+        - file: Module/module0_IR.c
+          category: sourceC
+        - file: Module/module0_IR.h
+          category: header
+        - file: Module/module1_RF433.c
+          category: sourceC
+        - file: Module/module1_RF433.h
+          category: header
+        - file: Module/module2_RF315.c
+          category: sourceC
+        - file: Module/module2_RF315.h
+          category: header
+        - file: Module/module_IR_RF.c
+          category: sourceC
+        - file: Module/module_IR_RF.h
+          category: header
+        - file: Module/module3.c
+          category: sourceC
+        - file: Module/module3.h
+          category: header
+        - file: Module/module4.c
+          category: sourceC
+        - file: Module/module4.h
+          category: header
+        - file: Module/module5.c
+          category: sourceC
+        - file: Module/module5.h
+          category: header
+        - file: Module/module6.c
+          category: sourceC
+        - file: Module/module6.h
+          category: header
+        - file: Module/module7.c
+          category: sourceC
+        - file: Module/module7.h
+          category: header
+        - file: Module/module8.c
+          category: sourceC
+        - file: Module/module8.h
+          category: header
+        - file: Module/module9.c
+          category: sourceC
+        - file: Module/module9.h
+          category: header
+        - file: Module/module10.c
+          category: sourceC
+        - file: Module/module10.h
+          category: header
+  constructed-files:
+    - file: RTE/_Target_1/RTE_Components.h
+      category: header
+  licenses:
+    - license: <unknown>
+      license-agreement: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.0.0/LICENSE
+      packs:
+        - pack: ARM::CMSIS@6.0.0
+      components:
+        - component: ARM::CMSIS:CORE@6.0.0
+    - license: <unknown>
+      packs:
+        - pack: Keil::STM32F1xx_DFP@2.4.1
+      components:
+        - component: Keil::Device:Startup@1.0.0
+        - component: Keil::Device:StdPeriph Drivers:ADC@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:BKP@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:CAN@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:CEC@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:CRC@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:DAC@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:DBGMCU@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:DMA@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:EXTI@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:FSMC@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:Flash@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:Framework@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:GPIO@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:I2C@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:IWDG@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:PWR@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:RTC@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:SDIO@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:SPI@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:TIM@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:USART@3.6.0
+        - component: Keil::Device:StdPeriph Drivers:WWDG@3.6.0

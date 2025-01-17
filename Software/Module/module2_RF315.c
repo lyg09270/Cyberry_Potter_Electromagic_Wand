@@ -12,10 +12,10 @@ void Module2_RF315_Init(void)
         TIM_TimeBaseInitTypeDef TIM_TimerBaseInitStruct;
         EXTI_InitTypeDef EXTI_InitStruct;
         NVIC_InitTypeDef NVIC_InitStruct;
-//FR receriver init*****************************************//
+//RF receriver init*****************************************//
         
         GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
-        GPIO_InitStruct.GPIO_Pin = GPIO_Pin_4;
+        GPIO_InitStruct.GPIO_Pin = GPIO_Pin_7;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOA,&GPIO_InitStruct);
         
@@ -33,9 +33,9 @@ void Module2_RF315_Init(void)
         NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
         NVIC_Init(&NVIC_InitStruct);     
 	
-//FR transmitter init*****************************************//
+//RF transmitter init*****************************************//
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
-        GPIO_InitStruct.GPIO_Pin = GPIO_Pin_5;
+        GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6;
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOA,&GPIO_InitStruct); 
 	
@@ -49,15 +49,14 @@ void Module2_RF315_Init(void)
         TIM_ClearFlag(TIM2,TIM_FLAG_Update);
 	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
 	
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 7;
 	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 7;
 	NVIC_Init(&NVIC_InitStruct);        
         
-        TIM_Cmd(TIM2,DISABLE);
-	
+        TIM_Cmd(TIM2,DISABLE);     
 }
 
 void Module2_RF315_Logic(uint8_t logic)

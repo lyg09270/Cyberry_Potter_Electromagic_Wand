@@ -60,8 +60,8 @@ typedef enum{
 #define MODE0_MOTION12_STRING "Wave\n"
 
 #define MODE1_MOTION1_STRING {LMETA, END_CHAR}
-#define MODE1_MOTION2_STRING {RIGHT, END_CHAR}
-#define MODE1_MOTION3_STRING {LEFT, END_CHAR}
+#define MODE1_MOTION2_STRING {' ', END_CHAR}
+#define MODE1_MOTION3_STRING {'\n', END_CHAR}
 #define MODE1_MOTION4_STRING {DOWN, END_CHAR}
 #define MODE1_MOTION5_STRING {UP, END_CHAR}
 #define MODE1_MOTION6_STRING {'5', KEY_ENTER, END_CHAR}
@@ -100,7 +100,7 @@ const char mode1_motion10[64] = MODE1_MOTION10_STRING;
 const char mode1_motion11[64] = MODE1_MOTION11_STRING;
 const char mode1_motion12[64] = MODE1_MOTION12_STRING;
 
-char Send_Buffer[128];
+char Send_Buffer[64];
 extern volatile Model_Output_t model_output;
 
 void Module3_Init(void)
@@ -174,7 +174,7 @@ void Module3_Mode0_Handler(void)
 
 void Module3_Mode1_Handler(void)
 {
-	printf("Module3_Mode0_Handler\n");
+	printf("Module3_Mode1_Handler\n");
 	switch (model_output) {
 		case RightAngle:
 		    strcpy(Send_Buffer, mode1_motion1);

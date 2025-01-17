@@ -1,1 +1,1 @@
-{'input_1': [4, 0], 'conv1d': [4, 0], 'leaky_re_lu': [4, 0], 'intermediate_lstm': [7, 3, 3], 'lstm': [7, 0], 'flatten': [7, 0], 'dense': [3, 0], 'dropout': [3, 0], 'softmax': [7, 0]}
+{'input_1': [4, 0], 'conv1d': [4, 0], 'leaky_re_lu': [4, 0], 'conv1d_1': [3, 0], 'leaky_re_lu_1': [3, 0], 'intermediate_lstm': [7, 3, 3], 'lstm': [7, 0], 'flatten': [7, 0], 'dense': [3, 0], 'softmax': [7, 0]}

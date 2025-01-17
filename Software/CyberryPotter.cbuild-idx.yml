@@ -1,0 +1,15 @@
+build-idx:
+  generated-by: csolution version 2.6.0
+  csolution: CyberryPotter.csolution.yml
+  tmpdir: tmp
+  cprojects:
+    - cproject: CyberryPotter.cproject.yml
+  cbuilds:
+    - cbuild: CyberryPotter+Target_1.cbuild.yml
+      project: CyberryPotter
+      configuration: +Target_1
+      messages:
+        info:
+          - CyberryPotter.cbuild-set.yml - file is already up-to-date
+          - CyberryPotter.cbuild-pack.yml - file is already up-to-date
+          - CyberryPotter+Target_1.cbuild.yml - file is already up-to-date

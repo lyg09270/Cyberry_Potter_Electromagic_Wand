@@ -152,6 +152,11 @@ int main(void)
 					case SYSTEM_MODE_1:
 						Module.Mode1_Handler();
 						break;
+					#ifdef LASER_ENABLE
+					case SYSTEM_MODE_2:
+						Module.Mode0_Handler();
+						break;
+					#endif //LASER_ENABLE
 					default:
 						break;
 					

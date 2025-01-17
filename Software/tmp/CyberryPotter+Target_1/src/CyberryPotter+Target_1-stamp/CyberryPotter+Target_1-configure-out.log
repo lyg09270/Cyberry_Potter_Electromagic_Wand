@@ -1,0 +1,11 @@
+-- The C compiler identification is ARMClang 6.22.0
+-- The ASM compiler identification is ARMClang
+-- Found assembler: c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.22.0/bin//armclang.exe
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.22.0/bin//armclang.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (8.7s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/1

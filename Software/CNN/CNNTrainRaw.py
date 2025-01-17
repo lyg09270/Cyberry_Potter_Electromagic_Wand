@@ -16,11 +16,11 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h', 'letter_R', 'letter_W', 'letter_phi', 'Circle', 'UpAndDown', 'Horn', 'Wave', 'NoMotion']
 
 # 定义目录路径
-DEF_SAVE_TO_PATH = './TraningData_8_17/'
+DEF_SAVE_TO_PATH = './TraningData_1_17'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
-DEF_FILE_MAX = 50
-DEF_MAX_TRIALS = 3
+DEF_FILE_MAX = 1000
+DEF_MAX_TRIALS = 1
 #DEF_N_ROWS = 60
 DEF_N_ROWS = 150
 #DEF_COLUMNS = (0, 1, 2, 3, 4, 5)
@@ -31,8 +31,8 @@ DEF_COLUMNS = (3, 4, 5)
 DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
-DEF_BATCH_SIZE = 80
-DEF_NUM_EPOCH = 80
+DEF_BATCH_SIZE = 120
+DEF_NUM_EPOCH = 500
 
 # 动作名称到标签的映射
 motion_to_label = {name: idx for idx, name in enumerate(motion_names)}
@@ -42,23 +42,22 @@ def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_cla
 
     x = layers.Conv1D(30, kernel_size=3, strides=3, padding='same')(inputs) # type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
-    x = layers.Conv1D(15, kernel_size=3, strides=3, padding='same')(x)# type: ignore
+    x = layers.Conv1D(15, kernel_size=2, strides=2, padding='same')(x)# type: ignore
     x = layers.LeakyReLU()(x)# type: ignore
-    #x = layers.MaxPooling1D(pool_size=3, strides=3)(x)# type: ignore
     # LSTM 层
-    #x = layers.LSTM(5, return_sequences=True)(x)  # type: ignore
+    x = layers.LSTM(10, return_sequences=True)(x)  # type: ignore
    
     x = layers.Flatten()(x)# type: ignore
 
     # 全连接层
     x = layers.Dense(num_classes)(x) # type: ignore
-    x = layers.Dropout(0.3)(x) # type: ignore
+    #x = layers.Dropout(0.3)(x) # type: ignore
     outputs = layers.Softmax()(x) # type: ignore
 
     model = models.Model(inputs=inputs, outputs=outputs) # type: ignore
     
     # 编译模型
-    model.compile(optimizer=optimizers.Adam(), # type: ignore
+    model.compile(optimizer=optimizers.Adam(learning_rate=0.001,clipvalue=1.0), # type: ignore
                   loss=losses.CategoricalCrossentropy(), # type: ignore
                   metrics=['accuracy'])# type: ignore
     
@@ -125,7 +124,7 @@ labels_one_hot = utils.to_categorical(labels, num_classes=len(motion_names)) # t
 # 计算分割点前，先确保数据集被完全构建
 num_elements = len(file_list_padded)
 
-train_size = int(num_elements * 0.8)
+train_size = int(num_elements * 0.5)
 
 # 训练模型并保存最佳模型
 best_val_accuracy = 0
@@ -163,10 +162,6 @@ for _ in range(DEF_MAX_TRIALS):  # 重复训练DEF_MAX_TRIALS次
         best_val_accuracy = val_accuracy
         best_model = model
 
-# 从训练数据集中获取一个批次作为校准数据集
-# 这里直接使用x_test
-x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
-
 # 使用最佳模型进行最终评估
 if best_model is not None:
     y_pred = best_model.predict(x_test)
@@ -181,7 +176,7 @@ if best_model is not None:
     print(classification_report(y_true_classes, y_pred_classes, target_names=target_names))
 
     # 从训练数据集中获取一个批次作为校准数据集
-    x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
+    x_test_sample = x_test[:300]  # 使用前500个样本作为校准数据集
     
     # 假设generate_model函数已经定义在nnom模块中
     generate_model(best_model, x_test_sample, format='hwc', name=DEF_MODEL_H_NAME)
