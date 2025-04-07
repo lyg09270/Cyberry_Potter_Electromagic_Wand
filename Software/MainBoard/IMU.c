@@ -17,11 +17,18 @@
 #include "MPU6050_Reg.h"
 #include "IMU.h"
 #include "Delay.h"
+#include "math.h"
+#include <stdint.h>
+#include <stdio.h>
 
 IMU_t IMU;
 
 //measured data beginning with m, d means derivative ,mdAngle is measured angular velovity in this case.
 int16_t IMU_bias[6] = {0,0,0,0,0,0};
+
+#ifdef IMAGE_ENABLE
+Canvas_t IMU_Canvas;
+#endif //IMAGE_ENABLE
 
 //This function is used to print the Acc data to your computer
 //IMU_DATA_PRINT_HEADER is the header that the script use to identify which the following messages is IMU data or not.
@@ -73,6 +80,94 @@ void IMU_Get_Data(uint8_t i)
 	IMU.gyro[i][Roll] = IMU_Received[Roll] / IMU_GYRO_TRANS_RADIAN_CONSTANT;
 	IMU.gyro[i][Pitch] = IMU_Received[Pitch] / IMU_GYRO_TRANS_RADIAN_CONSTANT;
 	IMU.gyro[i][Yaw] = IMU_Received[Yaw] / IMU_GYRO_TRANS_RADIAN_CONSTANT;
+
+	#ifdef IMAGE_ENABLE
+	IMU_Canvas.scale[0] += IMU.gyro[i][Roll];
+	IMU_Canvas.scale[1] += IMU.gyro[i][Yaw];
+	#endif //IMAGE_ENABLE
+}
+
+void Canvas_Draw_Line(Canvas_t* canvas,int8_t x1,int8_t x2,int8_t y1,int8_t y2)
+{
+	int8_t dx,dy,sx,sy,err,e2;
+	dx = abs(x2 - x1);
+	dy = abs(y2 - y1);
+    sx = (x2 > x1) ? 1 : -1;
+    sy = (y2 > y1) ? 1 : -1;
+	err = dx - dy;
+
+	while(1){
+		canvas->data[y1][x1] = 255;
+		
+		if (x1 == x2 && y1 == y2)
+			break;
+		
+		e2 = 2 * err;
+		if (e2 > -dy){
+			err -= dy;
+			x1 += sx;
+		}
+		if (e2 < dx){
+			err += dx;
+			y1 += sy;
+		}
+	}
+}
+
+void Canvas_Print(Canvas_t* canvas)
+{
+	uint8_t i = 0;
+	uint8_t j = 0;
+	for(i = 0; i < IMAGE_SIZE;i++){
+		for(j = 0; j < IMAGE_SIZE;j++){
+			if(canvas->data[i][j] == 0){
+				printf("  ");
+			}
+			else{
+				printf("* ");
+			}
+		}
+		printf("\n");
+	}
+}
+
+void Canvas_Clear(Canvas_t* canvas)
+{
+	int8_t i = 0;
+	int8_t j = 0;
+	for(i = 0; i < IMAGE_SIZE;i++){
+		for(j = 0; j < IMAGE_SIZE;j++){
+			canvas->data[i][j] = 0;
+		}
+	}
+	canvas->cursor[0] = IMAGE_SIZE / 2.0;
+	canvas->cursor[1] = IMAGE_SIZE / 2.0;
+}
+
+void Canvas_Draw_From_IMU(Canvas_t* canvas)
+{
+	Canvas_Clear(canvas);
+	canvas->scale[0] = (IMAGE_SIZE / 2.0 - 1) / canvas->scale[0];
+	canvas->scale[1] = (IMAGE_SIZE / 2.0 - 1) / canvas->scale[1];
+
+	uint8_t i = 0;
+	float next_point[2] = {0,0};
+	for(i = 0; i < IMU_SEQUENCE_LENGTH_MAX;i++){
+		next_point[0] = canvas->cursor[0] + IMU.gyro[i][Roll] * canvas->scale[0];
+		next_point[1] = canvas->cursor[1] + IMU.gyro[i][Yaw] * canvas->scale[1];
+		Canvas_Draw_Line(canvas,
+			roundf(canvas->cursor[0]),
+			roundf(next_point[0]),
+			roundf(canvas->cursor[1]),
+			roundf(next_point[1])
+		);
+		canvas->cursor[0] = next_point[0];
+		canvas->cursor[1] = next_point[1];
+	}
+	Canvas_Print(canvas);
+	canvas->scale[0] = 0;
+	canvas->scale[1] = 0;
+	
 }
 
 void IMU_Init(void)

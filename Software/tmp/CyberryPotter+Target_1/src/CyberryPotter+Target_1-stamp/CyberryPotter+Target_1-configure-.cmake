@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-set(command "C:/Users/13087/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake.exe;-G;Ninja;-S;C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CyberryPotter+Target_1;-B;C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/1;-DSOLUTION_ROOT=C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software;-DCMSIS_PACK_ROOT=C:/Users/13087/AppData/Local/Arm/Packs;-DCMSIS_COMPILER_ROOT=C:/Users/13087/.vcpkg/artifacts/2139c4c6/tools.open.cmsis.pack.cmsis.toolbox/2.6.1/etc")
+set(command "C:/Users/13087/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake.exe;-G;Ninja;-S;C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CyberryPotter+Target_1;-B;C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/1;-DSOLUTION_ROOT=C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software;-DCMSIS_PACK_ROOT=C:/Users/13087/AppData/Local/Arm/Packs;-DCMSIS_COMPILER_ROOT=C:/Users/13087/.vcpkg/artifacts/2139c4c6/tools.open.cmsis.pack.cmsis.toolbox/2.7.0/etc")
 set(log_merged "")
 set(log_output_on_failure "ON")
 set(stdout_log "C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CyberryPotter+Target_1/src/CyberryPotter+Target_1-stamp/CyberryPotter+Target_1-configure-out.log")

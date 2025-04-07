@@ -44,11 +44,15 @@ target_include_directories(Group_nnom PUBLIC
 target_compile_definitions(Group_nnom PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+add_library(Group_nnom_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_nnom_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 target_compile_options(Group_nnom PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
 )
 target_link_libraries(Group_nnom PUBLIC
-  ${CONTEXT}_ABSTRACTIONS
+  Group_nnom_ABSTRACTIONS
 )
 
 # group MainBoard
@@ -76,11 +80,15 @@ target_include_directories(Group_MainBoard PUBLIC
 target_compile_definitions(Group_MainBoard PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+add_library(Group_MainBoard_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_MainBoard_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 target_compile_options(Group_MainBoard PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
 )
 target_link_libraries(Group_MainBoard PUBLIC
-  ${CONTEXT}_ABSTRACTIONS
+  Group_MainBoard_ABSTRACTIONS
 )
 
 # group Module
@@ -105,9 +113,13 @@ target_include_directories(Group_Module PUBLIC
 target_compile_definitions(Group_Module PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+add_library(Group_Module_ABSTRACTIONS INTERFACE)
+target_link_libraries(Group_Module_ABSTRACTIONS INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 target_compile_options(Group_Module PUBLIC
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_OPTIONS>
 )
 target_link_libraries(Group_Module PUBLIC
-  ${CONTEXT}_ABSTRACTIONS
+  Group_Module_ABSTRACTIONS
 )

@@ -1,4 +1,5 @@
 #include "CyberryPotter.h"
+#include "IMU.h"
 #include "weights.h"
 #include "nnom.h"
 
@@ -12,6 +13,8 @@ nnom_model_t* model;
 
 volatile Model_Output_t model_output = -1;
 volatile ROM_Address_t ROM_Address;
+
+extern Canvas_t IMU_Canvas;
 
 /*
  * @brief Quantirize IMU data and feed to CNN model
@@ -142,7 +145,7 @@ int main(void)
 			while(IMU.status != IMU_Sampled);
 			LED.Operate(ON);
 			#ifndef SYSTEM_MODE_DATA_COLLECT
-			model_output = model_get_output();
+			//model_output = model_get_output();
 			
 			if(model_output != Unrecognized){
 				switch(Cyberry_Potter.System_Mode){
@@ -163,6 +166,7 @@ int main(void)
 				}
 			}
 			#endif
+			Canvas_Draw_From_IMU(&IMU_Canvas);
 			IMU.status = IMU_Idle;
 			Button.status_clear();
 			EXTI_Restore();

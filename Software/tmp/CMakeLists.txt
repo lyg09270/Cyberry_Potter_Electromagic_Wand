@@ -21,12 +21,14 @@ set(OUTPUTS_1
   "${SOLUTION_ROOT}/out/CyberryPotter/Target_1/CyberryPotter.axf"
 )
 
-
 set(ARGS
   "-DSOLUTION_ROOT=${SOLUTION_ROOT}"
   "-DCMSIS_PACK_ROOT=${CMSIS_PACK_ROOT}"
   "-DCMSIS_COMPILER_ROOT=${CMSIS_COMPILER_ROOT}"
 )
+
+# Compilation database
+add_custom_target(database)
 
 # Iterate over contexts
 foreach(INDEX RANGE ${CONTEXTS_LENGTH})
@@ -51,7 +53,13 @@ foreach(INDEX RANGE ${CONTEXTS_LENGTH})
     LOG_OUTPUT_ON_FAILURE ON
     USES_TERMINAL_BUILD   ON
   )
-  ExternalProject_Add_StepTargets(${CONTEXT} build configure)
+
+  # Executes command step
+  ExternalProject_Add_Step(${CONTEXT} executes
+    DEPENDEES         build
+  )
+
+  ExternalProject_Add_StepTargets(${CONTEXT} build configure executes)
 
   # Debug
   message(VERBOSE "Configure Context: ${CMAKE_COMMAND} -G Ninja -S ${DIR} -B ${N}")
@@ -59,10 +67,12 @@ foreach(INDEX RANGE ${CONTEXTS_LENGTH})
   # Database generation step
   ExternalProject_Add_Step(${CONTEXT} database
     COMMAND           ${CMAKE_COMMAND} --build <BINARY_DIR> --target database
-    EXCLUDE_FROM_MAIN TRUE
     ALWAYS            TRUE
+    LOG               TRUE
+    USES_TERMINAL     ON
     DEPENDEES         configure
   )
   ExternalProject_Add_StepTargets(${CONTEXT} database)
+  add_dependencies(database ${CONTEXT}-database)
 
 endforeach()

@@ -37,9 +37,15 @@ include CMakeFiles\rules.ninja
 cmake_ninja_workdir = C$:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\tmp\
 
 #############################################
+# Utility command for database
+
+build database: phony CyberryPotter+Target_1-database
+
+
+#############################################
 # Utility command for CyberryPotter+Target_1
 
-build CyberryPotter+Target_1: phony CMakeFiles\CyberryPotter+Target_1 CMakeFiles\CyberryPotter+Target_1-complete CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-done CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build C$:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\out\CyberryPotter\Target_1\CyberryPotter.axf CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-mkdir CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-patch CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-update CyberryPotter+Target_1-build CyberryPotter+Target_1-configure
+build CyberryPotter+Target_1: phony CMakeFiles\CyberryPotter+Target_1 CMakeFiles\CyberryPotter+Target_1-complete CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-done CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build C$:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\out\CyberryPotter\Target_1\CyberryPotter.axf CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-executes CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-mkdir CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-patch CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-update CyberryPotter+Target_1-build CyberryPotter+Target_1-configure CyberryPotter+Target_1-database CyberryPotter+Target_1-executes
 
 
 #############################################
@@ -52,6 +58,12 @@ build CyberryPotter+Target_1-build: phony CMakeFiles\CyberryPotter+Target_1-buil
 # Utility command for CyberryPotter+Target_1-configure
 
 build CyberryPotter+Target_1-configure: phony CMakeFiles\CyberryPotter+Target_1-configure CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-patch CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-update CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-mkdir
+
+
+#############################################
+# Utility command for CyberryPotter+Target_1-executes
+
+build CyberryPotter+Target_1-executes: phony CMakeFiles\CyberryPotter+Target_1-executes CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-executes CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build C$:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\out\CyberryPotter\Target_1\CyberryPotter.axf CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-patch CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-update CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-mkdir CyberryPotter+Target_1-build
 
 
 #############################################
@@ -87,13 +99,13 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 #############################################
 # Phony custom command for CMakeFiles\CyberryPotter+Target_1
 
-build CMakeFiles\CyberryPotter+Target_1 | ${cmake_ninja_workdir}CMakeFiles\CyberryPotter+Target_1: phony CMakeFiles\CyberryPotter+Target_1-complete || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure
+build CMakeFiles\CyberryPotter+Target_1 | ${cmake_ninja_workdir}CMakeFiles\CyberryPotter+Target_1: phony CMakeFiles\CyberryPotter+Target_1-complete || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure CyberryPotter+Target_1-database CyberryPotter+Target_1-executes
 
 
 #############################################
 # Custom command for CMakeFiles\CyberryPotter+Target_1-complete
 
-build CMakeFiles\CyberryPotter+Target_1-complete CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-done | ${cmake_ninja_workdir}CMakeFiles\CyberryPotter+Target_1-complete ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-done: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-mkdir CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-update CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-patch CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure
+build CMakeFiles\CyberryPotter+Target_1-complete CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-done | ${cmake_ninja_workdir}CMakeFiles\CyberryPotter+Target_1-complete ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-done: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-mkdir CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-update CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-patch CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-executes CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure CyberryPotter+Target_1-database CyberryPotter+Target_1-executes
   COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\tmp && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E make_directory C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/CyberryPotter+Target_1-complete && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CyberryPotter+Target_1/src/CyberryPotter+Target_1-stamp/CyberryPotter+Target_1-done"
   DESC = Completed 'CyberryPotter+Target_1'
   restat = 1
@@ -119,6 +131,15 @@ build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Targ
 
 
 #############################################
+# Custom command for CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database
+
+build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure || CyberryPotter+Target_1-configure
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\tmp && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -P C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CyberryPotter+Target_1/src/CyberryPotter+Target_1-stamp/CyberryPotter+Target_1-database-.cmake"
+  DESC = Performing database step for 'CyberryPotter+Target_1'
+  pool = console
+
+
+#############################################
 # Custom command for CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download
 
 build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-download: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-source_dirinfo.txt CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-mkdir
@@ -128,9 +149,18 @@ build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Targ
 
 
 #############################################
+# Custom command for CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-executes
+
+build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-executes | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-executes: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\tmp && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CyberryPotter+Target_1/src/CyberryPotter+Target_1-stamp/CyberryPotter+Target_1-executes"
+  DESC = No executes step for 'CyberryPotter+Target_1'
+  restat = 1
+
+
+#############################################
 # Custom command for CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install
 
-build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure
+build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-build || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure CyberryPotter+Target_1-database CyberryPotter+Target_1-executes
   COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\tmp\1 && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append"
   DESC = No install step for 'CyberryPotter+Target_1'
 
@@ -156,7 +186,7 @@ build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Targ
 #############################################
 # Custom command for CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test
 
-build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure
+build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-test: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-install || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure CyberryPotter+Target_1-database CyberryPotter+Target_1-executes
   COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\tmp\1 && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E echo_append && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe -E touch C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CyberryPotter+Target_1/src/CyberryPotter+Target_1-stamp/CyberryPotter+Target_1-test"
   DESC = No test step for 'CyberryPotter+Target_1'
   restat = 1
@@ -184,17 +214,15 @@ build CMakeFiles\CyberryPotter+Target_1-configure | ${cmake_ninja_workdir}CMakeF
 
 
 #############################################
-# Phony custom command for CMakeFiles\CyberryPotter+Target_1-database
+# Phony custom command for CMakeFiles\CyberryPotter+Target_1-executes
 
-build CMakeFiles\CyberryPotter+Target_1-database | ${cmake_ninja_workdir}CMakeFiles\CyberryPotter+Target_1-database: phony CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database || CyberryPotter+Target_1-configure
+build CMakeFiles\CyberryPotter+Target_1-executes | ${cmake_ninja_workdir}CMakeFiles\CyberryPotter+Target_1-executes: phony CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-executes || CyberryPotter+Target_1-build CyberryPotter+Target_1-configure
 
 
 #############################################
-# Custom command for CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database
+# Phony custom command for CMakeFiles\CyberryPotter+Target_1-database
 
-build CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database | ${cmake_ninja_workdir}CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database: CUSTOM_COMMAND CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-configure || CyberryPotter+Target_1-configure
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\13087\Desktop\Cyberry_Potter_Electromagic_Wand\Software\tmp && C:\Users\13087\.vcpkg\artifacts\2139c4c6\tools.kitware.cmake\3.28.4\bin\cmake.exe --build C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/1 --target database"
-  DESC = Performing database step for 'CyberryPotter+Target_1'
+build CMakeFiles\CyberryPotter+Target_1-database | ${cmake_ninja_workdir}CMakeFiles\CyberryPotter+Target_1-database: phony CyberryPotter+Target_1\src\CyberryPotter+Target_1-stamp\CyberryPotter+Target_1-database || CyberryPotter+Target_1-configure
 
 # =============================================================================
 # Target aliases.

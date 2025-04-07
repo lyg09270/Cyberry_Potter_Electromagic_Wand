@@ -1,11 +1,18 @@
 build:
-  generated-by: csolution version 2.6.0
+  generated-by: csolution version 2.7.0
   solution: CyberryPotter.csolution.yml
   project: CyberryPotter.cproject.yml
   context: CyberryPotter+Target_1
-  compiler: AC6@6.22.0
+  compiler: AC6
   device: STMicroelectronics::STM32F103CB
   device-pack: Keil::STM32F1xx_DFP@2.4.1
+  device-books:
+    - name: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Documents/CD00161566.pdf
+      title: STM32F103x8 STM32F103xB Data Sheet
+    - name: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Documents/CD00171190.pdf
+      title: STM32F101xx, STM32F102xx, STM32F103xx, STM32F105xx, STM32F107xx Reference Manual
+    - name: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Documents/dui0552a_cortex_m3_dgug.pdf
+      title: Cortex-M3 Generic User Guide
   processor:
     endian: little
     fpu: off

@@ -9,6 +9,9 @@ target_include_directories(ARM_CMSIS_CORE_6_0_0 INTERFACE
 target_compile_definitions(ARM_CMSIS_CORE_6_0_0 INTERFACE
   $<TARGET_PROPERTY:${CONTEXT},INTERFACE_COMPILE_DEFINITIONS>
 )
+target_link_libraries(ARM_CMSIS_CORE_6_0_0 INTERFACE
+  ${CONTEXT}_ABSTRACTIONS
+)
 
 # component Keil::Device:Startup@1.0.0
 add_library(Keil_Device_Startup_1_0_0 OBJECT

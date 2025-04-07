@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "arm-debugger.flash",
+			"serialNumber": "${command:device-manager.getSerialNumber}",
+			"program": "${command:arm-debugger.getApplicationFile}",
+			"cmsisPack": "${command:cmsis-csolution.getTargetPack}",
+			"deviceName": "${command:cmsis-csolution.getDeviceName}",
+			"processorName": "${command:cmsis-csolution.getProcessorName}",
+			"problemMatcher": [],
+			"label": "arm-debugger.flash: Flash Device"
+		}
+	]
+}

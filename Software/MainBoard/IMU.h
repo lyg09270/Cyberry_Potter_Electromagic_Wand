@@ -27,7 +27,12 @@
 //+-500 degrees raw value to degree constant is divided by 16.384
 //+-500 to radian is divided by (73.537*180/PI) = 4213.359738
 #define IMU_GYRO_TRANS_RADIAN_CONSTANT (8192.0) 
-//#define IMU_GYRO_TRANS_RADIAN_CONSTANT (1.0) 
+//#define IMU_GYRO_TRANS_RADIAN_CONSTANT (1.0)
+#define IMAGE_ENABLE
+#define IMAGE_SIZE 28
+#define IMAGE_SIZE_SQUARE (IMAGE_SIZE*IMAGE_SIZE)
+
+
 
 typedef enum eIMU_STATUS{
         IMU_Idle = 0,
@@ -58,11 +63,19 @@ typedef struct IMU_t
 	float gyro[IMU_SEQUENCE_LENGTH_MAX][3];
 }IMU_t;
 
+typedef struct Canvas_t
+{
+	uint8_t data[IMAGE_SIZE][IMAGE_SIZE];
+	uint8_t cursor[2];
+	float scale[2];
+}Canvas_t;
+
 #ifdef SYSTEM_MODE_DATA_COLLECT
 void IMU_Data_Print(void);
 #endif //SYSTEM_MODE_DATA_COLLECT
 void IMU_Get_Data(uint8_t index);
 void IMU_Init(void);
+void Canvas_Draw_From_IMU(Canvas_t* canvas);
 
 extern struct IMU_t IMU;
 

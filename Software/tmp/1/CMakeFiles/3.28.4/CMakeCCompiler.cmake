@@ -1,8 +1,8 @@
-set(CMAKE_C_COMPILER "c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.22.0/bin//armclang.exe")
+set(CMAKE_C_COMPILER "c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin//armclang.exe")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "ARMClang")
-set(CMAKE_C_COMPILER_VERSION "6.22.0")
-set(CMAKE_C_COMPILER_VERSION_INTERNAL "6220000")
+set(CMAKE_C_COMPILER_VERSION "6.23.0")
+set(CMAKE_C_COMPILER_VERSION_INTERNAL "6230001")
 set(CMAKE_C_COMPILER_WRAPPER "")
 set(CMAKE_C_STANDARD_COMPUTED_DEFAULT "17")
 set(CMAKE_C_EXTENSIONS_COMPUTED_DEFAULT "ON")
@@ -21,11 +21,11 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.22.0/bin/armar.exe")
+set(CMAKE_AR "c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin/armar.exe")
 set(CMAKE_C_COMPILER_AR "")
 set(CMAKE_RANLIB "C:/Strawberry/c/bin/ranlib.exe")
 set(CMAKE_C_COMPILER_RANLIB "")
-set(CMAKE_LINKER "c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.22.0/bin/armlink.exe")
+set(CMAKE_LINKER "c:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/bin/armlink.exe")
 set(CMAKE_MT "")
 set(CMAKE_TAPI "CMAKE_TAPI-NOTFOUND")
 set(CMAKE_COMPILER_IS_GNUCC )
@@ -68,7 +68,7 @@ endif()
 
 
 
-set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.22.0/include")
+set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/Users/13087/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.23.0/include")
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "")
 set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

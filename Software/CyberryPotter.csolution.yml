@@ -1,7 +1,7 @@
 solution:
   created-by: uv2csolution@1.5.0
   created-for: CMSIS-Toolbox@2.4.0
-  compiler: AC6@6.22.0
+  compiler: AC6
   target-types:
     - type: Target_1
       device: STMicroelectronics::STM32F103CB
