@@ -1,0 +1,21 @@
+cbuild-run:
+  generated-by: csolution version 2.7.0
+  solution: CyberryPotter.csolution.yml
+  target-type: Target_1
+  compiler: AC6
+  device: STMicroelectronics::STM32F103CB
+  device-pack: Keil::STM32F1xx_DFP@2.4.1
+  programming:
+    - algorithm: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Flash/STM32F10x_128.FLM
+      start: 0x08000000
+      size: 0x00020000
+      default: true
+    - algorithm: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/Flash/STM32F10x_OPT.FLM
+      start: 0x1FFFF800
+      size: 0x00000010
+  system-descriptions:
+    - file: ${CMSIS_PACK_ROOT}/Keil/STM32F1xx_DFP/2.4.1/SVD/STM32F103xx.svd
+      type: svd
+  output:
+    - file: out/CyberryPotter/Target_1/CyberryPotter.axf
+      type: elf

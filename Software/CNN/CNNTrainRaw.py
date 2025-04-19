@@ -16,28 +16,29 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h', 'letter_R', 'letter_W', 'letter_phi', 'Circle', 'UpAndDown', 'Horn', 'Wave', 'NoMotion']
 
 # 定义目录路径
-DEF_SAVE_TO_PATH = './TraningData_8_17/'
+DEF_SAVE_TO_PATH = './Merged2/'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
-DEF_FILE_MAX = 50
+DEF_FILE_MAX = 1000
 DEF_MAX_TRIALS = 3
 #DEF_N_ROWS = 60
 DEF_N_ROWS = 150
 #DEF_COLUMNS = (0, 1, 2, 3, 4, 5)
-DEF_COLUMNS = (3, 4, 5)
+#DEF_COLUMNS = (3, 4, 5)
+DEF_COLUMNS = (3, 5)
 #DEF_COLUMNS = (0, 1, 2)
 
 # 文件格式
 DEF_FILE_FORMAT = '.txt'
 # 文件名分隔符
 DEF_FILE_NAME_SEPERATOR = '_'
-DEF_BATCH_SIZE = 80
+DEF_BATCH_SIZE = 100
 DEF_NUM_EPOCH = 80
 
 # 动作名称到标签的映射
 motion_to_label = {name: idx for idx, name in enumerate(motion_names)}
 
-def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 3), num_classes=len(motion_names), batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH):
+def train(x_train, y_train, x_test, y_test, input_shape=(DEF_N_ROWS, 2), num_classes=len(motion_names), batch_size=DEF_BATCH_SIZE, epochs=DEF_NUM_EPOCH):
     inputs = layers.Input(shape=input_shape) # type: ignore
 
     x = layers.Conv1D(30, kernel_size=3, strides=3, padding='same')(inputs) # type: ignore

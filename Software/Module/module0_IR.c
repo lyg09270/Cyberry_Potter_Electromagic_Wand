@@ -30,7 +30,7 @@ void Module0_IR_Init(void)
         /*PWM Output*/
 	TIM_OCStructInit(&TIM_OCInitStruct);
 	TIM_OCInitStruct.TIM_OCMode = TIM_OCMode_PWM1;
-	TIM_OCInitStruct.TIM_OCPolarity = TIM_OCPolarity_Low;
+	TIM_OCInitStruct.TIM_OCPolarity = TIM_OCPolarity_High;
 	TIM_OCInitStruct.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStruct.TIM_Pulse = 0;
 	TIM_OC1Init(TIM3,&TIM_OCInitStruct);       

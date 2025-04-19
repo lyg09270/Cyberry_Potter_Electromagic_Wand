@@ -1,0 +1,15 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\13087\\Desktop\\Cyberry_Potter_Electromagic_Wand\\Software\\out\\CyberryPotter\\Target_1"
+    ],
+    "cmake.sourceDirectory": "C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp",
+    "cmsis-csolution.actions": [
+        {
+            "path": "Software/CyberryPotter.csolution.yml",
+            "target": "Target_1",
+            "config": {
+                "run": "arm-debugger.flash: Flash Device"
+            }
+        }
+    ]
+}

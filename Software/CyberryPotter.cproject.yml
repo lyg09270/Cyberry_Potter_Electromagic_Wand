@@ -1,0 +1,214 @@
+project:
+  packs:
+    - pack: ARM::CMSIS-Compiler@2.1.0
+    - pack: ARM::CMSIS@6.0.0
+    - pack: Keil::STM32F1xx_DFP@2.4.1
+  setups:
+    - setup: Options for Target_1
+      add-path:
+        - CNN/nnom_lib/inc
+        - CNN/nnom_lib/inc/layers
+        - CNN/nnom_lib/port
+        - CNN
+        - MainBoard
+        - MainBoard/eMPL
+        - Module
+      debug: "on"
+      define:
+        - USE_STDPERIPH_DRIVER
+        - __MICROLIB
+      define-asm:
+        - __MICROLIB
+      misc:
+        - C:
+            - -std=c99
+          C-CPP:
+            - -Wno-nan-infinity-disabled
+            - -fno-rtti
+            - -funsigned-char
+            - -fno-function-sections
+            - -Wno-packed
+            - -Wno-missing-variable-declarations
+            - -Wno-missing-prototypes
+            - -Wno-missing-noreturn
+            - -Wno-sign-conversion
+            - -Wno-nonportable-include-path
+            - -Wno-reserved-id-macro
+            - -Wno-unused-macros
+            - -Wno-documentation-unknown-command
+            - -Wno-documentation
+            - -Wno-license-management
+            - -Wno-parentheses-equality
+          CPP:
+            - -xc++
+            - -std=c++11
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --xref
+            - --callgraph
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --info unused
+            - --info veneers
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+  linker:
+    - script: CyberryPotter_Target_1.sct
+  groups:
+    - group: nnom
+      files:
+        - file: CNN/weights.h
+        - file: CNN/nnom_lib/inc/nnom.h
+        - file: CNN/nnom_lib/inc/nnom_layers.h
+        - file: CNN/nnom_lib/inc/nnom_local.h
+        - file: CNN/nnom_lib/inc/nnom_tensor.h
+        - file: CNN/nnom_lib/inc/nnom_utils.h
+        - file: CNN/nnom_lib/inc/layers/nnom_activation.h
+        - file: CNN/nnom_lib/inc/layers/nnom_avgpool.h
+        - file: CNN/nnom_lib/inc/layers/nnom_baselayer.h
+        - file: CNN/nnom_lib/inc/layers/nnom_concat.h
+        - file: CNN/nnom_lib/inc/layers/nnom_conv2d.h
+        - file: CNN/nnom_lib/inc/layers/nnom_conv2d_trans.h
+        - file: CNN/nnom_lib/inc/layers/nnom_cropping.h
+        - file: CNN/nnom_lib/inc/layers/nnom_dense.h
+        - file: CNN/nnom_lib/inc/layers/nnom_dw_conv2d.h
+        - file: CNN/nnom_lib/inc/layers/nnom_flatten.h
+        - file: CNN/nnom_lib/inc/layers/nnom_global_pool.h
+        - file: CNN/nnom_lib/inc/layers/nnom_gru_cell.h
+        - file: CNN/nnom_lib/inc/layers/nnom_input.h
+        - file: CNN/nnom_lib/inc/layers/nnom_lambda.h
+        - file: CNN/nnom_lib/inc/layers/nnom_lstm_cell.h
+        - file: CNN/nnom_lib/inc/layers/nnom_matrix.h
+        - file: CNN/nnom_lib/inc/layers/nnom_maxpool.h
+        - file: CNN/nnom_lib/inc/layers/nnom_output.h
+        - file: CNN/nnom_lib/inc/layers/nnom_reshape.h
+        - file: CNN/nnom_lib/inc/layers/nnom_rnn.h
+        - file: CNN/nnom_lib/inc/layers/nnom_simple_cell.h
+        - file: CNN/nnom_lib/inc/layers/nnom_softmax.h
+        - file: CNN/nnom_lib/inc/layers/nnom_sumpool.h
+        - file: CNN/nnom_lib/inc/layers/nnom_upsample.h
+        - file: CNN/nnom_lib/inc/layers/nnom_zero_padding.h
+        - file: CNN/nnom_lib/port/nnom_port.h
+        - file: CNN/nnom_lib/src/backends/nnom_local.c
+        - file: CNN/nnom_lib/src/backends/nnom_local_q15.c
+        - file: CNN/nnom_lib/src/core/nnom.c
+        - file: CNN/nnom_lib/src/core/nnom_layers.c
+        - file: CNN/nnom_lib/src/core/nnom_tensor.c
+        - file: CNN/nnom_lib/src/core/nnom_utils.c
+        - file: CNN/nnom_lib/src/layers/nnom_activation.c
+        - file: CNN/nnom_lib/src/layers/nnom_avgpool.c
+        - file: CNN/nnom_lib/src/layers/nnom_baselayer.c
+        - file: CNN/nnom_lib/src/layers/nnom_concat.c
+        - file: CNN/nnom_lib/src/layers/nnom_conv2d.c
+        - file: CNN/nnom_lib/src/layers/nnom_conv2d_trans.c
+        - file: CNN/nnom_lib/src/layers/nnom_cropping.c
+        - file: CNN/nnom_lib/src/layers/nnom_dense.c
+        - file: CNN/nnom_lib/src/layers/nnom_dw_conv2d.c
+        - file: CNN/nnom_lib/src/layers/nnom_flatten.c
+        - file: CNN/nnom_lib/src/layers/nnom_global_pool.c
+        - file: CNN/nnom_lib/src/layers/nnom_gru_cell.c
+        - file: CNN/nnom_lib/src/layers/nnom_input.c
+        - file: CNN/nnom_lib/src/layers/nnom_lambda.c
+        - file: CNN/nnom_lib/src/layers/nnom_lstm_cell.c
+        - file: CNN/nnom_lib/src/layers/nnom_matrix.c
+        - file: CNN/nnom_lib/src/layers/nnom_maxpool.c
+        - file: CNN/nnom_lib/src/layers/nnom_output.c
+        - file: CNN/nnom_lib/src/layers/nnom_reshape.c
+        - file: CNN/nnom_lib/src/layers/nnom_rnn.c
+        - file: CNN/nnom_lib/src/layers/nnom_simple_cell.c
+        - file: CNN/nnom_lib/src/layers/nnom_softmax.c
+        - file: CNN/nnom_lib/src/layers/nnom_sumpool.c
+        - file: CNN/nnom_lib/src/layers/nnom_upsample.c
+        - file: CNN/nnom_lib/src/layers/nnom_zero_padding.c
+    - group: MainBoard
+      files:
+        - file: MainBoard/config.h
+        - file: MainBoard/CyberryPotter.c
+        - file: MainBoard/CyberryPotter.h
+        - file: MainBoard/Delay.c
+        - file: MainBoard/Delay.h
+        - file: MainBoard/IIC.c
+        - file: MainBoard/IIC.h
+        - file: MainBoard/IMU.c
+        - file: MainBoard/IMU.h
+        - file: MainBoard/main.c
+        - file: MainBoard/MPU6050.c
+        - file: MainBoard/MPU6050.h
+        - file: MainBoard/MPU6050_Reg.h
+        - file: MainBoard/W25Q64.c
+        - file: MainBoard/W25Q64.h
+        - file: MainBoard/eMPL/dmpKey.h
+        - file: MainBoard/eMPL/dmpmap.h
+        - file: MainBoard/eMPL/inv_mpu.c
+        - file: MainBoard/eMPL/inv_mpu.h
+        - file: MainBoard/eMPL/inv_mpu_dmp_motion_driver.c
+        - file: MainBoard/eMPL/inv_mpu_dmp_motion_driver.h
+        - file: MainBoard/SPI.c
+        - file: MainBoard/SPI.h
+        - file: MainBoard/USART.c
+        - file: MainBoard/USART.h
+        - file: MainBoard/button.c
+        - file: MainBoard/button.h
+        - file: MainBoard/LED.c
+        - file: MainBoard/LED.h
+        - file: MainBoard/ADC.c
+        - file: MainBoard/ADC.h
+    - group: Module
+      files:
+        - file: Module/module0_IR.c
+        - file: Module/module0_IR.h
+        - file: Module/module1_RF433.c
+        - file: Module/module1_RF433.h
+        - file: Module/module2_RF315.c
+        - file: Module/module2_RF315.h
+        - file: Module/module_IR_RF.c
+        - file: Module/module_IR_RF.h
+        - file: Module/module3.c
+        - file: Module/module3.h
+        - file: Module/module4.c
+        - file: Module/module4.h
+        - file: Module/module5.c
+        - file: Module/module5.h
+        - file: Module/module6.c
+        - file: Module/module6.h
+        - file: Module/module7.c
+        - file: Module/module7.h
+        - file: Module/module8.c
+        - file: Module/module8.h
+        - file: Module/module9.c
+        - file: Module/module9.h
+        - file: Module/module10.c
+        - file: Module/module10.h
+  components:
+    - component: ARM::CMSIS:CORE
+    - component: Keil::Device:Startup
+      misc:
+        - ASM:
+            - -masm=auto
+    - component: Keil::Device:StdPeriph Drivers:ADC
+    - component: Keil::Device:StdPeriph Drivers:BKP
+    - component: Keil::Device:StdPeriph Drivers:CAN
+    - component: Keil::Device:StdPeriph Drivers:CEC
+    - component: Keil::Device:StdPeriph Drivers:CRC
+    - component: Keil::Device:StdPeriph Drivers:DAC
+    - component: Keil::Device:StdPeriph Drivers:DBGMCU
+    - component: Keil::Device:StdPeriph Drivers:DMA
+    - component: Keil::Device:StdPeriph Drivers:EXTI
+    - component: Keil::Device:StdPeriph Drivers:FSMC
+    - component: Keil::Device:StdPeriph Drivers:Flash
+    - component: Keil::Device:StdPeriph Drivers:Framework
+    - component: Keil::Device:StdPeriph Drivers:GPIO
+    - component: Keil::Device:StdPeriph Drivers:I2C
+    - component: Keil::Device:StdPeriph Drivers:IWDG
+    - component: Keil::Device:StdPeriph Drivers:PWR
+    - component: Keil::Device:StdPeriph Drivers:RCC
+    - component: Keil::Device:StdPeriph Drivers:RTC
+    - component: Keil::Device:StdPeriph Drivers:SDIO
+    - component: Keil::Device:StdPeriph Drivers:SPI
+    - component: Keil::Device:StdPeriph Drivers:TIM
+    - component: Keil::Device:StdPeriph Drivers:USART
+    - component: Keil::Device:StdPeriph Drivers:WWDG
