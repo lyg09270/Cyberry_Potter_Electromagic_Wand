@@ -1,44 +1,5 @@
 # 关于项目
 
-
-#### 12月23日更新：
-
-- 修复了433Mhz和315Mhz射频模块无法使用的问题
-
-#### 10月22日更新：
-
-- 添加了蓝牙HID模块的代码
-- 路径在`\Software\BLE-CC254x-1.3.2\Projects\ble\HIDEmuKbd\CC2540DB`
-- Hardware文件夹的硬件文件长时间没有更新，请参考立创开源平台：[赛博魔杖_STM32卷积神经网络](https://oshwhub.com/lyg0927/cyberwand-stm32-convolutional-ne)
-- 蓝牙模块的烧录需要一个CCdebugger，和一个1.27 2*5P的探针座，或者焊接1.27排针，使用杜邦线与CCdebugger连接，开发需要用到IAR8.10，请自行准备软件
-
-#### 9.7日更新
-
-- 添加了InstallEnviroment.bat自动安装环境的脚本（需要用anaconda prompt运行），但是不确定是否可以正常使用，不能正常使用的话给我反馈
-
-#### 9.4日更新
-
-- 3D_Print文件夹（添加了Shell2_Laser.stl用于增加红外头，如果你需要）
-- Software文件夹
-  - 新增CNN目录下的训练数据集更新了模型
-  - 调整了部分keil工程内的代码
-  - 增加了激光头的代码（在LED.h中解注释以启用这部分代码）
-  - 为适配格力空调的协议将红外录制的超时退出改为50ms
-
-#### 8.14日更新
-
-- Hardware文件夹 （PCB制版文件、原理图、BOM）
-- 3D_Print文件夹（重新调整过的3D打印模型）
-- Software文件夹的软件部分还没有彻底完成
-
-#### 文档更新:
-
-- [模块硬件开发指南](./Hardware_Development_Guide.md)
-
-- [模块软件开发指南](./Sotfware_Development_Guide.md)
-
-
-
 ### 这个项目是什么
 
 此项目是Cyberry Potter Electromagic wand赛博魔杖，你可以使用这个项目中的文件，制作一个赛博魔杖。如果你有足够的能力，你也可以对魔杖的的法术（功能）进行修改，魔杖采用了模块化的设计，不同的模块对应了不同的执行功能。也可以对激活法术的动作进行修改，只需要重新收集数据并训练模型就可以了。
