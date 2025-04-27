@@ -29,19 +29,6 @@ void model_feed_data(void)
 	}
 }
 
-//void model_feed_data(void)
-//{
-//	const double scale = QUANTIFICATION_SCALE;
-//	uint16_t i = 0;
-//	for(i = 0; i < IMU_SEQUENCE_LENGTH_MAX;i++){
-//		nnom_input_data[i*6] = 	 (int8_t)round(IMU.acc[i][AccX] * scale);
-//		nnom_input_data[i*6+1] = (int8_t)round(IMU.acc[i][AccY] * scale);
-//		nnom_input_data[i*6+2] = (int8_t)round(IMU.acc[i][AccZ] * scale);
-//		nnom_input_data[i*6+3] = (int8_t)round(IMU.gyro[i][Roll] * scale);
-//		nnom_input_data[i*6+4] = (int8_t)round(IMU.gyro[i][Pitch] * scale);
-//		nnom_input_data[i*6+5] = (int8_t)round(IMU.gyro[i][Yaw] * scale);
-//	}
-//}
 
 /*
  * @brief get output of CNN model

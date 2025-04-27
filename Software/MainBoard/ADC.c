@@ -73,7 +73,7 @@ int8_t ADC_PB1_GetAvg(void)
 	int32_t sample[ADC_MAX_SAMPLES] = {0};
 	
 	float var = 0;
-	while(var == 0 || var >= 10){
+	while(var == 0 || var >= 20){
 		ADC_Sample_Avg = 0;
 		var = 0;
 		if(samples_count >= ADC_MAX_TESTS)

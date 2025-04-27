@@ -76,7 +76,7 @@ void USART3_Init(void)
 	GPIO_Init(GPIOB, &GPIO_InitStruct);
     
 	// Configure PB11 (RX)
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_11;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -97,7 +97,7 @@ void USART3_Init(void)
 
 	NVIC_InitStruct.NVIC_IRQChannel = USART3_IRQn;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 2; // Different priority to USART1
+	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 2; \
 	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 2;
 	NVIC_Init(&NVIC_InitStruct);
     

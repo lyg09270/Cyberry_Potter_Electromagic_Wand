@@ -1,8 +1,0 @@
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/database.dir
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/CyberryPotter+Target_1.dir
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/CyberryPotter+Target_1-build.dir
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/CyberryPotter+Target_1-configure.dir
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/CyberryPotter+Target_1-executes.dir
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/CyberryPotter+Target_1-database.dir
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/edit_cache.dir
-C:/Users/13087/Desktop/Cyberry_Potter_Electromagic_Wand/Software/tmp/CMakeFiles/rebuild_cache.dir

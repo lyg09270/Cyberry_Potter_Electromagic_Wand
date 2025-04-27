@@ -35,7 +35,7 @@ void Module0_IR_Init(void)
 	TIM_OCInitStruct.TIM_Pulse = 0;
 	TIM_OC1Init(TIM3,&TIM_OCInitStruct);       
         
-//IR receriver IMU EXTI init*****************************************//
+//IR receriver init*****************************************//
         
         GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
         GPIO_InitStruct.GPIO_Pin = GPIO_Pin_7;
@@ -74,6 +74,7 @@ void Module0_IR_Init(void)
 	NVIC_Init(&NVIC_InitStruct);        
         
         TIM_Cmd(TIM2,DISABLE);
+        GPIO_SetBits(GPIOA,GPIO_Pin_6);
 }
 
 void Module0_IR_38Khz_Logic(uint8_t logic)

@@ -16,7 +16,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 motion_names = ['RightAngle', 'SharpAngle', 'Lightning', 'Triangle', 'Letter_h', 'letter_R', 'letter_W', 'letter_phi', 'Circle', 'UpAndDown', 'Horn', 'Wave', 'NoMotion']
 
 # 定义目录路径
-DEF_SAVE_TO_PATH = './Merged2/'
+DEF_SAVE_TO_PATH = './TrainingData_8_23'
 DEF_MODEL_NAME = 'model.h5'
 DEF_MODEL_H_NAME = 'weights.h'
 DEF_FILE_MAX = 1000
@@ -24,8 +24,7 @@ DEF_MAX_TRIALS = 3
 #DEF_N_ROWS = 60
 DEF_N_ROWS = 150
 #DEF_COLUMNS = (0, 1, 2, 3, 4, 5)
-#DEF_COLUMNS = (3, 4, 5)
-DEF_COLUMNS = (3, 5)
+DEF_COLUMNS = (3, 4, 5)
 #DEF_COLUMNS = (0, 1, 2)
 
 # 文件格式
@@ -165,8 +164,7 @@ for _ in range(DEF_MAX_TRIALS):  # 重复训练DEF_MAX_TRIALS次
         best_model = model
 
 # 从训练数据集中获取一个批次作为校准数据集
-# 这里直接使用x_test
-x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
+x_test_sample = x_test[:100] 
 
 # 使用最佳模型进行最终评估
 if best_model is not None:
@@ -184,5 +182,4 @@ if best_model is not None:
     # 从训练数据集中获取一个批次作为校准数据集
     x_test_sample = x_test[:100]  # 使用前100个样本作为校准数据集
     
-    # 假设generate_model函数已经定义在nnom模块中
     generate_model(best_model, x_test_sample, format='hwc', name=DEF_MODEL_H_NAME)

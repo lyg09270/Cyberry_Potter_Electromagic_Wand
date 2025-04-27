@@ -34,7 +34,7 @@ typedef struct LED_t
 //Define LED
 #define LED_GPIO GPIOA
 #define LED_GPIO_PIN GPIO_Pin_1
-#define LASER_ENABLE
+//#define LASER_ENABLE
 
 extern struct LED_t LED;
 #ifdef LASER_ENABLE
