@@ -338,7 +338,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-Wno-nan-infinity-disabled</MiscControls>
-              <Define>USE_STDPERIPH_DRIVER</Define>
+              <Define>USE_STDPERIPH_DRIVER,REASONING_TIME</Define>
               <Undefine></Undefine>
               <IncludePath>.\CNN\nnom_lib\inc;.\CNN\nnom_lib\inc\layers;.\CNN\nnom_lib\port;.\CNN;.\MainBoard;.\MainBoard\eMPL;.\Module</IncludePath>
             </VariousControls>

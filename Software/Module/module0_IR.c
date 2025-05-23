@@ -20,61 +20,60 @@ void Module0_IR_Init(void)
         GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOA,&GPIO_InitStruct);
 	
-        /*38Khz Carrier wave of infrated singal is generate by PWM*/
-	TIM_TimerBaseInitStruct.TIM_Prescaler = 3 - 1;
-	TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimerBaseInitStruct.TIM_Period = 633 - 1;
-	TIM_TimerBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
-	TIM_TimeBaseInit(TIM3,&TIM_TimerBaseInitStruct);
-        
-        /*PWM Output*/
-	TIM_OCStructInit(&TIM_OCInitStruct);
-	TIM_OCInitStruct.TIM_OCMode = TIM_OCMode_PWM1;
-	TIM_OCInitStruct.TIM_OCPolarity = TIM_OCPolarity_High;
-	TIM_OCInitStruct.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStruct.TIM_Pulse = 0;
-	TIM_OC1Init(TIM3,&TIM_OCInitStruct);       
+			/*38Khz Carrier wave of infrated singal is generate by PWM*/
+		TIM_TimerBaseInitStruct.TIM_Prescaler = 3 - 1;
+		TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+		TIM_TimerBaseInitStruct.TIM_Period = 633 - 1;
+		TIM_TimerBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
+		TIM_TimeBaseInit(TIM3,&TIM_TimerBaseInitStruct);
+			
+			/*PWM Output*/
+		TIM_OCStructInit(&TIM_OCInitStruct);
+		TIM_OCInitStruct.TIM_OCMode = TIM_OCMode_PWM1;
+		TIM_OCInitStruct.TIM_OCPolarity = TIM_OCPolarity_Low;
+		TIM_OCInitStruct.TIM_OutputState = TIM_OutputState_Enable;
+		TIM_OCInitStruct.TIM_Pulse = 0;
+		TIM_OC1Init(TIM3,&TIM_OCInitStruct);       
         
 //IR receriver init*****************************************//
         
-        GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
-        GPIO_InitStruct.GPIO_Pin = GPIO_Pin_7;
-        GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-        GPIO_Init(GPIOA,&GPIO_InitStruct);
-        
-        GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource7); 
-	
-        EXTI_InitStruct.EXTI_Line = EXTI_Line7 ;
-        EXTI_InitStruct.EXTI_LineCmd = ENABLE;
-        EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
-        EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
-        EXTI_Init(&EXTI_InitStruct);
-	
-	NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5_IRQn;
-        NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-        NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 6;
-        NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
-        NVIC_Init(&NVIC_InitStruct);
+		GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
+		GPIO_InitStruct.GPIO_Pin = GPIO_Pin_7;
+		GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+		GPIO_Init(GPIOA,&GPIO_InitStruct);
+		
+		GPIO_EXTILineConfig(GPIO_PortSourceGPIOA,GPIO_PinSource7); 
+
+		EXTI_InitStruct.EXTI_Line = EXTI_Line7 ;
+		EXTI_InitStruct.EXTI_LineCmd = ENABLE;
+		EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
+		EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
+		EXTI_Init(&EXTI_InitStruct);
+
+		NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5_IRQn;
+		NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+		NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 6;
+		NVIC_InitStruct.NVIC_IRQChannelSubPriority = 6;
+		NVIC_Init(&NVIC_InitStruct);
 	
 //TIM2*************************************************************//
-	TIM_TimerBaseInitStruct.TIM_Prescaler = TIM2_PRESCALE - 1;
-	TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimerBaseInitStruct.TIM_Period = TIM2_RECORD_OVERTIME_US / US_PER_TIMER2_COUNT - 1;
-	TIM_TimerBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
-	TIM_TimeBaseInit(TIM2,&TIM_TimerBaseInitStruct);
-        
-        TIM_ClearFlag(TIM2,TIM_FLAG_Update);
-	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
-	
-	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
-	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 7;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 7;
+		TIM_TimerBaseInitStruct.TIM_Prescaler = TIM2_PRESCALE - 1;
+		TIM_TimerBaseInitStruct.TIM_CounterMode = TIM_CounterMode_Up;
+		TIM_TimerBaseInitStruct.TIM_Period = TIM2_RECORD_OVERTIME_US / US_PER_TIMER2_COUNT - 1;
+		TIM_TimerBaseInitStruct.TIM_ClockDivision = TIM_CKD_DIV1;
+		TIM_TimeBaseInit(TIM2,&TIM_TimerBaseInitStruct);
+			
+		TIM_ClearFlag(TIM2,TIM_FLAG_Update);
+		TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
+		
+		//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+		NVIC_InitStruct.NVIC_IRQChannel = TIM2_IRQn;
+		NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+		NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 7;
+		NVIC_InitStruct.NVIC_IRQChannelSubPriority = 7;
 	NVIC_Init(&NVIC_InitStruct);        
         
         TIM_Cmd(TIM2,DISABLE);
-        GPIO_SetBits(GPIOA,GPIO_Pin_6);
 }
 
 void Module0_IR_38Khz_Logic(uint8_t logic)

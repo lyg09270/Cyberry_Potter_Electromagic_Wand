@@ -13,6 +13,21 @@ nnom_model_t* model;
 volatile Model_Output_t model_output = -1;
 volatile ROM_Address_t ROM_Address;
 
+
+void Start_Timer(void) {
+    SysTick->LOAD = 72000 - 1;
+    SysTick->VAL = 0;
+    SysTick->CTRL |= 1;
+}
+
+void Stop_And_Print_Timer(void) {
+    uint32_t elapsed_ticks = 72000 - SysTick->VAL;
+    float elapsed_ms = (float)elapsed_ticks / 72000.0f * 1000.0f;
+
+    SysTick->CTRL &= ~1;
+
+    printf("Reasoning Time: %.3f ms\n", elapsed_ms);
+}
 /*
  * @brief Quantirize IMU data and feed to CNN model
  * @param None
@@ -41,7 +56,9 @@ Model_Output_t model_get_output(void)
 	volatile Model_Output_t max_output = -128;
 	Model_Output_t ret = 0;
 	model_feed_data();
+	Start_Timer();
 	model_run(model);
+	Stop_And_Print_Timer();
 	for(i = 0; i < 13;i++){
 		
 		#ifdef SERIAL_DEBUG
